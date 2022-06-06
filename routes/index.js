@@ -30,4 +30,24 @@ router.get(
   })
 );
 
+router.post(
+  "/login",
+  csrfProtection,
+  loginValidator,
+  asyncHandler(async (req, res, next) => {
+    const { email, password } = req.body;
+
+    const validationErrors = validationResult(req);
+    const errors = [];
+
+    if (validationErrors.isEmpty()) {
+      // Log in user
+    } else {
+      errors = validationErrors.array().map(err => err.msg);
+    }
+
+    res.render("login", { email, csrfToken: req.csrfToken(), errors });
+  })
+);
+
 module.exports = router;
