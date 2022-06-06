@@ -4,10 +4,16 @@ const { csrfProtection, asyncHandler } = require("./utils");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const loginUser = require("../auth");
+const db = require("../db/models");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index");
+  const haunts = Haunt.findAll({
+    order: ["createdAt", "DESC"],
+    limit: 5,
+  });
+  console.log("haunts", haunts);
+  res.render("index", haunts);
 });
 
 const loginValidator = [
@@ -20,7 +26,7 @@ const loginValidator = [
     .withMessage("Email can't be longer than 62 characters"),
   check("password")
     .exists({ checkFalsy: true })
-    .withMessage("please provide a password"),
+    .withMessage("Please provide a password"),
 ];
 
 // login page
@@ -40,7 +46,7 @@ router.post(
     const { email, password } = req.body;
 
     const validationErrors = validationResult(req);
-    const errors = [];
+    let errors = [];
 
     if (validationErrors.isEmpty()) {
       const user = await db.User.findOne({ where: { email } });

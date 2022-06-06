@@ -6,12 +6,12 @@ block content
             p Errors:
             ul
                 each error in errors
-                    li = error
+                    li= error
 
 
     form(action='/login' method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
-        div (class = "login-form")
+        div(class = "login-form")
             label(for = "email") Email
             input(class = "login" type = "email" name = "email" value = email)
 
