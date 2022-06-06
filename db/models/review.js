@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Review.belongsTo(models.User, { foreignKey: 'userId' })
     Review.belongsTo(models.Haunt, { foreignKey: 'hauntId' })
+
+    Review.hasMany(models.ReviewComment, { foreignKey: 'reviewId' })
   };
   return Review;
 };

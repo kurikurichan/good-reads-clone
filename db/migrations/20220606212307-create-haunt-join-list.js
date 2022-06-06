@@ -1,28 +1,20 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Haunts', {
+    return queryInterface.createTable('HauntJoinLists', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING(95),
-        unique: true,
-        allowNull: false
-      },
-      description: {
-        type: Sequelize.TEXT
-      },
-      score: {
-        type: Sequelize.NUMERIC(3, 2)
-      },
-      genreId: {
-        type: Sequelize.INTEGER,
+      hauntListId: {
         allowNull: false,
-        references: { model: 'GenreTypes' }
+        type: Sequelize.INTEGER
+      },
+      hauntId: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +27,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Haunts');
+    return queryInterface.dropTable('HauntJoinLists');
   }
 };

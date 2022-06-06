@@ -1,28 +1,26 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Haunts', {
+    return queryInterface.createTable('ReviewComments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      title: {
-        type: Sequelize.STRING(95),
-        unique: true,
-        allowNull: false
-      },
-      description: {
-        type: Sequelize.TEXT
-      },
-      score: {
-        type: Sequelize.NUMERIC(3, 2)
-      },
-      genreId: {
-        type: Sequelize.INTEGER,
+      userId: {
         allowNull: false,
-        references: { model: 'GenreTypes' }
+        type: Sequelize.INTEGER,
+        references: { model: 'Users' }
+      },
+      reviewId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'Reviews' }
+      },
+      comment: {
+        allowNull: false,
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Haunts');
+    return queryInterface.dropTable('ReviewComments');
   }
 };

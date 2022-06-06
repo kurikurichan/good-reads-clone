@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Haunt = sequelize.define('Haunt', {
-    address: DataTypes.STRING,
+    title: DataTypes.STRING,
     description: DataTypes.TEXT,
     score: {
       type: DataTypes.NUMERIC(3,2),
@@ -14,8 +14,17 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Haunt.associate = function(models) {
     // associations can be defined here
+    const columnMapping = {
+      through: 'HauntJoinList',
+      otherKey: 'hauntListId',
+      foreignKey: 'hauntId'
+    }
+
     Haunt.belongsTo(models.GenreType, { foreignKey: 'genreId' })
     Haunt.hasMany(models.Review, { foreignKey: 'hauntId' })
+
+    Haunt.belongsToMany(models.HauntList, columnMapping);
+
 
   };
   return Haunt;
