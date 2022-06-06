@@ -7,5 +7,18 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= title
-  p Welcome to your Project Skeleton
+  h1= 'Good Haunts'
+  p Welcome to Good Haunts, where you can find the goodest haunts
+    ul
+      each haunt in haunts
+        li
+          div(class= hauntCard)
+            img(src="img/:hauntId", alt=haunt.title)
+            p= haunt.title
+            p= haunt.score
+  div(class= 'login_signin')
+    //- if isnt logged in
+    a(href="/login") Login
+    a(href="/signup") Signup
+    //- if is logged in
+    a(href="/users/:id") View Profile

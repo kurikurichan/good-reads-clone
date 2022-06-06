@@ -5,7 +5,7 @@ const { check, validationResult } = require("express-validator");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "a/A Express Skeleton Home" });
+  res.render("index");
 });
 
 const loginValidator = [
@@ -49,5 +49,7 @@ router.post(
     res.render("login", { email, csrfToken: req.csrfToken(), errors });
   })
 );
+
+// signup page
 
 module.exports = router;
