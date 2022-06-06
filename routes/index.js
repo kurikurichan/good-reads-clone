@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
-const
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -13,7 +12,7 @@ router.get(
   "/login",
   csrfProtection,
   asyncHandler(async (req, res, next) => {
-    res.render('login', {csrfToken: req.csrfToken()})
+    res.render("login", { csrfToken: req.csrfToken() });
   })
 );
 
