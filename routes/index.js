@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
 const { check, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -41,7 +42,18 @@ router.post(
     const errors = [];
 
     if (validationErrors.isEmpty()) {
-      // Log in user
+      const user = await db.User.findOne({ where: { email } });
+
+      if (user) {
+        const passMatch = await bcrypt.compare(
+          password,
+          user.password.toString()
+        );
+        if (passMatch) {
+          // Log in user
+          return res.redirect("/");
+        }
+      }
     } else {
       errors = validationErrors.array().map(err => err.msg);
     }

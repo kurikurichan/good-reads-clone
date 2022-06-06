@@ -9,6 +9,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const secret = require("./config/index");
+const db = require("./db/models");
 
 const app = express();
 
@@ -26,6 +27,7 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
+    name: "good_haunts.sid",
     secret,
     store,
     saveUninitialized: false,
