@@ -3,6 +3,7 @@ var router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const loginUser = require("../auth");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -51,9 +52,11 @@ router.post(
         );
         if (passMatch) {
           // Log in user
+          loginUser(req, res, user);
           return res.redirect("/");
         }
       }
+      errors.push("Login failed, no matching email and password");
     } else {
       errors = validationErrors.array().map(err => err.msg);
     }
