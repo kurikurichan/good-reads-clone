@@ -72,5 +72,61 @@ router.post(
 );
 
 // signup page
+const signupValidator = [
+  check("email")
+    .exists({ checkFalsy: true })
+    .withMessage("Must provide email")
+    .isEmail()
+    .withMessage("Please provide a valid email address")
+    .isLength({ max: 62 })
+    .withMessage("Email can't be longer than 62 characters"),
+  check("fullName")
+    .exists({ checkFalsy: true })
+    .withMessage("Must provide a name")
+    .isLength({ max: 100 })
+    .withMessage("Name can't be more than 100 characters"),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a password"),
+  check("confirmPassword")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a password confirmation"),
+];
+
+router.get(
+  "/signup",
+  csrfProtection,
+  signupValidator,
+  asyncHandler(async (req, res, next) => {
+    const { email, fullName, password, confirmPassword } = req.body;
+
+    const user = db.User.build({
+      email,
+      fullName,
+    });
+
+    const validationErrors = validationResult(req);
+    let errors = [];
+
+    if (validationErrors.isEmpty()) {
+      if (password === confirmPassword) {
+        const hashedPass = bcrypt.hash(password, 10);
+        user.password = hashedPass;
+        await user.save();
+        loginUser(req, res, user);
+        res.redirect("/");
+      }
+      errors.push("Passwords must match");
+    } else {
+      errors += validationErrors.array().map(err => err.msg);
+
+      res.render("signup", {
+        user,
+        errors,
+        csrfToken: req.csrfToken(),
+      });
+    }
+  })
+);
 
 module.exports = router;
