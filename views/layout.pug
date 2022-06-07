@@ -4,20 +4,24 @@ html
       block head
         title="Good Haunts"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/navbar.css')
   body
       if (!splash)
           nav
-              ul
+              ul(id="nav-container")
                   li
-                      a(href="/") GOOD HAUNTS
+                      a(href="/")
+                        img(src="/images/logo.jpg" id="logo")
                   li
-                      a(href="/haunts")  Haunts
+                      a(href="/haunts" class="nav-links")  Haunts
                       if (locals.authenticated)
                           li
-                              a(href="/users/" + user.id) Profile
+                              a(href="/users/" + user.id class="nav-links") Profile
+                          li
+                              a(href="/users/logout" class="nav-links") Log out
                       else
                           li
-                              a(href="/login") Login
+                              a(href="/login" class="nav-links") Login
                           li
-                              a(href="/signup") Sign Up
+                              a(href="/signup" class="nav-links") Sign Up
   block content
