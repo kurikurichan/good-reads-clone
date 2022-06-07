@@ -3,7 +3,7 @@ var router = express.Router();
 const { csrfProtection, asyncHandler } = require("./utils");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const { loginUser } = require("../auth");
+const { loginUser, loginDemoUser } = require("../auth");
 const db = require("../db/models");
 
 /* GET home page. */
@@ -71,6 +71,15 @@ router.post(
     }
 
     res.render("login", { email, csrfToken: req.csrfToken(), errors });
+  })
+);
+
+//demo login
+router.get(
+  "/demo",
+  asyncHandler(async (req, res, next) => {
+    loginDemoUser(req, res);
+    return res.redirect("/");
   })
 );
 
