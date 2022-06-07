@@ -8,10 +8,11 @@ block content
       br
       each haunt in haunts
         div(class= 'historical')
-          img(src='images/image-' + haunt.id + '.jpeg' alt='image')
-          br
-          a(href="/user/1")= haunt.title
-          p= haunt.score
+          a(href="/user/1")
+            img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+            br
+            a(href="/user/1")= haunt.title
+            p= haunt.score
     h2="Outdoors"
       br
       each haunt in haunts2
