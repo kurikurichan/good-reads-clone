@@ -2,25 +2,29 @@ extends layout
 append head
   link(rel="stylesheet" href="/stylesheets/haunts.css")
 block content
-  h1= "all the haunts"
+  h1= "All the haunts"
+    br
     h2="Historical"
+      br
       each haunt in haunts
-        li
-            div(class= 'hauntCard')
-              img(src='images/image-' + haunt.id + '.jpeg' alt='image')
-              p(class='title')= haunt.title
-              p= haunt.score
+        div(class= 'historical')
+          img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+          br
+          a(href="/user/1")= haunt.title
+          p= haunt.score
     h2="Outdoors"
+      br
       each haunt in haunts2
-        li
-          div(class= 'hauntCard')
-            img(src='images/image-' + haunt.id + '.jpeg' alt='image')
-            p(class='title')= haunt.title
-            p= haunt.score
+        div(class= 'outdoors')
+          img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+          br
+          a(href="/user/1")= haunt.title
+          p= haunt.score
     h2="Asylum"
+      br
       each haunt in haunts3
-        li
-          div(class= 'hauntCard')
-            img(src='images/image-' + haunt.id + '.jpeg' alt='image')
-            p(class='title')= haunt.title
-            p= haunt.score
+        div(class= 'asylum')
+          img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+          br
+          a(href="/user/1")= haunt.title
+          p= haunt.score
