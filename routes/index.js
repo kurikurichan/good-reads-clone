@@ -7,16 +7,17 @@ const loginUser = require("../auth");
 const db = require("../db/models");
 
 /* GET home page. */
-router.get("/", asyncHandler(async(req, res, next) => {
-  const haunts = await db.Haunt.findAll({
-    order: [
-      ['createdAt', 'DESC']
-    ],
-    limit: 5
-  });
-  // console.log(haunts[0].id);
-  res.render("index", { haunts });
-}));
+router.get(
+  "/",
+  asyncHandler(async (req, res, next) => {
+    const haunts = await db.Haunt.findAll({
+      order: [["createdAt", "DESC"]],
+      limit: 5,
+    });
+    // console.log(haunts[0].id);
+    res.render("index", { haunts });
+  })
+);
 
 const loginValidator = [
   check("email")
@@ -120,7 +121,7 @@ router.post(
 
     if (validationErrors.isEmpty()) {
       if (password === confirmPassword) {
-        const hashedPass = bcrypt.hash(password, 10);
+        const hashedPass = (await bcrypt.hash(password, 10)).toString();
         user.password = hashedPass;
         await user.save();
         loginUser(req, res, user);

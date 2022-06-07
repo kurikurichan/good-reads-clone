@@ -1,0 +1,24 @@
+extends layout.pug
+include utils.pug
+
+block content
+    +error
+
+
+    form(action='/signup' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div(class = "login-form")
+            label(for = "fullName") Full Name
+            input(class = "signup" type = "text" name = "fullName" value = fullName)
+
+            label(for = "email") Email
+            input(class = "signup" type = "email" name = "email" value = email)
+
+            label(for = "password") Password
+            input(class = "signup" type = "password" name = "password")
+
+            label(for = "confirmPassword") Confirm Password
+            input(class = "signup" type = "password" name = "confirmPassword")
+
+            button(type='submit' class='btn btn-signup') Sign Up
+            a(href='/' class='btn btn-cancel') Cancel
