@@ -10,12 +10,14 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const { secret } = require("./config/index");
 const db = require("./db/models");
+const { restoreUser } = require('./auth');
 
 const app = express();
 
 // view engine setup
 app.set("view engine", "pug");
 
+app.use(restoreUser);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
