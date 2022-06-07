@@ -3,9 +3,24 @@ append head
   link(rel="stylesheet" href="/stylesheets/haunts.css")
 block content
   h1= "all the haunts"
-  each haunt in haunts
-    li
-      div(class= 'hauntCard')
-        img(src='images/image-' + haunt.id + '.jpeg' alt='image')
-        p(class='title')= haunt.title
-        p= haunt.score
+    h2="Historical"
+      each haunt in haunts
+        li
+            div(class= 'hauntCard')
+              img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+              p(class='title')= haunt.title
+              p= haunt.score
+    h2="Outdoors"
+      each haunt in haunts2
+        li
+          div(class= 'hauntCard')
+            img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+            p(class='title')= haunt.title
+            p= haunt.score
+    h2="Asylum"
+      each haunt in haunts3
+        li
+          div(class= 'hauntCard')
+            img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+            p(class='title')= haunt.title
+            p= haunt.score
