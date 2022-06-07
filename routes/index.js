@@ -96,6 +96,14 @@ const signupValidator = [
 router.get(
   "/signup",
   csrfProtection,
+  asyncHandler((req, res, next) => {
+    res.render("signup", { csrfToken: req.csrfToken() });
+  })
+);
+
+router.post(
+  "/signup",
+  csrfProtection,
   signupValidator,
   asyncHandler(async (req, res, next) => {
     const { email, fullName, password, confirmPassword } = req.body;
