@@ -1,14 +1,19 @@
-const { User } = require('./db/models/user');
+// const { User } = require('./db/models/user');
+const db = require('./db/models');
+const { asyncHandler } = require("./routes/utils");
+
 
 const loginUser = (req, res, user) => {
+  console.log("user: ", user);
+  console.log("!!!req.session: ", req);
   req.session.auth = {
     userId: user.id,
   };
 };
 
-const restoreUser = async (req, res, next) => {
+const restoreUser = asyncHandler(async (req, res, next) => {
   // log req.session object to console
-  console.log(req.session);
+  console.log("REQ.SESSION:", req.session);
 
   // check if there is an authenticated user
   if (req.session.auth) {
@@ -16,7 +21,7 @@ const restoreUser = async (req, res, next) => {
 
     try {
       // if user found - deconstruct user from req.session.auth property
-      const user = await User.findByPk(userId);
+      const user = await db.User.findByPk(userId);
 
       // if user successfully retrieved from database
       if (user) {
@@ -32,8 +37,7 @@ const restoreUser = async (req, res, next) => {
     res.locals.authenticated =  false;
     next();
   }
-}
-
+});
 
 module.exports = {
   loginUser,
