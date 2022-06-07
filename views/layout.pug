@@ -10,7 +10,8 @@ html
           nav
               ul(id="nav-container")
                   li
-                      a(href="/" id="logo" class="nav-links") GOOD HAUNTS
+                      a(href="/")
+                        img(src="/images/logo.jpg" id="logo")
                   li
                       a(href="/haunts" class="nav-links")  Haunts
                       if (locals.authenticated)

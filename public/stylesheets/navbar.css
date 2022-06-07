@@ -12,12 +12,17 @@
   --cadet: #2a2e45;
 }
 
+body {
+    background-color: var(--cadet);
+    color: var(--periwinkle);
+}
+
 #nav-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: darkgrey;
-  box-shadow: 0px 2px 2px grey;
+  background-color: var(--cadet);
+  box-shadow: 0px 2px 2px var(--xanadu);
   list-style: none;
   height: 30px;
   margin-bottom: 10px;
@@ -28,9 +33,23 @@
   text-decoration: none;
   font-weight: 800;
   font-size: large;
+  color: var(--xanadu);
+  box-shadow: 0px 0px 5px var(--pumpkin);
+}
+
+.nav-links:hover {
+    color: var(--pumpkin);
+    background-color:  var(--bistro);
 }
 
 #logo {
-  border: 2px solid black;
-  padding: 5px;
+  width: 120px;
+  height: auto;
+  margin-right: 40vw;
+  margin-left: 5px;
+
+}
+
+#logo:hover {
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, .5);
 }
