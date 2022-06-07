@@ -4,12 +4,14 @@ const { asyncHandler } = require("./routes/utils");
 
 
 const loginUser = (req, res, user) => {
-  console.log("user: ", user);
-  console.log("!!!req.session: ", req);
   req.session.auth = {
     userId: user.id,
   };
 };
+
+const logoutUser = (req, res) => {
+  delete req.session.auth;
+}
 
 const restoreUser = asyncHandler(async (req, res, next) => {
   // log req.session object to console
@@ -42,4 +44,5 @@ const restoreUser = asyncHandler(async (req, res, next) => {
 module.exports = {
   loginUser,
   restoreUser,
+  logoutUser,
 }
