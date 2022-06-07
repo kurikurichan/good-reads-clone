@@ -9,16 +9,24 @@ append head
 block content
   h1= 'Good Haunts'
   p Welcome to Good Haunts, where you can find the goodest haunts
+  h2= 'Recently Posted Haunts'
     ul
       each haunt in haunts
         li
-          div(class= hauntCard)
+          div(class= 'hauntCard')
             img(src='images/image-' + haunt.id + '.jpeg' alt='image')
-            p= haunt.title
+            p(class='title')= haunt.title
             p= haunt.score
-  div(class= 'login_signin')
-    //- if isnt logged in
+  div(class= 'login_signin_card')
+    br
+    h2= 'Discover and Haunt More'
+    br
+    button(class= 'button')
+      a(href="/signup") Sign Up
+    br
+    button(class= 'button')
+      a(href="/user/1") Demo User
+    br
     a(href="/login") Login
-    a(href="/signup") Signup
     //- if is logged in
-    a(href="/users/:id") View Profile
+     a(href="/users/:id") View Profile */
