@@ -8,7 +8,7 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const secret = require("./config/index");
+const { secret } = require("./config/index");
 const db = require("./db/models");
 
 const app = express();
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
-
+console.log(secret);
 app.use(
   session({
     name: "good_haunts.sid",

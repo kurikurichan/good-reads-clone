@@ -7,14 +7,16 @@ const loginUser = require("../auth");
 const db = require("../db/models");
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
-  const haunts = Haunt.findAll({
-    order: ["createdAt", "DESC"],
-    limit: 5,
+router.get("/", asyncHandler(async(req, res, next) => {
+  const haunts = await db.Haunt.findAll({
+    order: [
+      ['createdAt', 'DESC']
+    ],
+    limit: 5
   });
-  console.log("haunts", haunts);
-  res.render("index", haunts);
-});
+  // console.log(haunts[0].id);
+  res.render("index", { haunts });
+}));
 
 const loginValidator = [
   check("email")
