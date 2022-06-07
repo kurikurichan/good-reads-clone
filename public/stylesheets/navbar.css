@@ -1,0 +1,19 @@
+#nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: darkgrey;
+    box-shadow: 0px 2px 2px grey;
+    list-style: none;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.nav-links {
+    text-decoration: none;
+}
+
+#logo {
+    border: 2px solid black;
+    padding: 5px;
+}
