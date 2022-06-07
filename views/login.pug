@@ -1,12 +1,8 @@
 extends layout.pug
+include utils.pug
 
 block content
-    if errors
-        div(class = 'error')
-            p Errors:
-            ul
-                each error in errors
-                    li= error
+    +error
 
 
     form(action='/login' method='post')

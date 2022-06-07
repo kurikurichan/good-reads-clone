@@ -1,0 +1,7 @@
+mixin error
+  if errors
+    div(class = 'error')
+        p Errors:
+        ul
+            each error in errors
+                li= error
