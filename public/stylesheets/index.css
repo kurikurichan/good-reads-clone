@@ -1,13 +1,67 @@
+body{
+    margin:50px;
+}
+
 h1 {
     color: red;
+}
+
+h2 {
+    color:black;
 }
 
 p{
     text-align: center;
 }
 
+.title{
+    text-align:left;
+}
+
+.login_signin_card{
+    position: absolute;
+    height: 350px;
+    width: 300px;
+
+    /* display:flex;
+    flex-direction: column; */
+    top: 100px;
+    right: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+    display:flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 img{
-    height: 500px;
-    width: 700px;
+    height: 300px;
+    width: 500px;
+}
+
+.button{
+    background-color: red;
+    border: none;
+    color:white;
+    border-radius: 5px;
+    padding:15px 32px;
+    text-align:center;
+    text-decoration: none;
+
+}
+
+body > div > button > a{
+    font-size: 26px;
+}
+
+ul{
+    display:flex;
+    flex-direction: column;
+    list-style-type: none;
+
 }
