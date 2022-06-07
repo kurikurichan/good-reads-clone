@@ -5,4 +5,19 @@ html
         title="Good Haunts"
         link(rel='stylesheet' href='/stylesheets/reset.css')
   body
-    block content
+      if (!splash)
+          nav
+              ul
+                  li
+                      a(href="/") GOOD HAUNTS
+                  li
+                      a(href="/haunts")  Haunts
+                      if (locals.authenticated)
+                          li
+                              a(href="/users/" + user.id) Profile
+                      else
+                          li
+                              a(href="/login") Login
+                          li
+                              a(href="/signup") Sign Up
+  block content

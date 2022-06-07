@@ -15,7 +15,7 @@ router.get(
       limit: 5,
     });
     // console.log(haunts[0].id);
-    res.render("index", { haunts });
+    res.render("index", { haunts, splash: 1 });
   })
 );
 
