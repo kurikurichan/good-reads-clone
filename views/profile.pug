@@ -1,0 +1,13 @@
+extends layout.pug
+
+block content
+    h1= currentUser.fullName + "'s profile"
+    p(class="profile-text")="Name " + currentUser.fullName
+    if(user.id = currentUser.id)
+        p(class="profile-text")=user.email
+
+    h3= currentUser.fullName + "'s haunt lists"
+
+    ul
+        each hauntlist in hauntlists
+            li=hauntlist.title + Object.keys(hauntlist).length
