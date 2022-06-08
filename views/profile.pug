@@ -1,13 +1,16 @@
 extends layout.pug
 
 block content
-    h1= currentUser.fullName + "'s profile"
-    p(class="profile-text")="Name " + currentUser.fullName
+    h1= currentUser.fullName + "'s Profile"
+    p(class="profile-text")="Name: " + currentUser.fullName
     if(user.id = currentUser.id)
-        p(class="profile-text")=user.email
+        p(class="profile-text")="Email: " + user.email
 
-    h3= currentUser.fullName + "'s haunt lists"
+    h2(id="haunt-title")= currentUser.fullName + "'s Haunt Lists"
 
     ul
-        each hauntlist in hauntlists
-            li=hauntlist.title + Object.keys(hauntlist).length
+        if (hauntlists.length)
+            each hauntlist in hauntlists
+                li=hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
+        else
+            p= "No haunt lists to show yet!"

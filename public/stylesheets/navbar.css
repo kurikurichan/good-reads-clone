@@ -17,6 +17,10 @@ body {
     color: var(--periwinkle);
 }
 
+h2 {
+  color: var(--periwinkle);
+}
+
 #nav-container {
   display: flex;
   justify-content: space-between;
@@ -30,6 +34,7 @@ body {
 }
 
 .nav-links {
+  justify-content: flex-end;
   text-decoration: none;
   font-weight: 800;
   font-size: large;

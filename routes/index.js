@@ -14,8 +14,8 @@ router.get(
       order: [["createdAt", "DESC"]],
       limit: 5,
     });
-    // console.log(haunts[0].id);
-    res.render("index", { haunts, splash: 1 });
+
+    res.render("index", { haunts });
   })
 );
 
@@ -79,7 +79,7 @@ router.get(
   "/demo",
   asyncHandler(async (req, res, next) => {
     loginDemoUser(req, res);
-    return res.redirect("/");
+    return res.redirect("/haunts");
   })
 );
 
