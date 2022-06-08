@@ -44,25 +44,12 @@ router.get(
   })
 );
 
-const reviews = [
-  // FARKEREVIEWS
-  {
-    score: 3,
-    description: "blah blah blah",
-  },
-  {
-    score: 4,
-    description: "blasdfasah blah blah",
-  },
-  {
-    score: 2,
-    description: "blah blah blsdfasah",
-  },
-];
-
 router.get("/:id(\\d+)", async (req, res, next) => {
   const hauntId = req.params.id; //grab the id
   const haunt = await db.Haunt.findByPk(hauntId);
+  const reviews = await db.Review.findAll({
+    where: { hauntId: haunt.id },
+  });
   res.render("specificHaunt", { haunt, reviews });
 });
 
