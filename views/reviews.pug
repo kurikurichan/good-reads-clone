@@ -1,0 +1,18 @@
+extends layout.pug
+
+block content
+    h1= "Reviews!"
+    +error
+
+
+    form(action='/login' method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
+        div(class = "login-form")
+            label(for = "email") Email
+            input(class = "login" type = "email" name = "email" value = email)
+
+            label(for = "password") Password
+            input(class = "login" type = "password" name = "password")
+
+            button(type='submit' class='btn btn-login') Login
+            a(href='/' class='btn btn-cancel') Cancel
