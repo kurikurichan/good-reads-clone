@@ -66,8 +66,4 @@ router.get("/:id(\\d+)", async (req, res, next) => {
   res.render("specificHaunt", { haunt, reviews });
 });
 
-//  ///haunts/:hauntId(\\d+)  ??   for later on to get ONE haunt
-
-//a(href="/haunts/" + haunt.id) click to a specific haunt
-
 module.exports = router;

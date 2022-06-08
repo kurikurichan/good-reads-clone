@@ -3,7 +3,7 @@ extends layout.pug
 block content
     h1= currentUser.fullName + "'s Profile"
     p(class="profile-text")="Name: " + currentUser.fullName
-    if(user.id = currentUser.id)
+    if(user.id == currentUser.id)
         p(class="profile-text")="Email: " + user.email
 
     h2(id="haunt-title")= currentUser.fullName + "'s Haunt Lists"

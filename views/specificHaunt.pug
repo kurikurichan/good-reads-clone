@@ -7,6 +7,9 @@ block content
       img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
     div(class="topRightDiv")
       h2=haunt.title
+      if(locals.authenticated)
+        a(href="/reviews/new/" + haunt.id)
+          button Create a review
       p="Score: " + haunt.score
       p Description:
       p=haunt.description
