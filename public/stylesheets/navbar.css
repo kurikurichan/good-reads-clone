@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+/* Nightmare */
+@font-face {
+  font-family: "Nightmare";
+  src: url("../public/fonts/NightmareRegular-vmOzA.ttf") format("ttf");
+}
+:root {
+  --xanadu: #7e9181;
+  --pumpkin: #fe7f2d;
+  --periwinkle: #c7cedb;
+  --bistro: #2b2118;
+  --cadet: #2a2e45;
+}
+
+body {
+    background-color: var(--cadet);
+    color: var(--periwinkle);
+}
+
+#nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--cadet);
+  box-shadow: 0px 2px 2px var(--xanadu);
+  list-style: none;
+  height: 30px;
+  margin-bottom: 10px;
+  font-family: "Nightmare", "EB Garamond", serif;
+}
+
+.nav-links {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: large;
+  color: var(--xanadu);
+  box-shadow: 0px 0px 5px var(--pumpkin);
+}
+
+.nav-links:hover {
+    color: var(--pumpkin);
+    background-color:  var(--bistro);
+}
+
+#logo {
+  width: 120px;
+  height: auto;
+  margin-right: 40vw;
+  margin-left: 5px;
+
+}
+
+#logo:hover {
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, .5);
+}

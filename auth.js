@@ -1,15 +1,24 @@
 // const { User } = require('./db/models/user');
-const db = require('./db/models');
+const db = require("./db/models");
 const { asyncHandler } = require("./routes/utils");
 
-
 const loginUser = (req, res, user) => {
-  console.log("user: ", user);
-  console.log("!!!req.session: ", req);
   req.session.auth = {
     userId: user.id,
   };
 };
+
+
+const logoutUser = (req, res) => {
+  delete req.session.auth;
+}
+
+const loginDemoUser = (req, res) => {
+  req.session.auth = {
+    userId: 1,
+  };
+};
+
 
 const restoreUser = asyncHandler(async (req, res, next) => {
   // log req.session object to console
@@ -34,12 +43,14 @@ const restoreUser = asyncHandler(async (req, res, next) => {
       next(err);
     }
   } else {
-    res.locals.authenticated =  false;
+    res.locals.authenticated = false;
     next();
   }
 });
 
 module.exports = {
   loginUser,
+  loginDemoUser,
   restoreUser,
-}
+  logoutUser,
+};
