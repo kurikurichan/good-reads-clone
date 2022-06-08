@@ -13,8 +13,32 @@
 }
 
 body {
-    background-color: var(--cadet);
-    color: var(--periwinkle);
+  background-color: var(--cadet);
+  color: var(--periwinkle);
+}
+
+a {
+  color: var(--xanadu);
+  text-shadow: var(--periwinkle) 1px 1px 1px;
+  position: relative;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background-color: var(--pumpkin);
+  bottom: 0;
+  transition: width 250ms 0s;
+}
+
+a:hover::before {
+  width: 100%;
+}
+
+a:hover {
+  color: var(--pumpkin);
 }
 
 h2 {
@@ -43,8 +67,8 @@ h2 {
 }
 
 .nav-links:hover {
-    color: var(--pumpkin);
-    background-color:  var(--bistro);
+  color: var(--pumpkin);
+  background-color: var(--bistro);
 }
 
 #logo {
@@ -52,9 +76,8 @@ h2 {
   height: auto;
   margin-right: 40vw;
   margin-left: 5px;
-
 }
 
 #logo:hover {
-    box-shadow: 0px 0px 5px rgba(255, 255, 255, .5);
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
 }

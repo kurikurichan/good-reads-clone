@@ -1,0 +1,45 @@
+.topDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.topLeftDiv {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  padding: 20px;
+  /* border: 3px solid red; */
+}
+
+.topLeftDiv > img {
+  width: 600px;
+  height: 450px;
+}
+
+.topRightDiv {
+  position: relative;
+  padding: 50px 20px;
+  /* border: 3px solid red; */
+}
+
+.topRightDiv > a {
+  position: absolute;
+  left: 50%;
+  bottom: 70px;
+}
+
+.bottomDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottomDiv div {
+  border: 1px solid red;
+  width: 40vw;
+}
+
+.scoreName {
+  display: flex;
+  align-items: center;
+}

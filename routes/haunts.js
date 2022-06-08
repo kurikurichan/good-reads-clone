@@ -49,6 +49,7 @@ router.get("/:id(\\d+)", async (req, res, next) => {
   const haunt = await db.Haunt.findByPk(hauntId);
   const reviews = await db.Review.findAll({
     where: { hauntId: haunt.id },
+    include: [{ model: db.User }],
   });
   res.render("specificHaunt", { haunt, reviews });
 });
