@@ -2,6 +2,6 @@ mixin error
   if errors
     div(class = 'error')
         p Errors:
-        ul
+        ul(class="errors")
             each error in errors
-                li= error
+                li(class="errors")= error

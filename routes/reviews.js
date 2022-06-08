@@ -6,6 +6,18 @@ const { asyncHandler, csrfProtection } = require("./utils");
 const { check, validationResult } = require("express-validator");
 
 
+const reviewValidator = [
+    check("review")
+      .exists({ checkFalsy: true })
+      .withMessage("Must provide review")
+      .isLength({ min:1, max: 500 })
+      .withMessage("Review can't be longer than 500 characters"),
+    check("score")
+      .exists({ checkFalsy: true })
+      .withMessage("A rating is required"),
+];
+
+
 // GET page with form for new review
 // Id is the id of the haunt the review will be on
 router.get('/new/:id(\\d+)', csrfProtection, asyncHandler(async(req, res, next) => {
@@ -18,25 +30,64 @@ router.get('/new/:id(\\d+)', csrfProtection, asyncHandler(async(req, res, next) 
 }));
 
 // POST new review data
-router.post('/', asyncHandler(async(req, res) => {
+router.post('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
     //TODO: deconstruct form data from review
-    console.log("Post new review filler");
+    const { userId, hauntId, score, review } = req.body;
+    const haunt = await Haunt.findByPk(+hauntId);
 
-    // TODO: await creating a new review with deconstructed data
-    // const haunt = await Haunt.findByPk(id);
-    // TODO: redirect user to haunts/:id page
-    res.redirect('/');
+    const validationErrors = validationResult(req);
+    let errors = [];
+    // await creating a new review with deconstructed data
+    if (validationErrors.isEmpty()) {
+        const newReview = await Review.build({
+            userId,
+            hauntId,
+            review,
+            score
+        });
+
+        if (newReview) {
+            newReview.save();
+            res.redirect(`/haunts/${hauntId}`);
+        }
+        errors.push("Review failed");
+    } else {
+        errors = validationErrors.array().map(err => err.msg);
+    }
+    res.render("reviews", { review, score, haunt, csrfToken: req.csrfToken(), errors }); // might need to feed hauntId
 }));
 
+
 // EDIT review data
-// router.put('/:id(\\d+)', asyncHandler(async(req, res) => {
+router.put('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
 
-//     const id = req.params.id;
-//     console.log("the id: ", typeof id);
-//     const haunt = await Haunt.findByPk(id);
+    const reviewId = req.params.id;
+    const review = await Review.findByPk(+reviewId);
 
-//     res.render('haunts', { something: [] });
-// }));
+    const validationErrors = validationResult(req);
+    let errors = [];
+    // await creating a new review with deconstructed data
+    if (validationErrors.isEmpty()) {
+    // if the review was found, then
+        if (review) {
+            const { userId, hauntId, review, score } = req.body;
+            await review.update({
+                userId, hauntId, review, score
+            });
+            res.redirect(`/haunts/${+hauntId}`);
+        } else {
+            errors = validationErrors.array().map(err => err.msg);
+        }
+        errors.push("Review edit failed");
+    }
+    res.render("reviews", { review, score, haunt, csrfToken: req.csrfToken(), errors });
+}));
+
+// DELETE review
+router.delete('/:id(\\d+)', asyncHandler(async((req, res, next) => {
+    console.log('blah');
+})));
+
 
 
 module.exports = router;

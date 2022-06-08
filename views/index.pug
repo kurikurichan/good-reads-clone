@@ -9,7 +9,7 @@ append head
 block content
   p(id=slogan) Welcome to Good Haunts, where you can find the goodest haunts. 😍 👻
   h2(id="recent-haunt")= 'Recently Posted Haunts'
-    ul
+    ul(id="index-list")
       each haunt in haunts
         li
           div(class= 'hauntCard')

@@ -6,7 +6,7 @@
     justify-content: flex-end;
 }
 
-#rating-container > input{
+#rating-container > input {
     display:none;
 }
 
@@ -32,10 +32,13 @@
     opacity:1;
 }
 
-#rating-container:hover > input:checked ~ label:before {
+#rating-container:hover > input:checked ~ label::before {
     opacity: 0.4;
 }
 
+.errors {
+    list-style-type: circle !important;
+}
 
 .flame {
     /* set the size of the flame side */

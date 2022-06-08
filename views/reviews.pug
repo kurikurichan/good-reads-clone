@@ -5,24 +5,25 @@ block content
     h1= "Leave a review"
     +error
 
-    div(id="rating-container")
-        label ☆
-        input(type= "radio", name= "rating", class="flame", value="5", id="5")
-        label ☆
-        input(type= "radio", name= "rating", class="flame", value="4", id="4")
-        label ☆
-        input(type= "radio", name= "rating", class="flame", value="3", id="3")
-        label ☆
-        input(type= "radio", name= "rating", class="flame", value="2", id="2")
-        label ☆
-        input(type= "radio", name= "rating", class="flame", value="1", id="1")
     if (locals.authenticated)
-        form(action='/reviews/new' method='post')
+        form(action='/reviews' method='post')
             input(type='hidden' name='_csrf' value=csrfToken)
+            input(type='hidden' name='userId' value=user.id)
             input(type='hidden' name='hauntId' value=haunt.id)
+            div(id="rating-container")
+                label(for= "5") ☆
+                input(type= "radio", name= "score", value="5", id="5")
+                label(for= "4") ☆
+                input(type= "radio", name= "score", value="4", id="4")
+                label(for= "3") ☆
+                input(type= "radio", name= "score", value="3", id="3")
+                label(for= "2") ☆
+                input(type= "radio", name= "score", value="2", id="2")
+                label(for= "1") ☆
+                input(type= "radio", name= "score", value="1", id="1")
             div(class= "form")
                 label(for= "review") Create a review
-                textarea(class= "review", placeholder= "This place is great because...")
+                textarea(class= "review", name="review" placeholder= "This place is great because...")
                 button Submit
                 a(href='/haunts/' + haunt.id class='btn btn-cancel') Cancel
     else
