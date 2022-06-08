@@ -1,9 +1,9 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-const db = require('../db/models')
+const db = require("../db/models");
 
-const { csrfProtection, asyncHandler } = require('./utils');
+const { csrfProtection, asyncHandler } = require("./utils");
 
 //import model genre types
 // for each genre type
@@ -16,42 +16,57 @@ const { csrfProtection, asyncHandler } = require('./utils');
 // push  hauntSubArray into haunts.
 
 /* GET users listing. */
-router.get('/', asyncHandler( async (req, res, next) => {
-  const haunts = await db.Haunt.findAll({
-    where: {
-      genreId: 1
-    }
+router.get(
+  "/",
+  asyncHandler(async (req, res, next) => {
+    const haunts = await db.Haunt.findAll({
+      where: {
+        genreId: 1,
+      },
+    });
+    const haunts2 = await db.Haunt.findAll({
+      where: {
+        genreId: 2,
+      },
+    });
+
+    const haunts3 = await db.Haunt.findAll({
+      where: {
+        genreId: 4, // remember this is FOUR
+      },
+    });
+
+    res.render("haunts", {
+      haunts,
+      haunts2,
+      haunts3,
+    });
   })
-  const haunts2 = await db.Haunt.findAll({
-    where: {
-      genreId: 2
-    }
-  })
+);
 
-  const haunts3 = await db.Haunt.findAll({
-    where: {
-      genreId: 4   // remember this is FOUR
-    }
-  })
+const reviews = [
+  // FARKEREVIEWS
+  {
+    score: 3,
+    description: "blah blah blah",
+  },
+  {
+    score: 4,
+    description: "blasdfasah blah blah",
+  },
+  {
+    score: 2,
+    description: "blah blah blsdfasah",
+  },
+];
 
-  res.render('haunts', {
-    haunts,
-    haunts2,
-    haunts3
-  });
-
-}));
-
-router.get('/:id(\\d+)', async (req, res, next) => {
-  const hauntId = req.params.id   //grab the id
-  const haunt = await db.Haunt.findByPk(hauntId)
-  res.render('specificHaunt', {haunt})
-})
-
-
+router.get("/:id(\\d+)", async (req, res, next) => {
+  const hauntId = req.params.id; //grab the id
+  const haunt = await db.Haunt.findByPk(hauntId);
+  res.render("specificHaunt", { haunt, reviews });
+});
 
 //  ///haunts/:hauntId(\\d+)  ??   for later on to get ONE haunt
-
 
 //a(href="/haunts/" + haunt.id) click to a specific haunt
 

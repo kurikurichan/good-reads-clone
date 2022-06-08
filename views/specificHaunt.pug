@@ -4,15 +4,14 @@ append head
 block content
   div(class="topDiv")
     div(class="topLeftDiv")
-      img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+      img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
     div(class="topRightDiv")
       h2=haunt.title
       p=haunt.score
       p=haunt.description
   div(class="bottomDiv")
-    p="thisisthefirstreview"
-    p="thisisthesecondreview"
-    p="thisisthefirstreview"
-    p="thisisthesecondreview"
-    p="thisisthefirstreview"
-    p="thisisthesecondreview"
+    each review in reviews
+      div
+        p= "Score:" + review.score
+        p Description:
+        p= review.description
