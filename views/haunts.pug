@@ -8,10 +8,10 @@ block content
       br
       each haunt in haunts
         div(class= 'historical')
-          a(href="/user/1")
+          a(href="/haunts/1")
             img(src='images/image-' + haunt.id + '.jpeg' alt='image')
             br
-            a(href="/user/1")= haunt.title
+            a(href="/haunts/1")= haunt.title
             p= haunt.score
     h2="Outdoors"
       br
@@ -19,7 +19,7 @@ block content
         div(class= 'outdoors')
           img(src='images/image-' + haunt.id + '.jpeg' alt='image')
           br
-          a(href="/user/1")= haunt.title
+          a(href="/haunts/1")= haunt.title
           p= haunt.score
     h2="Asylum"
       br
@@ -27,5 +27,5 @@ block content
         div(class= 'asylum')
           img(src='images/image-' + haunt.id + '.jpeg' alt='image')
           br
-          a(href="/user/1")= haunt.title
+          a(href="/haunts/1")= haunt.title
           p= haunt.score
