@@ -15,6 +15,7 @@
 body {
   background-color: var(--cadet);
   color: var(--periwinkle);
+  font-family: "Nightmare", "EB Garamond", serif;
 }
 
 a {
@@ -55,7 +56,6 @@ h2 {
   list-style: none;
   height: 30px;
   margin-bottom: 10px;
-  font-family: "Nightmare", "EB Garamond", serif;
 }
 
 .nav-links {
