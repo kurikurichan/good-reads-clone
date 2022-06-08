@@ -30,6 +30,7 @@ li {
 img {
   height: 300px;
   width: 350px;
+  box-shadow: 0 0 20px var(--xanadu);
 }
 
 img:hover {
@@ -37,7 +38,6 @@ img:hover {
 }
 
 .historical {
-  /* border: 5px solid red; */
   float: left;
   width: 33.33%;
   padding: 5px;
@@ -45,15 +45,24 @@ img:hover {
 }
 
 .outdoors {
-  /* border: 5px solid red; */
   float: left;
   width: 33.33%;
   padding: 5px;
 }
 
 .asylum {
-  /* border: 5px solid red; */
   float: left;
   width: 33.33%;
   padding: 5px;
+}
+/* .category {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+} */
+
+.hauntCard {
+  box-shadow: 0 0 15px var(--bistro);
+  background-color: var(--bistro);
+  gap: 1px;
 }

@@ -18,14 +18,14 @@ body {
   font-family: "Nightmare", "EB Garamond", serif;
 }
 
-a {
+nav a {
   color: var(--xanadu);
   text-shadow: var(--periwinkle) 1px 1px 1px;
   position: relative;
   text-decoration: none;
 }
 
-a::before {
+nav a::before {
   content: "";
   position: absolute;
   width: 0;
@@ -35,11 +35,11 @@ a::before {
   transition: width 250ms 0s;
 }
 
-a:hover::before {
+nav a:hover::before {
   width: 100%;
 }
 
-a:hover {
+nav a:hover {
   color: var(--pumpkin);
 }
 

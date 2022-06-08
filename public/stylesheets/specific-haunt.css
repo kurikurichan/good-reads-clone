@@ -76,3 +76,7 @@
 .reviewText {
   padding: 0px 20px;
 }
+
+img {
+  box-shadow: 0 0 20px var(--xanadu);
+}
