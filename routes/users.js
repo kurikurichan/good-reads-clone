@@ -15,6 +15,7 @@ router.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 
+// USER PROFILE PAGE
 router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
   // research more later about why GET worked and not POST
   const id = req.params.id;
@@ -26,7 +27,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res) => {
     }
   })
 
-  console.log(hauntlists);
+  console.log("haunt lists!!!!!!!!!!!", hauntlists);
 
   res.render('profile', { title: "your profile", currentUser, hauntlists });
 }));

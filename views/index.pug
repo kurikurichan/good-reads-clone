@@ -7,9 +7,8 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  h1= 'Good Haunts'
-  p Welcome to Good Haunts, where you can find the goodest haunts
-  h2= 'Recently Posted Haunts'
+  p(id=slogan) Welcome to Good Haunts, where you can find the goodest haunts. 😍 👻
+  h2(id="recent-haunt")= 'Recently Posted Haunts'
     ul
       each haunt in haunts
         li
@@ -17,16 +16,17 @@ block content
             img(src='images/image-' + haunt.id + '.jpeg' alt='image')
             p(class='title')= haunt.title
             p= haunt.score
-  div(class= 'login_signin_card')
-    br
-    h2= 'Discover and Haunt More'
-    br
-    button(class= 'button')
-      a(href="/signup") Sign Up
-    br
-    button(class= 'button')
-      a(href="/demo") Demo User
-    br
-    a(href="/login") Login
-    //- if is logged in
-     a(href="/users/:id") View Profile */
+  if (!locals.authenticated)
+    div(class= 'login_signin_card')
+      br
+      h2= 'Discover and Haunt More'
+      br
+      button(class= 'button')
+        a(href="/signup") Sign Up
+      br
+      button(class= 'button')
+        a(href="/demo") Demo User
+      br
+      a(href="/login") Login
+      //- if is logged in
+      a(href="/users/:id") View Profile */

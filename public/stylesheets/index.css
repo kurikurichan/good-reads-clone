@@ -3,8 +3,8 @@ body {
   margin: 50px;
 }
 
-h1 {
-  color: red;
+#recent-haunt {
+  font-size: 20px;
 }
 
 h2 {
@@ -16,19 +16,11 @@ href{
     text-align: center;
 }
 
-
-.title{
-    text-align:left;
-
-}
-
 .login_signin_card {
   position: absolute;
   height: 350px;
   width: 300px;
 
-  /* display:flex;
-    flex-direction: column; */
   top: 100px;
   right: 100px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -53,6 +45,7 @@ img {
   color: white;
   border-radius: 5px;
   padding: 15px 32px;
+  margin: 5px;
   text-align: center;
   text-decoration: none;
 }
@@ -62,7 +55,5 @@ body > div > button > a {
 }
 
 ul {
-  display: flex;
-  flex-direction: column;
   list-style-type: none;
 }
