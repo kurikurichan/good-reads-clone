@@ -13,12 +13,13 @@ block content
       p="Score: " + haunt.score
       p Description:
       p=haunt.description
+  div(id='divider')
   div(class="bottomDiv")
     each review in reviews
       div
         div(class="scoreName")
           p
             a(href="/users/" + review.userId)= review.User.fullName
-          p= "Score:" + review.score
-        p Review:
-        p= review.review
+          p(id='score')= "Score:" + review.score
+        div(class="reviewText")
+          p= review.review
