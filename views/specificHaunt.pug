@@ -7,11 +7,12 @@ block content
       img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
     div(class="topRightDiv")
       h2=haunt.title
-      p=haunt.score
+      p="Score: " + haunt.score
+      p Description:
       p=haunt.description
   div(class="bottomDiv")
     each review in reviews
       div
         p= "Score:" + review.score
-        p Description:
+        p Review:
         p= review.description
