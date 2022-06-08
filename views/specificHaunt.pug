@@ -1,0 +1,18 @@
+extends layout
+append head
+  link(rel="stylesheet" href="/stylesheets/haunts.css")
+block content
+  div(class="topDiv")
+    div(class="topLeftDiv")
+      img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+    div(class="topRightDiv")
+      h2=haunt.title
+      p=haunt.score
+      p=haunt.description
+  div(class="bottomDiv")
+    p="thisisthefirstreview"
+    p="thisisthesecondreview"
+    p="thisisthefirstreview"
+    p="thisisthesecondreview"
+    p="thisisthefirstreview"
+    p="thisisthesecondreview"

@@ -42,6 +42,11 @@ router.get('/', asyncHandler( async (req, res, next) => {
 
 }));
 
+router.get('/:id(\\d+)', async (req, res, next) => {
+  const hauntId = req.params.id   //grab the id
+  const haunt = await db.Haunt.findByPk(hauntId)
+  res.render('specificHaunt', {haunt})
+})
 
 
 
