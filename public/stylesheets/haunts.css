@@ -1,0 +1,69 @@
+ /* *{
+  background-color: black;
+} */
+
+h1 {
+  color: red;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color:black;
+  font-size:20px;
+
+}
+
+p{
+  text-align:left;
+}
+
+a{
+  position:relative;
+
+}
+
+a:hover {
+  border: 5px solid yellow;
+}
+
+
+body {
+  margin:50px;
+}
+
+li{
+
+  display:flex;
+  flex-direction: row;
+  list-style-type: none;
+
+}
+
+img{
+  height: 300px;
+  width: 350px;
+}
+
+
+.historical{
+  /* border: 5px solid red; */
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+  text-align: left;
+}
+
+.outdoors{
+  /* border: 5px solid red; */
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.asylum{
+  /* border: 5px solid red; */
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
