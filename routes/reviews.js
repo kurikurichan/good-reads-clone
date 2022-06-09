@@ -20,6 +20,7 @@ const reviewValidator = [
 
 // GET page with form for new review
 // Id is the id of the haunt the review will be on
+// use the '+' with findByPk to turn string into a number (unary plus operator)
 router.get('/new/:id(\\d+)', csrfProtection, asyncHandler(async(req, res, next) => {
 
     const hauntId = req.params.id;
@@ -65,44 +66,45 @@ router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(asyn
     const reviewId = req.params.id;
     const currentReview = await Review.findByPk(+reviewId);
     const { userId, hauntId, review, score } = currentReview;
-    console.log(score);
     const haunt = await Haunt.findByPk(+hauntId);
 
 
 
-    res.render("edit-review", { review, score, haunt, csrfToken: req.csrfToken() });
+    res.render("edit-review", { reviewId, review, score, haunt, csrfToken: req.csrfToken() });
 
 
 }));
 
+//  TO TEST, added REVIEWID
+
 
 // EDIT review data
-router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
-
-    const reviewId = req.params.id;
-    const currentReview = await Review.findByPk(+reviewId);
-    const { userId, hauntId, review, score } = currentReview.dataValues;
+router.put('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
+    //TODO: deconstruct form data from review
+    const { userId, hauntId, reviewId, score, review } = req.body;
+    const reviewToUpdate = await Review.findByPk(+reviewId)
     const haunt = await Haunt.findByPk(+hauntId);
-
 
     const validationErrors = validationResult(req);
     let errors = [];
     // await creating a new review with deconstructed data
     if (validationErrors.isEmpty()) {
-    // if the review was found, then
-        if (currentReview) {
-            res.render("edit-review", { review, score, haunt, csrfToken: req.csrfToken(), errors });
-            await currentReview.update({
-                userId, hauntId, review, score
-            });
-            await currentReview.save();
-            res.redirect(`/haunts/${+hauntId}`);
-        } else {
-            errors = validationErrors.array().map(err => err.msg);
-        }
-        errors.push("Review edit failed");
-    }
+        await reviewToUpdate.update({
+            userId,
+            hauntId,
+            review,
+            score
+        });
 
+        if (reviewToUpdate) {
+            reviewToUpdate.save();
+            res.redirect(`/haunts/${hauntId}`);
+        }
+        errors.push("Editing failed");
+    } else {
+        errors = validationErrors.array().map(err => err.msg);
+    }
+    res.render("edit-review", { review, score, haunt, csrfToken: req.csrfToken(), errors }); // might need to feed hauntId
 }));
 
 // DELETE review
