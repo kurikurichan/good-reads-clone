@@ -118,9 +118,7 @@ router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
 
         await review.destroy();
         req.method = "GET";
-        // res.end();
         return res.redirect(`/haunts/${+hauntId}`);
-
 
     } else {
         const err = Error(`Review with an id of ${reviewId} could not be found.`);
