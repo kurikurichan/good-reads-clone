@@ -8,17 +8,16 @@ const loginUser = (req, res, user) => {
   };
 };
 
-
 const logoutUser = (req, res) => {
   delete req.session.auth;
-}
+  req.session.cookie.originalMaxAge = -1;
+};
 
 const loginDemoUser = (req, res) => {
   req.session.auth = {
     userId: 1,
   };
 };
-
 
 const restoreUser = asyncHandler(async (req, res, next) => {
   // log req.session object to console
