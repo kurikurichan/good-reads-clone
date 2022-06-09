@@ -24,7 +24,7 @@ block content
                 label(for= "1") ☆
                 input(type= "radio", name= "score", value="1", id="1")
             div(class= "form")
-                label(for= "review") Create a review
+                label(for= "review") Edit this review
                 textarea(class= "review", name="review")=review
                 button Submit
                 a(href='/haunts/' + haunt.id class='btn btn-cancel') Cancel
@@ -32,3 +32,5 @@ block content
                 const score="#{score}";
                 document.getElementById(score).checked = true;
                 console.log(score);
+        button(class='button' id="delete-review") Delete
+            script(src="/javascripts/delete-review.js")
