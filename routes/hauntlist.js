@@ -11,7 +11,7 @@ router.get(
     const hauntListId = req.params.id; //grab the id
     const hauntList = await db.HauntList.findByPk(hauntListId);
     const haunts = await db.Haunt.findAll({
-      where: { id: hauntListId },
+      where: { id: hauntListId }, //fix finding haunts in hauntlist
       include: [{ model: db.HauntList }],
     });
     res.render("hauntlist", { haunts, hauntList });

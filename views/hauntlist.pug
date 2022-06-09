@@ -2,17 +2,15 @@ extends layout
 append head
   link(rel="stylesheet" href="/stylesheets/hauntlist.css")
 block content
+    if (user && user.id == hauntList.userId)
+        button(id="list-edit-button") Edit List
 
-    button(id="list-edit") Edit List
-    button(id="save-changes") Save Changes
-
-    h1= hauntList.title
+    h1(id="hauntList-title")= hauntList.title
     ul
         each haunt in haunts
             div(class="haunt-line")
-                li
+                li(id="haunt-" + haunt.id)
                     img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
                     a(href="/haunts/" + haunt.id)= haunt.title
                     span= haunt.score
-                    button(class="delete") x
     script(src="/javascripts/hauntlist.js")
