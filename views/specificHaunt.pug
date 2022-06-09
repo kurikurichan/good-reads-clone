@@ -20,6 +20,9 @@ block content
         div(class="scoreName")
           p
             a(href="/users/" + review.userId)= review.User.fullName
+            if (user && user.id == review.userId)
+              a(href="reviews/edit/" + review.id id="edit-review")
+                button Edit Review
           p(id='score')= "Score:" + review.score
         div(class="reviewText")
           p= review.review
