@@ -116,7 +116,7 @@ router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
     if (review) {
         const hauntId = review.hauntId;
         await review.destroy();
-        await res.status(204).redirect(`/haunts/${+hauntId}`);
+        res.redirect(`/haunts/${+hauntId}`);
     } else {
         const err = Error(`Review with an id of ${reviewId} could not be found.`);
         err.title = "Review not found.";
