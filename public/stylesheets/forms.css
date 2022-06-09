@@ -1,0 +1,72 @@
+/* Boilerplate design for our forms (login, signup, reviews, comment on review) */
+
+#rating-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+#rating-container > input {
+    display:none;
+}
+
+#rating-container > label {
+    width: 1.1em;
+    font-size: 20px;
+    color: var(--periwinkle);
+    cursor: pointer;
+}
+
+#rating-container > label::before{
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+#rating-container > label:hover:before,
+#rating-container > label:hover ~ label:before {
+    opacity: 1 !important;
+}
+
+#rating-container > input:checked ~ label:before {
+    opacity:1;
+}
+
+#rating-container:hover > input:checked ~ label::before {
+    opacity: 0.4;
+}
+
+.errors {
+    list-style-type: circle !important;
+}
+
+.flame {
+    /* set the size of the flame side */
+    width: 40vmin;
+    /* make it square */
+    aspect-ratio: 1;
+    /* give it a drop/tear shape */
+    border-radius: 2% 87% 45% 85%;
+    /* position it at the center of the screen */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* really in the center + tilt clockwise*/
+    transform: translate(-50%, -50%) rotate(45deg);
+    /* temporary for demo, so the shape is visible */
+    border: 1px solid black;
+    background: rgba(0,0,0,0);
+    /* transform: scale(.2); */
+
+    margin: 2px;
+}
+
+.flame:hover {
+    background:
+    radial-gradient(100% 100% at 90% 90%, #251c27, #251c2733 20%, #251c2700 50%),
+    radial-gradient(farthest-side at 110% 120%, #251c27, #631, #cb6c3b88, #0000),
+    radial-gradient(at 100% 100%, #fc08, #cb6c3b, #eebd7600 60%),
+    linear-gradient(135deg, #fff0 20%, #ff0),
+    #ffe
+    ;
+}

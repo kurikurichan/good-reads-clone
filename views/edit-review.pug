@@ -2,13 +2,13 @@ extends layout.pug
 include utils.pug
 
 block content
-    h1= "Leave a review"
+    h1= "Edit a review"
     +error
 
     if (!locals.authenticated)
-        p= "You must be logged in to leave a review."
+        p= "You must be logged in to edit a review."
     else
-        form(action='/reviews' method='post')
+        form(action='/reviews/' + reviewId method='post')
             input(type='hidden' name='_csrf' value=csrfToken)
             input(type='hidden' name='userId' value=user.id)
             input(type='hidden' name='hauntId' value=haunt.id)
@@ -24,12 +24,12 @@ block content
                 label(for= "1") ☆
                 input(type= "radio", name= "score", value="1", id="1")
             div(class= "form")
-            block content
-                label(for= "review") Create a review
-                textarea(class= "review", name="review" placeholder= "This place is great because...")
+                label(for= "review") Edit this review
+                textarea(class= "review", name="review")=review
                 button Submit
                 a(href='/haunts/' + haunt.id class='btn btn-cancel') Cancel
-
-
-//- check if form action path is correct
-//- Line 18 after submit should href to the haunts/:id page
+            script.
+                const score="#{score}";
+                document.getElementById(score).checked = true;
+        button(class='button' id="delete-review" href="/haunts/" + haunt.id) Delete
+            script(src="/javascripts/delete-review.js")
