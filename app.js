@@ -10,10 +10,10 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const hauntsRouter = require("./routes/haunts");
 const reviewsRouter = require("./routes/reviews");
-const hauntListRouter = require("./routes/hauntlist")
+const hauntListRouter = require("./routes/hauntlist");
 const { secret } = require("./config/index");
 const db = require("./db/models");
-const { restoreUser } = require('./auth');
+const { restoreUser } = require("./auth");
 
 const app = express();
 
@@ -28,7 +28,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // set up session middleware
 const store = new SequelizeStore({ db: sequelize });
-console.log(secret);
 app.use(
   session({
     name: "good_haunts.sid",
@@ -62,7 +61,8 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  console.log("err.message", err.message);
+  res.send("error");
 });
 
 module.exports = app;

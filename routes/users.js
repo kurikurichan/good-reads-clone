@@ -21,15 +21,12 @@ router.get(
   asyncHandler(async (req, res) => {
     // research more later about why GET worked and not POST
     const id = req.params.id;
-    console.log("the id: ", typeof id);
     const currentUser = await User.findByPk(id);
     const hauntlists = await HauntList.findAll({
       where: {
         userId: id,
       },
     });
-
-    console.log("haunt lists!!!!!!!!!!!", hauntlists);
 
     res.render("profile", { title: "your profile", currentUser, hauntlists });
   })

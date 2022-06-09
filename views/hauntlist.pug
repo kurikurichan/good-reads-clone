@@ -3,7 +3,8 @@ append head
   link(rel="stylesheet" href="/stylesheets/hauntlist.css")
 block content
     if (user && user.id == hauntList.userId)
-        button(id="list-edit-button") Edit List
+        div(id="editButtons")
+            button(id="list-edit-button") Edit List
 
     h1(id="hauntList-title")= hauntList.title
     ul
