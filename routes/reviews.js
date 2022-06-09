@@ -112,9 +112,9 @@ router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
 
     const reviewId = req.params.id;
     const review = await Review.findByPk(+reviewId);
+    const hauntId = review.hauntId;
 
     if (review) {
-        const hauntId = review.hauntId;
         await review.destroy();
         res.redirect(`/haunts/${+hauntId}`);
     } else {
