@@ -59,34 +59,51 @@ router.post('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) =
 
 
 // EDIT review data
-router.put('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
+router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
 
     const reviewId = req.params.id;
-    const review = await Review.findByPk(+reviewId);
+    const currentReview = await Review.findByPk(+reviewId);
+    const { userId, hauntId, review, score } = currentReview.dataValues;
+    const haunt = await Haunt.findByPk(+hauntId);
+
 
     const validationErrors = validationResult(req);
     let errors = [];
     // await creating a new review with deconstructed data
     if (validationErrors.isEmpty()) {
     // if the review was found, then
-        if (review) {
-            const { userId, hauntId, review, score } = req.body;
-            await review.update({
+        if (currentReview) {
+            res.render("edit-review", { review, score, haunt, csrfToken: req.csrfToken(), errors });
+            await currentReview.update({
                 userId, hauntId, review, score
             });
+            await currentReview.save();
             res.redirect(`/haunts/${+hauntId}`);
         } else {
             errors = validationErrors.array().map(err => err.msg);
         }
         errors.push("Review edit failed");
     }
-    res.render("reviews", { review, score, haunt, csrfToken: req.csrfToken(), errors });
+
 }));
 
 // DELETE review
-router.delete('/:id(\\d+)', asyncHandler(async((req, res, next) => {
-    console.log('blah');
-})));
+router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+
+    const reviewId = req.params.id;
+    const review = await Review.findByPk(+reviewId);
+
+    if (review) {
+        const hauntId = review.hauntId;
+        await review.destroy();
+        res.status(204).redirect(`/haunts/${+hauntId}`);
+    } else {
+        const err = Error(`Review with an id of ${reviewId} could not be found.`);
+        err.title = "Review not found.";
+        err.status = 404;
+        return err;
+    }
+}));
 
 
 
