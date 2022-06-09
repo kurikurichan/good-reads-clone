@@ -1,0 +1,25 @@
+extends layout
+append head
+  link(rel="stylesheet" href="/stylesheets/specific-haunt.css")
+block content
+  div(class="topDiv")
+    div(class="topLeftDiv")
+      img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
+    div(class="topRightDiv")
+      h2=haunt.title
+      if(locals.authenticated)
+        a(href="/reviews/new/" + haunt.id)
+          button Create a review
+      p="Score: " + haunt.score
+      p Description:
+      p=haunt.description
+  div(id='divider')
+  div(class="bottomDiv")
+    each review in reviews
+      div
+        div(class="scoreName")
+          p
+            a(href="/users/" + review.userId)= review.User.fullName
+          p(id='score')= "Score:" + review.score
+        div(class="reviewText")
+          p= review.review

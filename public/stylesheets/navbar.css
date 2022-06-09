@@ -13,8 +13,34 @@
 }
 
 body {
-    background-color: var(--cadet);
-    color: var(--periwinkle);
+  background-color: var(--cadet);
+  color: var(--periwinkle);
+  font-family: "Nightmare", "EB Garamond", serif;
+}
+
+nav a {
+  color: var(--xanadu);
+  text-shadow: var(--periwinkle) 1px 1px 1px;
+  position: relative;
+  text-decoration: none;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--pumpkin);
+  bottom: -2px;
+  transition: width 250ms 0s;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+
+nav a:hover {
+  color: var(--pumpkin);
 }
 
 h2 {
@@ -30,7 +56,6 @@ h2 {
   list-style: none;
   height: 30px;
   margin-bottom: 10px;
-  font-family: "Nightmare", "EB Garamond", serif;
 }
 
 .nav-links {
@@ -43,8 +68,8 @@ h2 {
 }
 
 .nav-links:hover {
-    color: var(--pumpkin);
-    background-color:  var(--bistro);
+  color: var(--pumpkin);
+  background-color: var(--bistro);
 }
 
 #logo {
@@ -52,9 +77,8 @@ h2 {
   height: auto;
   margin-right: 40vw;
   margin-left: 5px;
-
 }
 
 #logo:hover {
-    box-shadow: 0px 0px 5px rgba(255, 255, 255, .5);
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
 }

@@ -1,0 +1,82 @@
+/*
+  --xanadu: #7e9181;
+  --pumpkin: #fe7f2d;
+  --periwinkle: #c7cedb;
+  --bistro: #2b2118;
+  --cadet: #2a2e45;
+  */
+
+.topDiv {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 30px;
+}
+
+.topLeftDiv {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+  padding: 20px;
+}
+
+.topLeftDiv > img {
+  width: 600px;
+  height: 450px;
+}
+
+.topRightDiv {
+  position: relative;
+  padding: 50px 20px;
+  font-size: 24px;
+}
+
+.topRightDiv h2 {
+  font-size: 40px;
+}
+
+.topRightDiv > a {
+  position: absolute;
+  left: 50%;
+  bottom: 70px;
+}
+
+#divider {
+  border-top: 3px solid rgba(254, 127, 45, 0.5);
+  box-shadow: -10px 0px 10px var(--pumpkin);
+}
+
+.bottomDiv {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottomDiv div {
+  border: 1px solid red;
+  width: 40vw;
+  background-color: var(--xanadu);
+}
+
+.bottomDiv .scoreName {
+  display: flex;
+  position: relative;
+  background-color: var(--bistro);
+}
+
+.scoreName > * {
+  padding: 0px 20px;
+}
+
+#score {
+  position: absolute;
+  right: 0;
+}
+
+.reviewText {
+  padding: 0px 20px;
+}
+
+img {
+  box-shadow: 0 0 20px var(--xanadu);
+}
