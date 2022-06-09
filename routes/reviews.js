@@ -75,13 +75,12 @@ router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(asyn
 
 }));
 
-//  TO TEST, added REVIEWID
 
-
-// EDIT review data
-router.put('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
+// EDIT review data - /reviews/:reviewId
+router.post('/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
     //TODO: deconstruct form data from review
-    const { userId, hauntId, reviewId, score, review } = req.body;
+    const reviewId = req.params.id;
+    const { userId, hauntId, score, review } = req.body;
     const reviewToUpdate = await Review.findByPk(+reviewId)
     const haunt = await Haunt.findByPk(+hauntId);
 
@@ -90,6 +89,7 @@ router.put('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) =>
     // await creating a new review with deconstructed data
     if (validationErrors.isEmpty()) {
         await reviewToUpdate.update({
+            reviewId,
             userId,
             hauntId,
             review,

@@ -8,11 +8,10 @@ block content
     if (!locals.authenticated)
         p= "You must be logged in to edit a review."
     else
-        form(action='/reviews' method='post')
+        form(action='/reviews/' + reviewId method='post')
             input(type='hidden' name='_csrf' value=csrfToken)
             input(type='hidden' name='userId' value=user.id)
             input(type='hidden' name='hauntId' value=haunt.id)
-            input(type='hidden' name='reviewId' value=reviewId)
             div(id="rating-container")
                 label(for= "5") ☆
                 input(type= "radio", name= "score", value="5", id="5")
