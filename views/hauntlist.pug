@@ -1,0 +1,17 @@
+extends layout
+append head
+  link(rel="stylesheet" href="/stylesheets/hauntlist.css")
+block content
+
+    button(id="list-edit") Edit List
+    button(id="save-changes") Save Changes
+
+    h1= hauntList.title
+    ul
+        each haunt in haunts
+            div(class="haunt-line")
+                li
+                    img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
+                    a(href="/haunts/" + haunt.id)= haunt.title
+                    span= haunt.score
+                    button(class="delete") x

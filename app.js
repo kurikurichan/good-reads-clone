@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const hauntsRouter = require("./routes/haunts");
 const reviewsRouter = require("./routes/reviews");
+const hauntListRouter = require("./routes/hauntlist")
 const { secret } = require("./config/index");
 const db = require("./db/models");
 const { restoreUser } = require('./auth');
@@ -46,6 +47,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/haunts", hauntsRouter);
 app.use("/reviews", reviewsRouter);
+app.use("/hauntlists", hauntListRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
