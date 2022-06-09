@@ -1,48 +1,43 @@
 h1 {
-  color: red;
-  margin-top:10px;
+  color: var(--pumpkin);
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
 h2 {
-  font-size:20px;
-
+  font-size: 20px;
 }
 
 p {
-  text-align:left;
+  text-align: left;
 }
 
 a {
-  position:relative;
+  position: relative;
   text-decoration: none;
-
 }
 
 body {
-  margin:50px;
+  margin: 50px;
 }
 
-li{
-
-  display:flex;
+li {
+  display: flex;
   flex-direction: row;
   list-style-type: none;
-
 }
 
 img {
   height: 300px;
   width: 350px;
+  box-shadow: 0 0 20px var(--xanadu);
 }
 
 img:hover {
   box-shadow: 0px 0px 12px var(--pumpkin);
 }
 
-
 .historical {
-  /* border: 5px solid red; */
   float: left;
   width: 33.33%;
   padding: 5px;
@@ -50,15 +45,24 @@ img:hover {
 }
 
 .outdoors {
-  /* border: 5px solid red; */
   float: left;
   width: 33.33%;
   padding: 5px;
 }
 
 .asylum {
-  /* border: 5px solid red; */
   float: left;
   width: 33.33%;
   padding: 5px;
+}
+/* .category {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+} */
+
+.hauntCard {
+  box-shadow: 0 0 15px var(--bistro);
+  background-color: var(--bistro);
+  gap: 1px;
 }
