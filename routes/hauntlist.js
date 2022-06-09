@@ -5,9 +5,9 @@ const db = require("../db/models");
 
 const { csrfProtection, asyncHandler } = require("./utils");
 
-
-
-router.get("/:id(\\d+)", async (req, res, next) => {
+router.get(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
     const hauntListId = req.params.id; //grab the id
     const hauntList = await db.HauntList.findByPk(hauntListId);
     const haunts = await db.Haunt.findAll({
@@ -15,16 +15,7 @@ router.get("/:id(\\d+)", async (req, res, next) => {
       include: [{ model: db.HauntList }],
     });
     res.render("HauntList", { haunts, hauntList });
-  });
-
-
-
-
-
-
-
-
-
-
+  })
+);
 
 module.exports = router;
