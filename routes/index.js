@@ -138,7 +138,10 @@ router.post(
       }
       errors.push("Passwords must match");
     } else {
-      errors += validationErrors.array().map(err => err.msg);
+      const newErrors = validationErrors.array().map(err => err.msg);
+      newErrors.forEach(err => {
+        errors.push(err);
+      });
 
       res.render("signup", {
         user,
