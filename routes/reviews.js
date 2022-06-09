@@ -65,6 +65,7 @@ router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(asyn
     const reviewId = req.params.id;
     const currentReview = await Review.findByPk(+reviewId);
     const { userId, hauntId, review, score } = currentReview;
+    console.log(score);
     const haunt = await Haunt.findByPk(+hauntId);
 
 
@@ -72,7 +73,7 @@ router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(asyn
     res.render("edit-review", { review, score, haunt, csrfToken: req.csrfToken() });
 
 
-}))
+}));
 
 
 // EDIT review data

@@ -28,5 +28,7 @@ block content
                 textarea(class= "review", name="review")=review
                 button Submit
                 a(href='/haunts/' + haunt.id class='btn btn-cancel') Cancel
-                .script
-                    document.getElementById(`${score}`).checked = true;
+            script.
+                const score="#{score}";
+                document.getElementById(score).checked = true;
+                console.log(score);
