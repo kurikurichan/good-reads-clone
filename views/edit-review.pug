@@ -25,6 +25,8 @@ block content
                 input(type= "radio", name= "score", value="1", id="1")
             div(class= "form")
                 label(for= "review") Create a review
-                textarea(class= "review", name="review")
+                textarea(class= "review", name="review")=review
                 button Submit
                 a(href='/haunts/' + haunt.id class='btn btn-cancel') Cancel
+                .script
+                    document.getElementById(`${score}`).checked = true;

@@ -58,6 +58,23 @@ router.post('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) =
 }));
 
 
+//get editing form
+
+router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
+
+    const reviewId = req.params.id;
+    const currentReview = await Review.findByPk(+reviewId);
+    const { userId, hauntId, review, score } = currentReview;
+    const haunt = await Haunt.findByPk(+hauntId);
+
+
+
+    res.render("edit-review", { review, score, haunt, csrfToken: req.csrfToken() });
+
+
+}))
+
+
 // EDIT review data
 router.get('/edit/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
 
