@@ -14,7 +14,7 @@ router.get(
       where: { id: hauntListId },
       include: [{ model: db.HauntList }],
     });
-    res.render("HauntList", { haunts, hauntList });
+    res.render("hauntlist", { haunts, hauntList });
   })
 );
 
