@@ -1,9 +1,11 @@
+// script for deleting reviews
+
 const reviewId = document.URL.split('/')[5];
 const hauntId = document.getElementsByName("hauntId")[0].value;
 
-const button = document.getElementById("delete-review");
+const deleteButton = document.getElementById("delete-review");
 
-button.addEventListener("click", (e) => {
+deleteButton.addEventListener("click", (e) => {
     (async function() {
         const fetchCall =  await fetch('/reviews/' + reviewId, {
             method: 'DELETE',

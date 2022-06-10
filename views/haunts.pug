@@ -8,7 +8,7 @@ block content
       br
       each haunt in haunts
         div(class= 'historical hauntCard')
-          a(href="/haunts/1")
+          a(href="/haunts/" + haunt.id)
             img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
             br
             a(href="/haunts/" + haunt.id)= haunt.title
@@ -17,15 +17,17 @@ block content
       br
       each haunt in haunts2
         div(class= 'outdoors hauntCard')
-          img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
-          br
-          a(href="/haunts/" + haunt.id)= haunt.title
-          p= haunt.score
+          a(href="/haunts/" + haunt.id)
+            img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
+            br
+            a(href="/haunts/" + haunt.id)= haunt.title
+            p= haunt.score
     h2="Asylum"
       br
       each haunt in haunts3
         div(class= 'asylum hauntCard')
-          img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
-          br
-          a(href="/haunts/" + haunt.id)= haunt.title
-          p= haunt.score
+          a(href="/haunts/" + haunt.id)
+            img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
+            br
+            a(href="/haunts/" + haunt.id)= haunt.title
+            p= haunt.score
