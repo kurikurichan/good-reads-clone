@@ -23,6 +23,7 @@ const d12 = "The RMS Queen Mary served as a luxury ocean liner from 1936 to 1967
 const d13 = "The Trans-Allegheny Lunatic Asylum opened its doors to patients in 1864, and in the 1950s, the West Virginia facility reached its peak, housing more than 2,400 patients—even though it was designed to hold only 250. The severe overcrowding led to inhumane conditions (like lack of heat and convalescents kept in cages), and patients started acting increasingly violent. The asylum finally closed in 1994, but the souls of some patients are said to linger. Ghost tours are available for those wishing to see how some patients lived—and died—within the cramped halls."
 const d14 = "Thomas Whaley built this family estate in 1857 in San Diego, on the former site of the city's first public gallows. Shortly after he moved in, he reported hearing the heavy footsteps of 'Yankee' Jim Robinson, a drifter and thief who was hanged on the site four years before the house was built. Whaley's family history ended up being filled with tragic deaths and suicides, many of which occurred inside the home itself. Some of the family members reportedly still haunt the landmark, often accompanied by cigar smoke and the smell of heavy perfume."
 const d15 = "Mizpah Hotel opened in 1907 as one of Nevada's first luxury hotels, complete with solid granite walls and Victorian-era decor, and it was fully restored in 2011. Legend has it that a woman died on the fifth floor, and her soul never left the building. The 'Lady in Red' now reportedly makes her presence known by whispering in men's ears and leaving pearls from her broken necklace on guests' pillows. The Mizpah honors (or capitalizes on) her reputation by letting visitors stay in the Lady in Red suite and serving the Red Lady Bloody Mary at the hotel restaurant."
+const d16 = "Opened in 1896, the Ohio State Reformatory is famous for its Gothic facade and ominous six-story cell block. But it is known as the on-site location to the Shawshank Redemption. The reformatory closed in 1990 due to overcrowding and inhumane conditions, but not before more than 200 people (including two guards) died in the building. Legend says that the ghosts of several former inmates still roam the halls, as well as an old guard who jabs people with his nightstick. There are various ways for visitors to experience the hauntings first-hand, from two-hour guided tours to private paranormal investigations."
 
 
 module.exports = {
@@ -147,6 +148,14 @@ module.exports = {
           description: d15,
           score: 0,
           genreId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Ohio State Reformatory, OH",
+          description: d16,
+          score: 0,
+          genreId: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
