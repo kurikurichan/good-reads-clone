@@ -8,7 +8,7 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkInsert('reviewComments', [
+   return queryInterface.bulkInsert('ReviewComments', [
     {
       userId: 1,
       reviewId: 1,
@@ -54,6 +54,6 @@ module.exports = {
 
       Example:
       */
-   return queryInterface.bulkDelete('reviewComments', null, {});
+   return queryInterface.bulkDelete('ReviewComments', null, {});
   }
 };
