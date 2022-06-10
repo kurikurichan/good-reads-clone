@@ -27,6 +27,10 @@ deleteButton.addEventListener("click", event => {
   deleteMode ? (deleteMode = false) : (deleteMode = true)
 
   if (deleteMode) {
+    //alert("Select lists to delete")
+    document.getElementsByTagName("h2")[0].innerText += "\n(Select lists to delete)";
+
+
     deleteButton.innerText = "Confirm" //delete becomes save
 
     //adds cancel button in delete mode
@@ -38,14 +42,20 @@ deleteButton.addEventListener("click", event => {
     checkBoxLis.forEach(checkBoxLi =>{
       const seeCheckBox = document.createElement('input');
       seeCheckBox.type = "checkbox"
-      seeCheckBox.classList = "delete";
+      seeCheckBox.classList = "selectedForDel";
       seeCheckBox.setAttribute("id", checkBoxLi.getAttribute("id") + "-checkbox");
       checkBoxLi.append(seeCheckBox);
+
     });
-
-    deleteButtons = document.querySelectorAll(".delete");
-
   }
+
+  // if(!deleteMode){
+
+  //   if (seeCheckBox.checked)
+
+
+  //   const checked = document.querySelectorAll()
+  // }
 
 })
 

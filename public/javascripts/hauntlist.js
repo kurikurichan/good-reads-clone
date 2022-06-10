@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", e => {
           const buttonId = e.target.getAttribute("id");
           const hauntId = buttonId.split("-")[1];
           const divToHide = document.querySelector("#haunt-" + hauntId);
-          divToHide.classList.add("hide");
+          divToHide.classList.add("hide"); 
         });
       });
     }

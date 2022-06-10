@@ -8,7 +8,6 @@ block content
         p(class="profile-text")="Email: " + user.email
 
     h2(id="haunt-title")= currentUser.fullName + "'s Haunt Lists"
-
     ul
         if (hauntlists.length)
             each hauntlist in hauntlists
