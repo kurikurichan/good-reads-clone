@@ -68,7 +68,7 @@ const removeDelete = () => {
           const deleteHauntList = async () => {
             const userId = await getUserId();
             const hauntListId = checkBox.id.split("-")[0]
-            console.log("THIS IS THE HAUNTLIST ID:", hauntListId);
+            // console.log("THIS IS THE HAUNTLIST ID:", hauntListId);
             // const userId =
             const res = await fetch("/hauntlists/" + hauntListId, {
               method: "DELETE",
