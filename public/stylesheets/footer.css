@@ -1,0 +1,26 @@
+#footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #E2DCCF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+
+    position: absolute;
+    bottom:0;
+    width:100%;   /* Height of the footer */
+}
+
+.ind-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.github-linkedin {
+    display:flex;
+    justify-content: space-around;
+}
+
+.copyright {
+    background-color: #E2DCCF
+}
