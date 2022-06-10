@@ -81,31 +81,19 @@ img {
   box-shadow: 0 0 20px var(--xanadu);
 }
 
-#addToHauntlist {
+#dropdown {
   position: relative;
 }
 
-#hauntlists {
+#dropdown-hauntlists {
   position: absolute;
+  background-color: var(--bistro);
+  width: 100%;
+  padding: 0.5rem;
+  box-shadow: 0px 2px 5px var(--periwinkle);
   z-index: 1;
-  left: -5px;
-  top: 10;
-  width: calc(100% + 10px);
-  height: 10vh;
-  overflow: auto;
 }
 
 .hide {
-  display: none;
-}
-
-.hauntlist {
-  background-color: var(--bistro);
-  border: 1px solid var(--pumpkin);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.test {
-  border: 1px solid red;
+  visibility: hidden;
 }
