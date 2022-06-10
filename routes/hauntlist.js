@@ -36,4 +36,16 @@ router.patch(
   })
 );
 
+router.delete(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    const hauntListId = req.body.id
+    // const userId = req.params.id;
+    const hauntList = await db.HauntList.findOne({
+      where: {hauntListId,}
+    })
+    hauntList.destroy();
+    console.log("destroyed")
+  })
+)
 module.exports = router;

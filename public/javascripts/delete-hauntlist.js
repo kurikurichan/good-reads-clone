@@ -71,7 +71,7 @@ const removeDelete = () => {
             console.log("THIS IS THE HAUNTLIST ID:", hauntListId);
             // const userId =
             const res = await fetch("/hauntlists/" + hauntListId, {
-              method: "PATCH",
+              method: "DELETE",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ hauntListId }),
             })
