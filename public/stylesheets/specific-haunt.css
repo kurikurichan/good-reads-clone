@@ -102,6 +102,8 @@ img {
 .hauntlist {
   background-color: var(--bistro);
   border: 1px solid var(--pumpkin);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .test {

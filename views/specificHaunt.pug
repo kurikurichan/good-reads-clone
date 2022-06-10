@@ -13,10 +13,10 @@ block content
           div(id="addToHauntlist")
             button(type="button" id="hauntlistsButton" class="focusDropDown") Add To Hauntlist
             //- list of user's hauntlists
-            div(id="hauntlists")
+            ul(id="hauntlists")
               each hauntlist in hauntlists
-                div(class="hauntlist hide focusDropDown")
-                  button(type="button")= hauntlist.title
+                li(class="hauntlist hide focusDropDown")
+                  button(type="button" class="focusDropDown" value=hauntlist.id)= hauntlist.title
           a(href="/reviews/new/" + haunt.id)
             button Create a review
       p="Score: " + haunt.score
