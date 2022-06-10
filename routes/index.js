@@ -62,7 +62,7 @@ router.post(
         if (passMatch) {
           // Log in user
           loginUser(req, res, user);
-          return res.redirect("/");
+          return res.redirect("/haunts");
         }
       }
       errors.push("Login failed, no matching email and password");
@@ -151,5 +151,12 @@ router.post(
     }
   })
 );
+
+// redirect to reviews router hopefully
+router.get("/haunts/reviews/edit/:id(\\d+)", async (req, res, next) => {
+  const reviewId = req.params.id; //grab the id
+
+  res.redirect(`reviews/edit/${reviewId}`);
+});
 
 module.exports = router;

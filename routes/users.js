@@ -12,7 +12,7 @@ router.get("/", function (req, res, next) {
 router.get("/logout", (req, res) => {
   // research more later about why GET worked and not POST
   logoutUser(req, res);
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 // USER PROFILE PAGE

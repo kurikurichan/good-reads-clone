@@ -54,4 +54,12 @@ router.get("/:id(\\d+)", async (req, res, next) => {
   res.render("specificHaunt", { haunt, reviews });
 });
 
+
+// redirect to reviews router hopefully
+router.get("/reviews/edit/:id(\\d+)", async (req, res, next) => {
+  const reviewId = req.params.id; //grab the id
+
+  res.redirect(`reviews/edit/${reviewId}`);
+});
+
 module.exports = router;
