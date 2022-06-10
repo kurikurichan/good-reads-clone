@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", e => {
   let deleteButtons = document.querySelector(".hide");
 
   editButton.addEventListener("click", event => {
-
     editMode ? (editMode = false) : (editMode = true); // toggle edit mode on/off with each click
 
     if (editMode) {
@@ -49,46 +48,39 @@ document.addEventListener("DOMContentLoaded", e => {
           divToHide.classList.add("hide");
         });
       });
-
     }
 
     // Click save changes -- switch out of edit mode
     if (!editMode) {
-
-      console.log("HELLO HAVE WE ENTERED THE ELSE STATEMENT");
-
-
       // find all hidden elements - get url of this haunt list
       const hiddenEles = document.querySelectorAll(".hide");
-      console.log("hiddenEles--------------", hiddenEles);
-
-      const hauntlistURL = document.URL.split("/");
-      const hauntlistId = hauntlistURL[hauntlistURL.length - 1];
-
-      const hauntsToDelete = [];
 
       hiddenEles.forEach((ele, i, obj) => {
-        console.log("ele!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", ele.id);
-        console.log("ele id --------------------------------", ele.id.split('-')[1]);
-        hauntsToDelete.push(ele.id.split("-")[1]);
+        const deleteHaunt = async () => {
+          const hauntListId = await getHauntListId();
+          const hauntId = ele.id.split("-")[1];
+
+          const res = await fetch("/hauntlists/" + hauntListId, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ hauntId }),
+          });
+        };
+        deleteHaunt();
       });
-      // remove haunt from hauntlist
-      console.log("hauntsToDelete", hauntsToDelete);
-      const deleteHaunts = async () => {
-        await fetch("/hauntlists/" + hauntlistId, {
-          method: "DELETE",
-          body: hauntsToDelete,
-        });
-      };
-      deleteHaunts();
       removeEdit();
     }
-  });   //------ end event listener
+  }); //------ end event listener
 
   cancelButton.addEventListener("click", e => {
     editMode ? (editMode = false) : (editMode = true);
     removeEdit();
   });
+
+  const getHauntListId = async () => {
+    const hauntlistURL = await document.URL.split("/");
+    return hauntlistURL[hauntlistURL.length - 1];
+  };
 
   //remove haunts from page when deleted
   //but dont save deletion till save button pressed

@@ -22,28 +22,17 @@ router.get(
   })
 );
 
-router.delete(
+router.patch(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
     const hauntListId = req.params.id;
-    const hauntsToDelete = await req.body; // returns an array of hauntIds to delete
-    console.log("REQ--------------: ", req)
-    // console.log("RES--------------: ", res)
-    console.log("HAUNTS TO DELETE ----------", hauntsToDelete);
+    const hauntId = req.body.hauntId;
 
-    // step 1: loop over haunts to delete
-    // step 2: in for loop, find 1 where the haunt to delete = haunts where hauntlistId = haunttodelete number
-    // step 3: when we find that item, have it destroyed
-    hauntsToDelete.forEach(async (hauntId) => {
-
-      const hauntJoinList = await db.HauntJoinList.findOne({
-        where: { hauntListId: hauntId },
-      });
-
-      hauntJoinList.destroy();
-      console.log('destroyed');
-
+    const hauntJoinList = await db.HauntJoinList.findOne({
+      where: { hauntListId, hauntId },
     });
+    hauntJoinList.destroy();
+    console.log("destroyed");
   })
 );
 
