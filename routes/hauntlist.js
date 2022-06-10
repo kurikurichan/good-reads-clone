@@ -27,7 +27,8 @@ router.delete(
   asyncHandler(async (req, res, next) => {
     const hauntListId = req.params.id;
     const hauntsToDelete = await req.body; // returns an array of hauntIds to delete
-    console.log("REQ.BODY--------------: ", req.body)
+    console.log("REQ--------------: ", req)
+    // console.log("RES--------------: ", res)
     console.log("HAUNTS TO DELETE ----------", hauntsToDelete);
 
     // step 1: loop over haunts to delete
