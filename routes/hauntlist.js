@@ -14,6 +14,7 @@ router.get(
       where: { id: hauntListId },
       include: [{ model: db.Haunt }],
     });
+    console.log("hauntList", hauntList);
     const haunts = hauntList.Haunts;
     // const haunts = await db.Haunt.findAll({
     //   where: { id: hauntListId }, //fix finding haunts in hauntlist
@@ -42,27 +43,30 @@ router.patch(
 // user is clicking a button that sends the request for each time they want to add haunt to hauntlist
 router.post(
   "/:id(\\d+)",
-  csrfProtection, // remind Patrick to add a csrfToken to his haunt status thing? idk if needed for a button tbh
   asyncHandler(async (req, res, next) => {
-    const hauntListId = req.params.id;
-    const hauntId = req.body.hauntId; // OR retrieve button id/option id via dom selector
-    console.log(hauntListId);ß
-    console.log(hauntId);
+    const hauntId = req.params.id;
+    const hauntListId = req.body.hauntId; // OR retrieve button id/option id via dom selector
+    console.log("Hauntlist", hauntListId);
+    console.log("Haunt", hauntId);
 
-    const hauntJoinList = await db.HauntJoinList.findOne({
-      where: { hauntListId, hauntId },
+    const dupCheck = await db.HauntJoinList.findOne({
+      where: {
+        hauntId,
+        hauntListId,
+      },
     });
 
-    // if the input is valid, let's create a new object & save it
-    if (hauntJoinList) {
+    if (!dupCheck) {
       await db.HauntJoinList.create({
         hauntListId,
-        hauntId
+        hauntId,
       });
-      res.end();
+      res.status(201).end();
+    } else {
+      res.status(409).send("Haunt already in hauntlist");
     }
-    // else must build an error
-}));
+  })
+);
 
 // fetch request to add to front end for each button click to add a haunt to the haunt list
 /*

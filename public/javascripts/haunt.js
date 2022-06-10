@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", e => {
     "#dropdown-hauntlists *"
   );
   const url = document.URL.split("/");
-  const hauntId = url[url.length - 1];
+  const hauntlistId = url[url.length - 1];
 
   dropdownButton.addEventListener("click", e => {
     dropdownHauntlist.classList.toggle("hide");
@@ -15,11 +15,14 @@ document.addEventListener("DOMContentLoaded", e => {
 
   dropdownHauntlistChildren.forEach(button => {
     button.addEventListener("click", async e => {
-      await fetch("/haunlists/" + hauntId, {
-        method: "PUT",
+      const res = await fetch("/hauntlists/" + hauntlistId, {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ hauntId: button.value }),
       });
+      if (res.status === 409) {
+        console.log("Haunt already in hauntlist");
+      }
     });
   });
 });
