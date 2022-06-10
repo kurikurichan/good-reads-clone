@@ -11,12 +11,19 @@ block content
       if(locals.authenticated)
         div(id="buttons")
           div(id="addToHauntlist")
-            button(type="button" id="hauntlistsButton" class="focusDropDown") Add To Hauntlist
+            //- button(type="button" id="hauntlistsButton" class="focusDropDown") Add To Hauntlist
             //- list of user's hauntlists
-            ul(id="hauntlists")
-              each hauntlist in hauntlists
-                li(class="hauntlist hide focusDropDown")
-                  button(type="button" class="focusDropDown" value=hauntlist.id)= hauntlist.title
+            //- select(id="hauntlists")
+            //-   each hauntlist in hauntlists
+            //-     option(type="button" class="hauntlist hide focusDropDown" value=hauntlist.id)= hauntlist.title
+            div(id="dropdown")
+              button(id="dropdownButton") Add To Hauntlist
+              div(id="dropdown-hauntlists" class="dropdown hide")
+                each hauntlist in hauntlists
+                    button(type="button" class="dropdown" value= hauntlist.id)= hauntlist.title
+
+
+
           a(href="/reviews/new/" + haunt.id)
             button Create a review
       p="Score: " + haunt.score

@@ -1,42 +1,27 @@
 // Script to hide and show dropdown for adding haunts to hauntlist on haunts/:id page
 
 document.addEventListener("DOMContentLoaded", e => {
-  const hauntlists = document.querySelectorAll(".hauntlist"); // children li's of add haunt list button
-  const addToHauntlist = document.querySelectorAll("#addToHauntlist *"); // "Add to Haunt List" button + its children buttons (inside divs)
+  const dropdownHauntlist = document.querySelector("#dropdown-hauntlists");
+  const dropdownButton = document.querySelector("#dropdownButton");
+  const dropdownHauntlistChildren = document.querySelectorAll(
+    "#dropdown-hauntlists *"
+  );
+  const url = document.URL.split("/");
+  const hauntId = url[url.length - 1];
 
-  document.addEventListener("click", e => {
-    console.log(e.target);
+  dropdownButton.addEventListener("click", e => {
+    dropdownHauntlist.classList.toggle("hide");
   });
 
-  // iterate through user's hauntlists & hide & show buttons
-  addToHauntlist.forEach(hauntListEle => {
-
-    // show buttons
-    hauntListEle.addEventListener("focus", e => {
-      hauntlists.forEach(hauntlist => {
-        hauntlist.classList.remove("hide");
+  dropdownHauntlistChildren.forEach(button => {
+    button.addEventListener("click", async e => {
+      await fetch("/haunlists/" + hauntId, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ hauntId: button.value }),
       });
-    });
-
-    // hide buttons
-    hauntListEle.addEventListener("focusout", e => {
-      hauntlists.forEach(hauntlist => {
-        hauntlist.classList.add("hide");
-      });
-    });
-  });
-
-  // iterate through children divs
-  hauntlists.forEach(dive => {
-
-    // add action to button click
-    dive.addEventListener("click", e => {
-      e.stopPropagation();
-      console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-      console.log(e.target);
     });
   });
 });
-
 
 // TODO: create action of clicking buttons add haunt to hauntlists
