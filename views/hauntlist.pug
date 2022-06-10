@@ -1,0 +1,17 @@
+extends layout
+append head
+  link(rel="stylesheet" href="/stylesheets/hauntlist.css")
+block content
+    if (user && user.id == hauntList.userId)
+        div(id="editButtons")
+            button(id="list-edit-button") Edit List
+
+    h1(id="hauntList-title")= hauntList.title
+    ul
+        each haunt in haunts
+            div(class="haunt-line")
+                li(id="haunt-" + haunt.id)
+                    img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
+                    a(href="/haunts/" + haunt.id)= haunt.title
+                    span= haunt.score
+    script(src="/javascripts/hauntlist.js")

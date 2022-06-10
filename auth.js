@@ -8,10 +8,10 @@ const loginUser = (req, res, user) => {
   };
 };
 
-
 const logoutUser = (req, res) => {
   delete req.session.auth;
-}
+  req.session.cookie.originalMaxAge = -1;
+};
 
 const loginDemoUser = (req, res) => {
   req.session.auth = {
@@ -19,11 +19,7 @@ const loginDemoUser = (req, res) => {
   };
 };
 
-
 const restoreUser = asyncHandler(async (req, res, next) => {
-  // log req.session object to console
-  console.log("REQ.SESSION:", req.session);
-
   // check if there is an authenticated user
   if (req.session.auth) {
     const { userId } = req.session.auth;
