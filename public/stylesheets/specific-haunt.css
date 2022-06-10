@@ -36,6 +36,7 @@
 
 #buttons {
   position: absolute;
+  display: flex;
   left: 20%;
   bottom: 20px;
 }
@@ -81,19 +82,28 @@ img {
 }
 
 #addToHauntlist {
-  display: inline;
   position: relative;
-}
-
-#addToHauntlist > button::after {
-  content: "  \2B9F";
-}
-
-#addToHauntlist > button:focus {
-  background-color: var(--xanadu);
 }
 
 #hauntlists {
   position: absolute;
+  z-index: 1;
+  left: -5px;
+  top: 10;
+  width: calc(100% + 10px);
+  height: 10vh;
+  overflow: auto;
+}
+
+.hide {
   display: none;
+}
+
+.hauntlist {
+  background-color: var(--bistro);
+  border: 1px solid var(--pumpkin);
+}
+
+.test {
+  border: 1px solid red;
 }
