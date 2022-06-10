@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", e => {
   cancelButton.setAttribute("id", "cancelButton");
   cancelButton.innerText = "Cancel";
 
+  // remove cancel button & x delete buttons
   const removeEdit = () => {
     cancelButton.remove();
     const deleteButtons = document.querySelectorAll(".delete");
@@ -14,15 +15,20 @@ document.addEventListener("DOMContentLoaded", e => {
     });
     editButton.innerText = "Edit List";
   };
+
+  // Find delete buttons (could be none)
   let deleteButtons = document.querySelector(".hide");
 
   editButton.addEventListener("click", event => {
-    editMode ? (editMode = false) : (editMode = true);
-    console.log("editMode", editMode);
+
+    editMode ? (editMode = false) : (editMode = true); // toggle edit mode on/off with each click
+
     if (editMode) {
       editButton.innerText = "Save Changes";
+      // add cancel button in edit mode
       const editButtonsDiv = document.querySelector("#editButtons");
       editButtonsDiv.append(cancelButton);
+      // grab the boxes with haunts in them & append x buttons to them
       const hauntLis = document.querySelectorAll(".haunt-line li");
       hauntLis.forEach(hauntLi => {
         const deleteButton = document.createElement("button");
@@ -31,9 +37,10 @@ document.addEventListener("DOMContentLoaded", e => {
         deleteButton.setAttribute("id", hauntLi.getAttribute("id") + "-button");
         hauntLi.append(deleteButton);
       });
+
       deleteButtons = document.querySelectorAll(".delete");
 
-      //delete button click
+      // add click functionality to x buttons
       deleteButtons.forEach(deleteButton => {
         deleteButton.addEventListener("click", e => {
           const buttonId = e.target.getAttribute("id");
@@ -42,17 +49,28 @@ document.addEventListener("DOMContentLoaded", e => {
           divToHide.classList.add("hide");
         });
       });
-    } else {
-      // Click save changes
+
+    }
+
+    // Click save changes -- switch out of edit mode
+    if (!editMode) {
+
+      console.log("HELLO HAVE WE ENTERED THE ELSE STATEMENT");
+
+
+      // find all hidden elements - get url of this haunt list
       const hiddenEles = document.querySelectorAll(".hide");
+      console.log("hiddenEles--------------", hiddenEles);
+
       const hauntlistURL = document.URL.split("/");
       const hauntlistId = hauntlistURL[hauntlistURL.length - 1];
-      console.log("hiddenEles", hiddenEles);
+
       const hauntsToDelete = [];
-      hiddenEles.forEach(ele => {
-        hauntsToDelete.push(ele.id.split("-")[1]);
+
+      hiddenEles.forEach((ele, i, obj) => {
         console.log("ele!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", ele.id);
-        console.log("hauntsToDelete", hauntsToDelete);
+        console.log("ele id --------------------------------", ele.id.split('-')[1]);
+        hauntsToDelete.push(ele.id.split("-")[1]);
       });
       // remove haunt from hauntlist
       console.log("hauntsToDelete", hauntsToDelete);
@@ -65,7 +83,7 @@ document.addEventListener("DOMContentLoaded", e => {
       deleteHaunts();
       removeEdit();
     }
-  });
+  });   //------ end event listener
 
   cancelButton.addEventListener("click", e => {
     editMode ? (editMode = false) : (editMode = true);
