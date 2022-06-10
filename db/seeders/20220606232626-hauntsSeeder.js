@@ -20,6 +20,9 @@ const d9 = "No, this house did not steal its name from the classic novel, though
 const d10 = "Oregonian pioneers Henry and Georgiana Pittock decided to build their dream house when they reached their golden years, in 1909, spurring the innovative design and construction of the Pittock Mansion. Unfortunately, the couple only got to enjoy their home for a few years before passing away—Georgiana in 1918 and Henry in 1919. The building is now a public landmark where some strange occurrences have been reported, such as the smell of roses (Georgiana's favorite bloom) filling a room with no flowers in it, and a childhood painting of Henry moving, on its own, from spot to spot within the house. Clearly, death was not enough of a reason for the Pittocks to vacate their beloved home."
 const d11 = "This quiet ghost town is bustling nowadays thanks to tourism, so it's a great spot to get some people watching in. For the real party, there are some romantic abandoned mines, the perfect spooktacular getaway!"
 const d12 = "The RMS Queen Mary served as a luxury ocean liner from 1936 to 1967. During that time, it was the site of at least one murder, a sailor being crushed to death by a door in the engine room, and children drowning in the pool. The city of Long Beach purchased the ship in 1967 and turned it into a hotel, and it still serves that purpose today -- although the reported ghosts of the deceased passengers get to stay for free. (For an extra dose of spine-tingling experiences, see if you can visit the ship's engine room, which is considered by many to be a 'hotbed' of paranormal activity.)"
+const d13 = "The Trans-Allegheny Lunatic Asylum opened its doors to patients in 1864, and in the 1950s, the West Virginia facility reached its peak, housing more than 2,400 patients—even though it was designed to hold only 250. The severe overcrowding led to inhumane conditions (like lack of heat and convalescents kept in cages), and patients started acting increasingly violent. The asylum finally closed in 1994, but the souls of some patients are said to linger. Ghost tours are available for those wishing to see how some patients lived—and died—within the cramped halls."
+const d14 = "Thomas Whaley built this family estate in 1857 in San Diego, on the former site of the city's first public gallows. Shortly after he moved in, he reported hearing the heavy footsteps of 'Yankee' Jim Robinson, a drifter and thief who was hanged on the site four years before the house was built. Whaley's family history ended up being filled with tragic deaths and suicides, many of which occurred inside the home itself. Some of the family members reportedly still haunt the landmark, often accompanied by cigar smoke and the smell of heavy perfume."
+
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -119,6 +122,22 @@ module.exports = {
           description: d12,
           score: 0,
           genreId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Trans-Allegheny Lunatic Asylum, WV",
+          description: d13,
+          score: 0,
+          genreId: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Whaley House, CA",
+          description: d14,
+          score: 0,
+          genreId: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
