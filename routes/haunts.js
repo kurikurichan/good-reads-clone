@@ -51,7 +51,11 @@ router.get("/:id(\\d+)", async (req, res, next) => {
     where: { hauntId: haunt.id },
     include: [{ model: db.User }],
   });
-  res.render("specificHaunt", { haunt, reviews });
+  // console.log("req.session.auth.userId", req.session.auth.userId);
+  const hauntlists = await db.HauntList.findAll({
+    where: { userId: req.session.auth.userId },
+  });
+  res.render("specificHaunt", { haunt, reviews, hauntlists });
 });
 
 module.exports = router;

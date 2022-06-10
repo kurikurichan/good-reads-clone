@@ -34,10 +34,10 @@
   font-size: 40px;
 }
 
-.topRightDiv > a {
+#buttons {
   position: absolute;
-  left: 50%;
-  bottom: 70px;
+  left: 20%;
+  bottom: 20px;
 }
 
 #divider {
@@ -53,7 +53,6 @@
 }
 
 .bottomDiv div {
-  border: 1px solid red;
   width: 40vw;
   background-color: var(--xanadu);
 }
@@ -79,4 +78,22 @@
 
 img {
   box-shadow: 0 0 20px var(--xanadu);
+}
+
+#addToHauntlist {
+  display: inline;
+  position: relative;
+}
+
+#addToHauntlist > button::after {
+  content: "  \2B9F";
+}
+
+#addToHauntlist > button:focus {
+  background-color: var(--xanadu);
+}
+
+#hauntlists {
+  position: absolute;
+  display: none;
 }

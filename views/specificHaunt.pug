@@ -1,6 +1,7 @@
 extends layout
 append head
   link(rel="stylesheet" href="/stylesheets/specific-haunt.css")
+  script(src="/javascripts/haunt.js")
 block content
   div(class="topDiv")
     div(class="topLeftDiv")
@@ -8,8 +9,15 @@ block content
     div(class="topRightDiv")
       h2=haunt.title
       if(locals.authenticated)
-        a(href="/reviews/new/" + haunt.id)
-          button Create a review
+        div(id="buttons")
+          div(id="addToHauntlist")
+            button(type="button" ) Add To Hauntlist
+            //- list of user's hauntlists
+            div(id="hauntlists")
+              each hauntlist in hauntlists
+                div(class="hauntlist")= hauntlist.title
+          a(href="/reviews/new/" + haunt.id)
+            button Create a review
       p="Score: " + haunt.score
       p Description:
       p=haunt.description
