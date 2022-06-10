@@ -28,6 +28,23 @@ deleteButton.addEventListener("click", event => {
 
   if (deleteMode) {
     deleteButton.innerText = "Confirm" //delete becomes save
+
+    //adds cancel button in delete mode
+    const deleteButtonsDiv = document.querySelector("#deleteButtons");
+      deleteButtonsDiv.append(cancelButton);
+
+    // grabs each hauntlist and appends checkboxes to them
+    const checkBoxLis = document.querySelectorAll(".checkBoxes-line li");
+    checkBoxLis.forEach(checkBoxLi =>{
+      const seeCheckBox = document.createElement('input');
+      seeCheckBox.type = "checkbox"
+      seeCheckBox.classList = "delete";
+      seeCheckBox.setAttribute("id", checkBoxLi.getAttribute("id") + "-checkbox");
+      checkBoxLi.append(seeCheckBox);
+    });
+
+    deleteButtons = document.querySelectorAll(".delete");
+
   }
 
 })

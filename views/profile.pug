@@ -12,10 +12,12 @@ block content
     ul
         if (hauntlists.length)
             each hauntlist in hauntlists
-                li
-                    a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
+                div(class="checkBoxes-line")
+                        li
+                            a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
         else
             p= "No haunt lists to show yet!"
-    button(id="create") Create a Hauntlist
-    button(id="delete") Delete a Hauntlist
+    div(id="deleteButtons")
+        //- button(id="create") Create a Hauntlist
+        button(id="delete") Delete a Hauntlist
     script(src="/javascripts/delete-hauntlist.js")
