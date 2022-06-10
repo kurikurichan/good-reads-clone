@@ -18,6 +18,8 @@ const d7 =
 const d8 = "The heavily forested Pine Barrens spans over 1 million acres and seven counties in New Jersey. The area thrived during the Colonial period, host to sawmills, paper mills, and other industries. People eventually abandoned the mills and surrounding villages when coal was discovered to the west in Pennsylvania, leaving behind ghost towns—and, some say, a few supernatural wanderers. The most popular Pine Barrens resident is without a doubt the Jersey Devil. According to legend, the creature was born in 1735 to Deborah Leeds (her 13th child) with leathery wings, a goat's head, and hooves. It flew up the Leeds' chimney and into the Barrens, where it has reportedly been killing livestock—and creeping out South Jersey residents—ever since.";
 const d9 = "No, this house did not steal its name from the classic novel, though some say it may have inspired it! Aside from its beautiful-yet-spooky facade, the house is surrounded by tales of paranormal activity and ghost sightings (all based on personal experiences of staff). Every October, the house offers spooky tours as well as weekly performances of two plays, The Legacy of the Hanging Judge and Spirits of The Gables."
 const d10 = "Oregonian pioneers Henry and Georgiana Pittock decided to build their dream house when they reached their golden years, in 1909, spurring the innovative design and construction of the Pittock Mansion. Unfortunately, the couple only got to enjoy their home for a few years before passing away—Georgiana in 1918 and Henry in 1919. The building is now a public landmark where some strange occurrences have been reported, such as the smell of roses (Georgiana's favorite bloom) filling a room with no flowers in it, and a childhood painting of Henry moving, on its own, from spot to spot within the house. Clearly, death was not enough of a reason for the Pittocks to vacate their beloved home."
+const d11 = "This quiet ghost town is bustling nowadays thanks to tourism, so it's a great spot to get some people watching in. For the real party, there are some romantic abandoned mines, the perfect spooktacular getaway!"
+const d12 = "The RMS Queen Mary served as a luxury ocean liner from 1936 to 1967. During that time, it was the site of at least one murder, a sailor being crushed to death by a door in the engine room, and children drowning in the pool. The city of Long Beach purchased the ship in 1967 and turned it into a hotel, and it still serves that purpose today -- although the reported ghosts of the deceased passengers get to stay for free. (For an extra dose of spine-tingling experiences, see if you can visit the ship's engine room, which is considered by many to be a 'hotbed' of paranormal activity.)"
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -85,6 +87,38 @@ module.exports = {
           description: d8,
           score: 0,
           genreId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "House of the Seven Gables, MA",
+          description: d9,
+          score: 0,
+          genreId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Pittock Mansion, OR",
+          description: d10,
+          score: 0,
+          genreId: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Calico, CA",
+          description: d11,
+          score: 0,
+          genreId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "RMS Queen Mary, CA",
+          description: d12,
+          score: 0,
+          genreId: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
