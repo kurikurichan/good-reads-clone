@@ -12,8 +12,8 @@ block content
         if (hauntlists.length)
             each hauntlist in hauntlists
                 div(class="checkBoxes-line")
-                        li
-                            a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
+                    li(id=hauntlist.id)
+                        a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
         else
             p= "No haunt lists to show yet!"
     div(id="deleteButtons")
