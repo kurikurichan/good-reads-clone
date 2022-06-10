@@ -27,6 +27,7 @@ const d16 = "Opened in 1896, the Ohio State Reformatory is famous for its Gothic
 const d17 = "A cool modern spot in the city for those of us who want a more contemporary life. Old firehouses are all the rage these days, for that loft vibe."
 const d18 = "Once owned by Norman G. Baker, a millionaire inventor who decided to pose as a doctor (despite having no medical training) and turn the hotel into a hospital that could 'cure' cancer. He was eventually found out and run out of town, although reports say that his spirit found its way back to the site—and found some otherworldly company, too. The now-operating Crescent Hotel is said to be haunted by at least eight ghosts, ranging from a five-year-old girl to a bearded man wearing Victorian clothing."
 const d19 = "The Driskill is a majestic Romanesque hotel with modern rooms and an iconic brick facade, drawing Europeans tourists and wedding parties since 1886. It's a true Austin landmark—and according to some, a true hot-spot for ghosts. Travelers have noted eerily abnormal sounds through its ornate corridors, as well as phantom sightings of the hotel's namesake, Jesse Driskill, whose portrait still hangs in the lobby. They say Driskill never recovered from the heartbreak of losing his hotel in a high-stakes poker game, and honestly, we get it: This hotel is a hard one to say goodbye to."
+const d20 = "A super comfy house. Plenty of room to roam around inside, with plenty of spiderwebs and leaky fixtures. The electricity still sort of works, which is great when you need to turn on the odd lightbulb. The greatest feature of all though is the basement- direct tunnels are included to the local waterways and pipes. Great opportunities for scares!"
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -182,6 +183,14 @@ module.exports = {
           description: d19,
           score: 0,
           genreId: 3,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Derry, ME",
+          description: d20,
+          score: 0,
+          genreId: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
