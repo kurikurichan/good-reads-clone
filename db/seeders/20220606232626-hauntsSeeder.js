@@ -1,4 +1,5 @@
 "use strict";
+// historical -1  outdoors - 2  hotel - 3  asylum - 4  house - 5
 
 const d1 =
   "Now a historic state park, Bodie California was once a booming western town. Today it is a ghost town… in more ways than one, according to some. Visitors have claimed seeing sightings of ghosts, or hearing music coming from the abandoned saloons.";
@@ -14,6 +15,9 @@ const d6 =
   "Those of you who remember the '90s will recognize this cemetery as the one featured in the novel Midnight in the Garden of Good and Evil. Like the book, the Savannah cemetery itself has a Southern Gothic atmosphere, with Spanish moss giving shade to time-worn Victorian monuments. There are many notable figures buried here, like singer Johnny Mercer and poet Conrad Aiken, but it's Gracie Watson who most deserves a visit. Having died at just six years old, her grave is marked by a life-size marble statue with her hand resting on a tree stump, symbolizing her life cut short. Many visitors place toys at her grave when they visit, and some have reported seeing the ghost of Gracie near the site. Other spooky accounts of the Bonaventure include inexplicable sounds, like crying babies and barking dogs, and statues suddenly smiling as people approach them.";
 const d7 =
   "A true spooky house, haunted by many ghosts before us. The perfect traditional stomping ground! This is a popular site for teenagers to come visit. Relax by the spooky lake in the back of the house- a great place to dwell on your memories and act them out in ghastly form during the full moon. All of those daring tourists make for good opportunities for possession, as well.";
+const d8 = "The heavily forested Pine Barrens spans over 1 million acres and seven counties in New Jersey. The area thrived during the Colonial period, host to sawmills, paper mills, and other industries. People eventually abandoned the mills and surrounding villages when coal was discovered to the west in Pennsylvania, leaving behind ghost towns—and, some say, a few supernatural wanderers. The most popular Pine Barrens resident is without a doubt the Jersey Devil. According to legend, the creature was born in 1735 to Deborah Leeds (her 13th child) with leathery wings, a goat's head, and hooves. It flew up the Leeds' chimney and into the Barrens, where it has reportedly been killing livestock—and creeping out South Jersey residents—ever since.";
+const d9 = "No, this house did not steal its name from the classic novel, though some say it may have inspired it! Aside from its beautiful-yet-spooky facade, the house is surrounded by tales of paranormal activity and ghost sightings (all based on personal experiences of staff). Every October, the house offers spooky tours as well as weekly performances of two plays, The Legacy of the Hanging Judge and Spirits of The Gables."
+const d10 = "Oregonian pioneers Henry and Georgiana Pittock decided to build their dream house when they reached their golden years, in 1909, spurring the innovative design and construction of the Pittock Mansion. Unfortunately, the couple only got to enjoy their home for a few years before passing away—Georgiana in 1918 and Henry in 1919. The building is now a public landmark where some strange occurrences have been reported, such as the smell of roses (Georgiana's favorite bloom) filling a room with no flowers in it, and a childhood painting of Henry moving, on its own, from spot to spot within the house. Clearly, death was not enough of a reason for the Pittocks to vacate their beloved home."
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -71,6 +75,14 @@ module.exports = {
         {
           title: "Moose, WY",
           description: d7,
+          score: 0,
+          genreId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          title: "Pine Barrens, NJ",
+          description: d8,
           score: 0,
           genreId: 1,
           createdAt: new Date(),
