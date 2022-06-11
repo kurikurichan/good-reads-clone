@@ -1,3 +1,5 @@
+include utils.pug
+
 doctype html
 html
   head
@@ -7,24 +9,35 @@ html
         link(rel='stylesheet' href='/stylesheets/navbar.css')
         link(rel='stylesheet' href='/stylesheets/profile.css')
         link(rel='stylesheet' href='/stylesheets/forms.css')
+        link(rel='stylesheet' href='/stylesheets/footer.css')
+        script(src="https://kit.fontawesome.com/b4ae7bbf6e.js" crossorigin="anonymous")
 
   body
-      if (!splash)
-          nav
-              ul(id="nav-container")
-                  li
-                      a(href="/")
-                        img(src="/images/logo.jpg" id="logo")
-                  li
-                      a(href="/haunts" class="nav-links")  Haunts
-                      if (locals.authenticated)
-                          li
-                              a(href="/users/" + user.id class="nav-links") Profile
-                          li
-                              a(href="/users/logout" class="nav-links" id='logoutButton') Log out
-                      else
-                          li
-                              a(href="/login" class="nav-links") Login
-                          li
-                              a(href="/signup" class="nav-links") Sign Up
-  block content
+    div(id="page-container")
+        div(id="content-wrap")
+            if (!splash)
+                nav
+                    ul(id="nav-container")
+                        li
+                            a(href="/")
+                                img(src="/images/logo.jpg" id="logo")
+                        li
+                            a(href="/haunts" class="nav-links")  Haunts
+                            if (locals.authenticated)
+                                li
+                                    a(href="/users/" + user.id class="nav-links") Profile
+                                li
+                                    a(href="/users/logout" class="nav-links" id='logoutButton') Log out
+                            else
+                                li
+                                    a(href="/login" class="nav-links") Login
+                                li
+                                    a(href="/signup" class="nav-links") Sign Up
+        block content
+        footer
+            div(id="footer")
+                +socials("Alec Venida", "https://github.com/avenida714", "https://www.linkedin.com/in/alec-venida-66793979/")
+                +socials("June Kim", "https://github.com/juneskim", "https://www.linkedin.com/in/june-k-7b56a1140/")
+                +socials("Krista Strucke", "https://github.com/kurikurichan", "https://www.linkedin.com/in/krista-strucke-044b3369/")
+                +socials("Patrick McPherson", "https://github.com/Patricus", "https://www.linkedin.com/in/patrick-mcpherson-438385117/")
+        block footer

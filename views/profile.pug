@@ -16,7 +16,10 @@ block content
                         a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
         else
             p= "No haunt lists to show yet!"
+
     div(id="deleteButtons")
         //- button(id="create") Create a Hauntlist
         button(id="delete") Delete a Hauntlist
     script(src="/javascripts/delete-hauntlist.js")
+
+block footer

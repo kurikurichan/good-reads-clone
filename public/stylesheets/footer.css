@@ -1,0 +1,34 @@
+#footer {
+    display: flex;
+    justify-content: space-evenly;
+
+    background-color: var(--cadet);
+    position: absolute;
+    bottom:0;
+    width:100%;
+    height: 2.5rem;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.linkedin-github {
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.fab.fa-linkedin,
+.fab.fa-github {
+    font-size: 25px;
+}
+
+.fab.fa-linkedin:hover,
+.fab.fa-github:hover {
+    color: var(--pumpkin);
+}
+
+.our-names:hover {
+    transform: scale(1.2);
+}
