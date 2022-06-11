@@ -10,17 +10,30 @@ const cancelButton = document.createElement("button")
 cancelButton.setAttribute("id", "cancelButton")
 cancelButton.innerText = "Cancel";
 
+const ogText = document.getElementsByTagName("h2")[0].innerText;
 
 //helper function to remove the checkboxes, revert delete button
 const removeDelete = () => {
-  console.log("I MADE ITTTTTTTTTTT :DDDDDDDD");
+  // console.log("I MADE ITTTTTTTTTTT :DDDDDDDD");
   cancelButton.remove()
 
   const deleteCheckBoxes = document.querySelectorAll(".preChecked")
   console.log("THIS IS DELETE CHEC KBOXESSS", deleteCheckBoxes);
   deleteCheckBoxes.forEach(checkBox => {
     console.log("THIS IS THE CHECKBOXXXXXXX", checkBox);
+
     checkBox.remove();
+
+
+    //revert the
+    document.getElementsByTagName("h2")[0].innerText = ogText
+
+
+
+    const checkBoxLis = document.querySelectorAll(".checkBoxes-line li")
+    checkBoxLis.classList = "hidden";
+    // checkBox.classList = "hidden";
+
   })
   deleteButton.innerText = "Delete a Hauntlist"
 }
@@ -69,6 +82,7 @@ const removeDelete = () => {
         if (checkBox.checked) {
           // console.log("YO, I'M TOTALLY CHECKED RN")
 
+
           const deleteHauntList = async () => {
             const userId = await getUserId();
             const hauntListId = checkBox.id.split("-")[0]
@@ -81,6 +95,7 @@ const removeDelete = () => {
             })
           };
           deleteHauntList();
+
         }
       });
       removeDelete();
