@@ -34,10 +34,11 @@
   font-size: 40px;
 }
 
-.topRightDiv > a {
+#buttons {
   position: absolute;
-  left: 50%;
-  bottom: 70px;
+  display: flex;
+  left: 20%;
+  bottom: 20px;
 }
 
 #divider {
@@ -53,7 +54,6 @@
 }
 
 .bottomDiv div {
-  border: 1px solid red;
   width: 40vw;
   background-color: var(--xanadu);
 }
@@ -79,4 +79,21 @@
 
 img {
   box-shadow: 0 0 20px var(--xanadu);
+}
+
+#dropdown {
+  position: relative;
+}
+
+#dropdown-hauntlists {
+  position: absolute;
+  background-color: var(--bistro);
+  width: 100%;
+  padding: 0.5rem;
+  box-shadow: 0px 2px 5px var(--periwinkle);
+  z-index: 1;
+}
+
+.hide {
+  visibility: hidden;
 }

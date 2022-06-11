@@ -11,7 +11,8 @@ block content
         each haunt in haunts
             div(class="haunt-line")
                 li(id="haunt-" + haunt.id)
-                    img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
-                    a(href="/haunts/" + haunt.id)= haunt.title
+                    a(href="/haunts/" + haunt.id)
+                        img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
+                        span= haunt.title
                     span= haunt.score
     script(src="/javascripts/hauntlist.js")

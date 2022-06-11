@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", e => {
   };
 
   // Find delete buttons (could be none)
-  let deleteButtons = document.querySelector(".hide");
+  let deleteButtons = document.querySelectorAll(".delete");
+  // find all hidden elements - get url of this haunt list
+  let hiddenEles = document.querySelectorAll(".hide");
 
   editButton.addEventListener("click", event => {
     editMode ? (editMode = false) : (editMode = true); // toggle edit mode on/off with each click
@@ -53,20 +55,21 @@ document.addEventListener("DOMContentLoaded", e => {
     // Click save changes -- switch out of edit mode
     if (!editMode) {
       // find all hidden elements - get url of this haunt list
-      const hiddenEles = document.querySelectorAll(".hide");
+      hiddenEles = document.querySelectorAll(".hide");
 
       hiddenEles.forEach((ele, i, obj) => {
-        const deleteHaunt = async () => {
+        (async () => {
           const hauntListId = await getHauntListId();
           const hauntId = ele.id.split("-")[1];
 
-          const res = await fetch("/hauntlists/" + hauntListId, {
+          await fetch("/hauntlists/" + hauntListId, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ hauntId }),
           });
-        };
-        deleteHaunt();
+
+          ele.remove();
+        })();
       });
       removeEdit();
     }
@@ -74,6 +77,11 @@ document.addEventListener("DOMContentLoaded", e => {
 
   cancelButton.addEventListener("click", e => {
     editMode ? (editMode = false) : (editMode = true);
+    // find all hidden elements and remove the hide class
+    hiddenEles = document.querySelectorAll(".hide");
+    hiddenEles.forEach(ele => {
+      ele.classList.remove("hide");
+    });
     removeEdit();
   });
 
