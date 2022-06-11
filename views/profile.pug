@@ -2,24 +2,26 @@ extends layout.pug
 append head
     link(rel="stylesheet" href="/stylesheets/profile.css")
 block content
-    h1= currentUser.fullName + "'s Profile"
-    p(class="profile-text")="Name: " + currentUser.fullName
-    if(user && user.id == currentUser.id)
-        p(class="profile-text")="Email: " + user.email
+    div
+        h1= currentUser.fullName + "'s Profile"
+        p(class="profile-text")="Name: " + currentUser.fullName
+        if(user && user.id == currentUser.id)
+            p(class="profile-text")="Email: " + user.email
+    div
+        h2(id="haunt-title")= "Haunt Lists"
+        div(id="deleteButtons")
+            if(user && user.id == currentUser.id)
+                //- button(id="create") Create a Hauntlist
+                button(id="delete") Delete a Hauntlist
+        ul
+            if (hauntlists.length)
+                each hauntlist in hauntlists
+                    div(class="checkBoxes-line")
+                        li(id=hauntlist.id)
+                            a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + " (" + hauntlists.length + ")"
+            else
+                p= "No haunt lists to show yet!"
 
-    h2(id="haunt-title")= currentUser.fullName + "'s Haunt Lists"
-    ul
-        if (hauntlists.length)
-            each hauntlist in hauntlists
-                div(class="checkBoxes-line")
-                    li(id=hauntlist.id)
-                        a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
-        else
-            p= "No haunt lists to show yet!"
-
-    div(id="deleteButtons")
-        //- button(id="create") Create a Hauntlist
-        button(id="delete") Delete a Hauntlist
-    script(src="/javascripts/delete-hauntlist.js")
+    script(src="/javascripts/profile.js")
 
 block footer
