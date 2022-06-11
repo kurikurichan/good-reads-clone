@@ -30,6 +30,8 @@ h2 {
 }
 
 .hauntCard {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
   padding: 5px;
   gap: 1px;
 }
