@@ -26,3 +26,17 @@
     border-radius: 5px;
     box-shadow: 0 0 10px 10px var(--bistro);
 }
+
+.fab.fa-linkedin,
+.fab.fa-github {
+    font-size: 25px;
+}
+
+.fab.fa-linkedin:hover,
+.fab.fa-github:hover {
+    color: var(--pumpkin);
+}
+
+.our-names:hover {
+    transform: scale(1.2);
+}
