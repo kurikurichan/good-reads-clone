@@ -64,7 +64,6 @@ router.post(
       });
       res.status(201).end();
     } else {
-      res.status(409).send("Haunt already in hauntlist");
     }
   })
 );
