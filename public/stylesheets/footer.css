@@ -1,14 +1,14 @@
 #footer {
     display: flex;
     justify-content: space-around;
-    background-color: #E2DCCF;
+    background-color: var(--cadet);
     padding-top: 10px;
     padding-bottom: 10px;
     margin-top: 20px;
 
     position: absolute;
     bottom:0;
-    width:100%;   /* Height of the footer */
+    width:100%;
 }
 
 .ind-links {
@@ -22,5 +22,5 @@
 }
 
 .copyright {
-    background-color: #E2DCCF
+    background-color: var(--bistro);
 }
