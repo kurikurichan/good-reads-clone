@@ -24,7 +24,6 @@ router.get(
   })
 );
 
-
 //Delete haunt from hauntlist (destroy the join table)
 router.patch(
   "/:id(\\d+)",
@@ -67,6 +66,23 @@ router.post(
     } else {
       res.status(409).send("Haunt already in hauntlist");
     }
+  })
+);
+
+router.delete(
+  "/:id(\\d+)",
+  asyncHandler(async (req, res, next) => {
+    // const hauntListId = req.body.id
+    const hauntListId = req.params.id;
+    console.log("THIS IS THE HAUNTLIST ID", hauntListId);
+    const hauntList = await db.HauntList.findByPk(hauntListId);
+
+    if (hauntList) {
+      await hauntList.destroy();
+      console.log("destroyed");
+      res.end();
+    }
+    res.end();
   })
 );
 
