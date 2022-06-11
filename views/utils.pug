@@ -14,3 +14,15 @@ mixin socials(name, github, linkedin)
             i(class="fab fa-github")
         a(href=linkedin target="_blank")
             i(class="fab fa-linkedin")
+
+mixin haunts(category, hauntData)
+  h2=category
+  div(class= "category-containers")
+    br
+    each haunt in hauntData
+      div(class= category + ' hauntCard')
+        a(class="haunt-links" href="/haunts/" + haunt.id)
+          img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
+          br
+          a(href="/haunts/" + haunt.id)= haunt.title
+          p(class="haunt-score")= haunt.score

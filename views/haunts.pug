@@ -1,33 +1,11 @@
 extends layout
+include utils.pug
+
 append head
   link(rel="stylesheet" href="/stylesheets/haunts.css")
 block content
-  h1= "All of the haunts"
-    br
-    h2="Historical"
+  div(id="haunts-container")
+    h1= "All of the haunts"
       br
       each haunt in haunts
-        div(class= 'historical hauntCard')
-          a(class="haunt-links" href="/haunts/" + haunt.id)
-            img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
-            br
-            a(href="/haunts/" + haunt.id)= haunt.title
-            p(class="haunt-score")= haunt.score
-    h2="Outdoors"
-      br
-      each haunt in haunts2
-        div(class= 'outdoors hauntCard')
-          a(class="haunt-links" href="/haunts/" + haunt.id)
-            img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
-            br
-            a(href="/haunts/" + haunt.id)= haunt.title
-            p(class="haunt-score")= haunt.score
-    h2="Asylum"
-      br
-      each haunt in haunts3
-        div(class= 'asylum hauntCard')
-          a(class="haunt-links" href="/haunts/" + haunt.id)
-            img(src='/images/image-' + haunt.id + '.jpeg' alt='image')
-            br
-            a(href="/haunts/" + haunt.id)= haunt.title
-            p(class="haunt-score")= haunt.score
+        +haunts(haunt[0].GenreType.type, haunt)

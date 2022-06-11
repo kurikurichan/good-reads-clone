@@ -19,27 +19,32 @@ const { csrfProtection, asyncHandler } = require("./utils");
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
-    const haunts = await db.Haunt.findAll({
-      where: {
-        genreId: 1,
-      },
-    });
-    const haunts2 = await db.Haunt.findAll({
-      where: {
-        genreId: 2,
-      },
-    });
 
-    const haunts3 = await db.Haunt.findAll({
-      where: {
-        genreId: 4, // remember this is FOUR
-      },
-    });
+    // get all genres
+    // returns array of objects
+    const genreList = await db.GenreType.findAll();
+
+    // array to store haunt objects in
+    let haunts = [];
+
+    // populate haunts array with Haunt objects that include GenreType
+
+    for (let genre of genreList) {
+      console.log("genreList.foreach is called");
+      const hauntWithGenreType = await db.Haunt.findAll({
+        where: { genreId: genre.id },
+        include: [
+          {
+            model: db.GenreType
+          }
+        ]
+      });
+
+      haunts.push(hauntWithGenreType);
+    }
 
     res.render("haunts", {
-      haunts,
-      haunts2,
-      haunts3,
+      haunts
     });
   })
 );
