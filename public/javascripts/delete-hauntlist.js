@@ -13,9 +13,13 @@ cancelButton.innerText = "Cancel";
 
 //helper function to remove the checkboxes, revert delete button
 const removeDelete = () => {
+  console.log("I MADE ITTTTTTTTTTT :DDDDDDDD");
   cancelButton.remove()
-  const deleteCheckBoxes = document.querySelectorAll(".checkBoxes")
+
+  const deleteCheckBoxes = document.querySelectorAll(".preChecked")
+  console.log("THIS IS DELETE CHEC KBOXESSS", deleteCheckBoxes);
   deleteCheckBoxes.forEach(checkBox => {
+    console.log("THIS IS THE CHECKBOXXXXXXX", checkBox);
     checkBox.remove();
   })
   deleteButton.innerText = "Delete a Hauntlist"
@@ -85,20 +89,10 @@ const removeDelete = () => {
   })
 
 
-    // if checked, give classname of '.checked"'
-
-    // make variable of all checked via querySlectorAll
-
-    // for each this variable
-
-    // make async func
-
-
-    // outside async func, call async func
-
-    // outside forEach, call removeDelete
-
-
+  cancelButton.addEventListener("click", e => {
+    deleteMode ? (deleteMode = false) : (deleteMode = true);
+    removeDelete();
+  });
 
 
 
