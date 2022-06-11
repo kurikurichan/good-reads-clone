@@ -52,12 +52,14 @@ router.get("/:id(\\d+)", async (req, res, next) => {
     include: [{ model: db.User }],
   });
   // console.log("req.session.auth.userId", req.session.auth.userId);
-  const hauntlists = await db.HauntList.findAll({
-    where: { userId: req.session.auth.userId },
-  });
+  let hauntlists;
+  if (req.session.auth) {
+    hauntlists = await db.HauntList.findAll({
+      where: { userId: req.session.auth.userId },
+    });
+  }
   res.render("specificHaunt", { haunt, reviews, hauntlists });
 });
-
 
 // redirect to reviews router hopefully
 router.get("/reviews/edit/:id(\\d+)", async (req, res, next) => {
