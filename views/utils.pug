@@ -5,3 +5,12 @@ mixin error
         ul(class="errors")
             each error in errors
                 li(class="errors")= error
+
+mixin socials(name, github, linkedin)
+  div(class="social-links")
+    p(class="our-names") #{name}
+    div(class="linkedin-github")
+        a(href=github target="_blank")
+            i(class="fab fa-github")
+        a(href=linkedin target="_blank")
+            i(class="fab fa-linkedin")

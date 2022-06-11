@@ -1,14 +1,12 @@
 #footer {
     display: flex;
-    justify-content: space-around;
-    background-color: var(--cadet);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 20px;
+    justify-content: space-evenly;
 
+    background-color: var(--cadet);
     position: absolute;
     bottom:0;
     width:100%;
+    height: 2.5rem;
 }
 
 .social-links {
@@ -16,15 +14,9 @@
     flex-direction: column;
 }
 
-.github-linkedin {
+.linkedin-github {
     display:flex;
-    justify-content: space-around;
-}
-
-.copyright {
-    background-color: var(--bistro);
-    border-radius: 5px;
-    box-shadow: 0 0 10px 10px var(--bistro);
+    justify-content: space-evenly;
 }
 
 .fab.fa-linkedin,

@@ -8,11 +8,11 @@ h2 {
   font-size: 20px;
 }
 
-p {
+.haunt-score {
   text-align: left;
 }
 
-a {
+.haunt-links {
   position: relative;
   text-decoration: none;
 }
@@ -23,7 +23,6 @@ body {
 
 li {
   display: flex;
-  flex-direction: row;
   list-style-type: none;
 }
 
@@ -55,11 +54,6 @@ img:hover {
   width: 33.33%;
   padding: 5px;
 }
-/* .category {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-} */
 
 .hauntCard {
   box-shadow: 0 0 15px var(--bistro);

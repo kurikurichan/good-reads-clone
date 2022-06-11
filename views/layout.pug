@@ -1,3 +1,5 @@
+include utils.pug
+
 doctype html
 html
   head
@@ -11,54 +13,31 @@ html
         script(src="https://kit.fontawesome.com/b4ae7bbf6e.js" crossorigin="anonymous")
 
   body
-      if (!splash)
-          nav
-              ul(id="nav-container")
-                  li
-                      a(href="/")
-                        img(src="/images/logo.jpg" id="logo")
-                  li
-                      a(href="/haunts" class="nav-links")  Haunts
-                      if (locals.authenticated)
-                          li
-                              a(href="/users/" + user.id class="nav-links") Profile
-                          li
-                              a(href="/users/logout" class="nav-links" id='logoutButton') Log out
-                      else
-                          li
-                              a(href="/login" class="nav-links") Login
-                          li
-                              a(href="/signup" class="nav-links") Sign Up
-  block content
-  footer
-    div(id="footer")
-        div(class='social-links')
-            p(class="our-names") Krista Strucke
-            div(class='github-linkedin')
-                a(href="https://www.linkedin.com/in/krista-strucke-044b3369/" target="_blank")
-                    i(class="fab fa-linkedin")
-                a(href="https://github.com/kurikurichan" target="_blank")
-                    i(class="fab fa-github")
-        div(class='social-links')
-            p(class="our-names") Patrick McPherson
-            div(class='github-linkedin')
-                a(href="https://www.linkedin.com/in/patrick-mcpherson-438385117/" target="_blank")
-                    i(class="fab fa-linkedin")
-                a(href="https://github.com/Patricus" target="_blank")
-                    i(class="fab fa-github")
-        div(class='social-links')
-            p(class="our-names") Alec Venida
-            div(class='github-linkedin')
-                a(href="https://www.linkedin.com/in/alec-venida-66793979/" target="_blank")
-                    i(class="fab fa-linkedin")
-                a(href="https://github.com/avenida714" target="_blank")
-                    i(class="fab fa-github")
-        div(class='social-links')
-            p(class="our-names") June Kim
-            div(class='github-linkedin')
-                a(href="https://www.linkedin.com/in/june-k-7b56a1140/" target="_blank")
-                    i(class="fab fa-linkedin")
-                a(href="https://github.com/juneskim" target="_blank")
-                    i(class="fab fa-github")
-        p(class="copyright") &copy; 2022 Group 3 ┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻
-  block footer
+    div(id="page-container")
+        div(id="content-wrap")
+            if (!splash)
+                nav
+                    ul(id="nav-container")
+                        li
+                            a(href="/")
+                                img(src="/images/logo.jpg" id="logo")
+                        li
+                            a(href="/haunts" class="nav-links")  Haunts
+                            if (locals.authenticated)
+                                li
+                                    a(href="/users/" + user.id class="nav-links") Profile
+                                li
+                                    a(href="/users/logout" class="nav-links" id='logoutButton') Log out
+                            else
+                                li
+                                    a(href="/login" class="nav-links") Login
+                                li
+                                    a(href="/signup" class="nav-links") Sign Up
+        block content
+        footer
+            div(id="footer")
+                +socials("Alec Venida", "https://github.com/avenida714", "https://www.linkedin.com/in/alec-venida-66793979/")
+                +socials("June Kim", "https://github.com/juneskim", "https://www.linkedin.com/in/june-k-7b56a1140/")
+                +socials("Krista Strucke", "https://github.com/kurikurichan", "https://www.linkedin.com/in/krista-strucke-044b3369/")
+                +socials("Patrick McPherson", "https://github.com/Patricus", "https://www.linkedin.com/in/patrick-mcpherson-438385117/")
+        block footer
