@@ -25,10 +25,12 @@ router.get(
     const genreList = await db.GenreType.findAll();
 
     // array to store haunt objects in
-    const haunts = [];
+    let haunts = [];
 
-    //
-    genreList.forEach(async(genre) => {
+    // populate haunts array with Haunt objects that include GenreType
+
+    for (let genre of genreList) {
+      console.log("genreList.foreach is called");
       const hauntWithGenreType = await db.Haunt.findAll({
         where: { genreId: genre.id },
         include: [
@@ -39,9 +41,9 @@ router.get(
       });
 
       haunts.push(hauntWithGenreType);
-    });
+    }
 
-    await res.render("haunts", {
+    res.render("haunts", {
       haunts
     });
   })

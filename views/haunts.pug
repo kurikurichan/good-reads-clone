@@ -8,4 +8,4 @@ block content
     h1= "All of the haunts"
       br
       each haunt in haunts
-        +haunts(haunt.GenreType.type, haunt)
+        +haunts(haunt[0].GenreType.type, haunt)
