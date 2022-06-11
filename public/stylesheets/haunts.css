@@ -1,3 +1,7 @@
+body {
+  margin: 50px;
+}
+
 h1 {
   color: var(--pumpkin);
   margin-top: 10px;
@@ -8,6 +12,28 @@ h2 {
   font-size: 20px;
 }
 
+#haunts-container {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 0 15px 10px var(--bistro);
+  background-color: var(--bistro);
+
+  margin-bottom: 20px;
+}
+
+.category-containers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.hauntCard {
+  padding: 5px;
+  gap: 1px;
+}
+
 .haunt-score {
   text-align: left;
 }
@@ -15,15 +41,6 @@ h2 {
 .haunt-links {
   position: relative;
   text-decoration: none;
-}
-
-body {
-  margin: 50px;
-}
-
-li {
-  display: flex;
-  list-style-type: none;
 }
 
 img {
@@ -36,27 +53,26 @@ img:hover {
   box-shadow: 0px 0px 12px var(--pumpkin);
 }
 
-.historical {
+/* li {
+  display: flex;
+  list-style-type: none;
+} */
+
+/* .Historical {
   float: left;
   width: 33.33%;
   padding: 5px;
   text-align: left;
 }
 
-.outdoors {
+.Outdoors {
   float: left;
   width: 33.33%;
   padding: 5px;
 }
 
-.asylum {
+.Asylum {
   float: left;
   width: 33.33%;
   padding: 5px;
-}
-
-.hauntCard {
-  box-shadow: 0 0 15px var(--bistro);
-  background-color: var(--bistro);
-  gap: 1px;
-}
+} */
