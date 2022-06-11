@@ -28,11 +28,23 @@ const removeDelete = () => {
     //revert the
     document.getElementsByTagName("h2")[0].innerText = ogText
 
+    //remove all lis with a checked check box
+
+    const list = document.querySelectorAll("li");
+    const checked = document.querySelectorAll(":checked");
+
+        list.forEach(li => {
+          checked.forEach(checked => {
+            if(li.contains(checked)) li.remove()
+
+          })
+        })
 
 
-    const checkBoxLis = document.querySelectorAll(".checkBoxes-line li")
-    checkBoxLis.classList = "hidden";
-    // checkBox.classList = "hidden";
+
+
+
+
 
   })
   deleteButton.innerText = "Delete a Hauntlist"
@@ -76,6 +88,8 @@ const removeDelete = () => {
 
       const allCheckBoxes = document.querySelectorAll(".preChecked")
       // console.log("ALLL THE BOXXXESSSSSSSS", allCheckBoxes)
+
+
       allCheckBoxes.forEach(checkBox => {
           // console.log("This is a node of all thecheckboxes:", checkBox)
 
