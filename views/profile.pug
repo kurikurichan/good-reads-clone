@@ -1,5 +1,6 @@
 extends layout.pug
-
+append head
+    link(rel="stylesheet" href="/stylesheets/profile.css")
 block content
     h1= currentUser.fullName + "'s Profile"
     p(class="profile-text")="Name: " + currentUser.fullName
@@ -7,12 +8,18 @@ block content
         p(class="profile-text")="Email: " + user.email
 
     h2(id="haunt-title")= currentUser.fullName + "'s Haunt Lists"
-
     ul
         if (hauntlists.length)
             each hauntlist in hauntlists
-                li
-                    a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
+                div(class="checkBoxes-line")
+                    li(id=hauntlist.id)
+                        a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + "(" + Object.keys(hauntlist).length + ")"
         else
             p= "No haunt lists to show yet!"
+
+    div(id="deleteButtons")
+        //- button(id="create") Create a Hauntlist
+        button(id="delete") Delete a Hauntlist
+    script(src="/javascripts/delete-hauntlist.js")
+
 block footer

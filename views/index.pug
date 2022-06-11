@@ -13,8 +13,9 @@ block content
       each haunt in haunts
         li
           div(class= 'hauntCard')
-            img(src='images/image-' + haunt.id + '.jpeg' alt='image')
-            p(class='title')= haunt.title
+            a(href="/haunts/" + haunt.id)
+              img(src='images/image-' + haunt.id + '.jpeg' alt='image')
+              p(class='title')= haunt.title
             p= haunt.score
   if (!locals.authenticated)
     div(class= 'login_signin_card')
