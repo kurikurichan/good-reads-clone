@@ -58,17 +58,18 @@ document.addEventListener("DOMContentLoaded", e => {
       hiddenEles = document.querySelectorAll(".hide");
 
       hiddenEles.forEach((ele, i, obj) => {
-        const deleteHaunt = async () => {
+        (async () => {
           const hauntListId = await getHauntListId();
           const hauntId = ele.id.split("-")[1];
 
-          const res = await fetch("/hauntlists/" + hauntListId, {
+          await fetch("/hauntlists/" + hauntListId, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ hauntId }),
           });
-        };
-        deleteHaunt();
+
+          ele.remove();
+        })();
       });
       removeEdit();
     }

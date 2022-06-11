@@ -24,7 +24,8 @@ router.get(
   })
 );
 
-// update a hauntlist by deleting a haunt from it
+
+//Delete haunt from hauntlist (destroy the join table)
 router.patch(
   "/:id(\\d+)",
   asyncHandler(async (req, res, next) => {
@@ -36,6 +37,7 @@ router.patch(
     });
     hauntJoinList.destroy();
     console.log("destroyed");
+    res.status(200).end();
   })
 );
 
