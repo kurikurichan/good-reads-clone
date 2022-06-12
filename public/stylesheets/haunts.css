@@ -26,11 +26,9 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .hauntCard {
-  flex: 1 0 21%; /* explanation below */
   margin: 5px;
   padding: 5px;
   gap: 1px;
