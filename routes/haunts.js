@@ -5,15 +5,6 @@ const db = require("../db/models");
 
 const { csrfProtection, asyncHandler } = require("./utils");
 
-//import model genre types
-// for each genre type
-// create an array called haunts
-// haunts.forEach      for each genre from the model
-// hauntSubArray = db.Haunt.findAll({
-//   where: { genre: INDEX}
-// })
-
-// push  hauntSubArray into haunts.
 
 /* GET users listing. */
 router.get(
@@ -30,7 +21,6 @@ router.get(
     // populate haunts array with Haunt objects that include GenreType
 
     for (let genre of genreList) {
-      console.log("genreList.foreach is called");
       const hauntWithGenreType = await db.Haunt.findAll({
         where: { genreId: genre.id },
         include: [
@@ -56,7 +46,7 @@ router.get("/:id(\\d+)", async (req, res, next) => {
     where: { hauntId: haunt.id },
     include: [{ model: db.User }],
   });
-  // console.log("req.session.auth.userId", req.session.auth.userId);
+
   let hauntlists;
   if (req.session.auth) {
     hauntlists = await db.HauntList.findAll({
