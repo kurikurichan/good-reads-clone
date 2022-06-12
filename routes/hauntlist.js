@@ -54,12 +54,14 @@ router.post(
 
     if (!errors.length) {
       console.log("Creating hauntlist!!!!!!");
+
       const newHauntlist = await db.HauntList.create({
         title,
         userId,
       });
       res.status(201);
       res.json({ newId: JSON.stringify(newHauntlist) }).end();
+
     } else {
       // const errors = validationErrors.array().map(err => err.msg);
       console.log("Sending errors for hauntlist creation", errors);

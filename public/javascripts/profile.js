@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", e => {
   const openPopupButton = document.querySelector("#create");
   const closePopupButton = document.querySelector("#closePopup");
   const newHauntlistButton = document.querySelector("#newHauntlistButton");
+
   const hauntlistInput = document.querySelector("#newHauntlistInput");
   const errorList = document.querySelector("#errors");
   const listOfHauntlists = document.querySelector("#listOfHauntlsits");
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", e => {
     clearInputErrors();
     //clear input value
     hauntlistInput.innerText = "";
+
     popup.classList.remove("hide");
   });
 
@@ -46,7 +48,10 @@ document.addEventListener("DOMContentLoaded", e => {
   //create a hauntlist
   newHauntlistButton.addEventListener("click", async e => {
     e.preventDefault();
+    //const hauntlistInput = document.querySelector("#newHauntlistInput");
+
     clearInputErrors();
+
 
     const res = await fetch("/hauntlists", {
       method: "POST",
@@ -56,6 +61,7 @@ document.addEventListener("DOMContentLoaded", e => {
 
     //if creation was successful
     if (res.status === 201) {
+
       //add new hauntlist to page
       const newHauntlistDiv = document.createElement("div");
       const newHauntlist = document.createElement("li");
@@ -83,6 +89,7 @@ document.addEventListener("DOMContentLoaded", e => {
 
     //if creation was unsuccessful
     else {
+
       //get the error
       let { errors } = await res.json();
       errors = errors.substring(2, errors.length - 2);
@@ -93,6 +100,7 @@ document.addEventListener("DOMContentLoaded", e => {
       errorList.appendChild(newError);
     }
   });
+
 
   //helper function to remove the checkboxes, revert delete button
   const removeDelete = () => {
