@@ -4,6 +4,7 @@ var router = express.Router();
 const { Haunt, Review } = require('../db/models');
 const { asyncHandler, csrfProtection } = require("./utils");
 const { check, validationResult } = require("express-validator");
+const db = require("../db/models");
 
 
 const reviewValidator = [
@@ -16,6 +17,34 @@ const reviewValidator = [
       .exists({ checkFalsy: true })
       .withMessage("A rating is required"),
 ];
+
+// Helper function to calculate and average review average scores
+async function averageScore(hauntId) {
+    // parameter is integer hauntId (Review.hauntId or Haunt.id)
+    // returns void - should just update the Haunt instance
+
+    const hauntToUpdate = await Haunt.findByPk(hauntId);
+
+    const hauntReviews = await Review.findAll({
+        where: { hauntId }
+    });
+
+    const numOfReviews = hauntReviews.length;
+
+    const reviewSum = hauntReviews.reduce((accl, rating, i) => {
+        rating = hauntReviews[i].score;
+        return accl + rating;
+    }, 0);
+
+    const reviewAvg = +parseFloat(reviewSum / numOfReviews).toFixed(2);
+
+    const updatedHaunt = await hauntToUpdate.update({
+        score: reviewAvg
+    });
+
+    await updatedHaunt.save();
+    return;
+}
 
 
 // GET page with form for new review
@@ -48,7 +77,9 @@ router.post('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) =
         });
 
         if (newReview) {
-            newReview.save();
+            await newReview.save();
+            //TODO: update haunt's average score
+            await averageScore(+hauntId);
             res.redirect(`/haunts/${hauntId}`);
         }
         errors.push("Review failed");
@@ -97,7 +128,8 @@ router.post('/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(re
         });
 
         if (reviewToUpdate) {
-            reviewToUpdate.save();
+            await reviewToUpdate.save();
+            await averageScore(+hauntId);
             res.redirect(`/haunts/${hauntId}`);
         }
         errors.push("Editing failed");
