@@ -15,7 +15,7 @@ router.get(
       where: { id: hauntListId },
       include: [{ model: db.Haunt }],
     });
-    console.log("hauntList", hauntList);
+    // console.log("hauntList", hauntList);
     const haunts = hauntList.Haunts;
     // const haunts = await db.Haunt.findAll({
     //   where: { id: hauntListId }, //fix finding haunts in hauntlist
@@ -86,7 +86,7 @@ router.patch(
       where: { hauntListId, hauntId },
     });
     hauntJoinList.destroy();
-    console.log("destroyed");
+    // console.log("destroyed");
     res.status(200).end();
   })
 );
@@ -98,8 +98,8 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const hauntId = req.params.id;
     const hauntListId = req.body.hauntId; // OR retrieve button id/option id via dom selector
-    console.log("Hauntlist", hauntListId);
-    console.log("Haunt", hauntId);
+    // console.log("Hauntlist", hauntListId);
+    // console.log("Haunt", hauntId);
 
     const dupCheck = await db.HauntJoinList.findOne({
       where: {
@@ -124,12 +124,12 @@ router.delete(
   asyncHandler(async (req, res, next) => {
     // const hauntListId = req.body.id
     const hauntListId = req.params.id;
-    console.log("THIS IS THE HAUNTLIST ID", hauntListId);
+    // console.log("THIS IS THE HAUNTLIST ID", hauntListId);
     const hauntList = await db.HauntList.findByPk(hauntListId);
 
     if (hauntList) {
       await hauntList.destroy();
-      console.log("destroyed");
+      // console.log("destroyed");
       res.end();
     }
     res.end();
