@@ -11,6 +11,28 @@ document.addEventListener("DOMContentLoaded", e => {
 
   const ogText = document.getElementsByTagName("h2")[0].innerText;
 
+  //create popup
+  const popup = document.querySelector("#createHauntlistPopup");
+  const openPopupButton = document.querySelector("#create");
+  const closePopupButton = document.querySelector("#closePopup");
+
+  openPopupButton.addEventListener("click", e => {
+    e.stopPropagation();
+    popup.classList.remove("hide");
+  });
+
+  closePopupButton.addEventListener("click", e => {
+    popup.classList.add("hide");
+  });
+
+  window.addEventListener("click", e => {
+    popup.classList.add("hide");
+  });
+
+  //create a hauntlist
+
+  // createButton.addEventListener("click");
+
   //helper function to remove the checkboxes, revert delete button
   const removeDelete = () => {
     // console.log("I MADE ITTTTTTTTTTT :DDDDDDDD");

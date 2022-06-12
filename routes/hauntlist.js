@@ -24,6 +24,23 @@ router.get(
   })
 );
 
+//create a hauntlist
+router.post(
+  "/",
+  asyncHandler(async (req, res, next) => {
+    const { title, userId } = req.body;
+
+    if (req.session.auth && req.session.auth.userId == userId) {
+      await db.HauntList.create({
+        title,
+        userId,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    }
+  })
+);
+
 //Delete haunt from hauntlist (destroy the join table)
 router.patch(
   "/:id(\\d+)",

@@ -5,3 +5,41 @@
 .hide {
   display: none;
 }
+
+#createHauntlistPopup {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#popupInputs {
+  background-color: var(--bistro);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--xanadu);
+  box-shadow: 0px 1px 5px var(--periwinkle);
+  width: 60%;
+}
+
+#closePopup {
+  color: var(--cadet);
+  float: right;
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
+  background-color: var(--pumpkin);
+}
+
+#closePopup:hover,
+#closePopup:focus {
+  color: var(--bistro);
+  box-shadow: 0px 0px 3px var(--periwinkle);
+  cursor: pointer;
+}

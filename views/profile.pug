@@ -11,7 +11,7 @@ block content
         h2(id="haunt-title")= "Haunt Lists"
         div(id="deleteButtons")
             if(user && user.id == currentUser.id)
-                //- button(id="create") Create a Hauntlist
+                button(id="create") Create a Hauntlist
                 button(id="delete") Delete a Hauntlist
         ul
             if (hauntlists.length)
@@ -21,6 +21,14 @@ block content
                             a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + " (" + hauntlists.length + ")"
             else
                 p= "No haunt lists to show yet!"
+    div(id="createHauntlistPopup" class="hide")
+        div(id="popupInputs")
+            span(id="closePopup") &times;
+            h2 Create a Hauntlist
+            form(action="/hauntlists", method="post")
+                label(for="title") Title:
+                input(type="text" name="title")
+                button Create Hauntlist
 
     script(src="/javascripts/profile.js")
 
