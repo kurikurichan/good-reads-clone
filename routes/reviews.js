@@ -78,11 +78,11 @@ router.post('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) =
 
         if (newReview) {
             await newReview.save();
-            //TODO: update haunt's average score
             await averageScore(+hauntId);
-            res.redirect(`/haunts/${hauntId}`);
+            req.method = "GET";
+            return res.redirect(`/haunts/${+hauntId}`);
         }
-        errors.push("Review failed");
+        else errors.push("Review failed");
     } else {
         errors = validationErrors.array().map(err => err.msg);
     }
@@ -130,7 +130,8 @@ router.post('/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(re
         if (reviewToUpdate) {
             await reviewToUpdate.save();
             await averageScore(+hauntId);
-            res.redirect(`/haunts/${hauntId}`);
+            req.method = "GET";
+            return res.redirect(`/haunts/${+hauntId}`);
         }
         errors.push("Editing failed");
     } else {
