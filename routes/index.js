@@ -83,6 +83,17 @@ router.get(
   })
 );
 
+// const checkEmailDup = async email => {
+//   const dbEmail = await db.User.findOne({
+//     where: { email },
+//   });
+//   console.log("dbEmail", dbEmail);
+//   if (dbEmail) {
+//     if (dbEmail.email === email) return true;
+//   }
+//   return false;
+// };
+
 // signup page
 const signupValidator = [
   check("email")
@@ -91,7 +102,11 @@ const signupValidator = [
     .isEmail()
     .withMessage("Please provide a valid email address")
     .isLength({ max: 62 })
-    .withMessage("Email can't be longer than 62 characters"),
+    .withMessage("Email can't be longer than 62 characters")
+    .custom(async email => {
+      const dbEmailUser = await db.User.findOne({ where: { email } });
+      if (dbEmailUser) throw new Error("Email already exits");
+    }),
   check("fullName")
     .exists({ checkFalsy: true })
     .withMessage("Must provide a name")
@@ -130,25 +145,30 @@ router.post(
 
     if (validationErrors.isEmpty()) {
       if (password === confirmPassword) {
+        // if (checkEmailDup(email)) {
+        //   errors.push("Email already in use");
+        // } else {
         const hashedPass = (await bcrypt.hash(password, 10)).toString();
         user.password = hashedPass;
         await user.save();
         loginUser(req, res, user);
         res.redirect("/");
       }
+      // } else {
       errors.push("Passwords must match");
+      // }
     } else {
       const newErrors = validationErrors.array().map(err => err.msg);
       newErrors.forEach(err => {
         errors.push(err);
       });
-
-      res.render("signup", {
-        user,
-        errors,
-        csrfToken: req.csrfToken(),
-      });
     }
+
+    res.render("signup", {
+      user,
+      errors,
+      csrfToken: req.csrfToken(),
+    });
   })
 );
 
