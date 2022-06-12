@@ -101,10 +101,10 @@ group project google doc?
 google doc?
 ```
 
-* Tables Image (Google Doc)
+* Database Schema
 
 ```
-google drive?
+https://github.com/kurikurichan/good-reads-clone/wiki/Database-Schema
 ```
 
 ## GitHub Files ##
