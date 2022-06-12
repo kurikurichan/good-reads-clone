@@ -1,4 +1,5 @@
 extends layout.pug
+include utils.pug
 append head
     link(rel="stylesheet" href="/stylesheets/profile.css")
 block content
@@ -24,11 +25,12 @@ block content
     div(id="createHauntlistPopup" class="hide")
         div(id="popupInputs")
             span(id="closePopup") &times;
+            ul(id="errors")
             h2 Create a Hauntlist
             form(action="/hauntlists", method="post")
                 label(for="title") Title:
-                input(type="text" name="title")
-                button Create Hauntlist
+                input(type="text" name="title" id="newHauntlistInput")
+                button(id="newHauntlistButton") Create Hauntlist
 
     script(src="/javascripts/profile.js")
 

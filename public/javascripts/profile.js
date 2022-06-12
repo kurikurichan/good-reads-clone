@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", e => {
   const popup = document.querySelector("#createHauntlistPopup");
   const openPopupButton = document.querySelector("#create");
   const closePopupButton = document.querySelector("#closePopup");
+  const newHauntlistButton = document.querySelector("#newHauntlistButton");
 
   openPopupButton.addEventListener("click", e => {
     e.stopPropagation();
@@ -26,10 +27,31 @@ document.addEventListener("DOMContentLoaded", e => {
   });
 
   window.addEventListener("click", e => {
-    popup.classList.add("hide");
+    if (e.target == popup) popup.classList.add("hide");
   });
 
   //create a hauntlist
+  newHauntlistButton.addEventListener("click", async e => {
+    e.preventDefault();
+    const hauntlistInput = document.querySelector("#newHauntlistInput");
+
+    const res = await fetch("/hauntlists", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: hauntlistInput.value }),
+    });
+
+    //if creation was successful
+    if (res.status === 201) {
+      hauntlistInput.value = "";
+      popup.classList.add("hide");
+    }
+
+    //if creation was unsuccessful
+    else {
+      console.log("res.body", res.body);
+    }
+  });
 
   // createButton.addEventListener("click");
 
@@ -63,12 +85,15 @@ document.addEventListener("DOMContentLoaded", e => {
 
   //toggle delete mode
   deleteButton.addEventListener("click", event => {
+    e.stopPropagation();
     deleteMode ? (deleteMode = false) : (deleteMode = true);
 
     if (deleteMode) {
       //alert("Select lists to delete")
-      document.getElementsByTagName("h2")[0].innerText +=
-        "\n(Select lists to delete)";
+
+      //Not selecting correctly
+      // document.getElementsByTagName("h2")[0].innerText +=
+      //   "\n(Select lists to delete)";
 
       deleteButton.innerText = "Confirm"; //delete becomes save
 
