@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", e => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ hauntId: button.value }),
       });
-      if (res.status === 409) {
-        console.log("Haunt already in hauntlist");
-      }
+      // if (res.status === 409) {
+      //   console.log("Haunt already in hauntlist");
+      // }
     });
   });
 });
