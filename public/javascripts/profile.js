@@ -17,8 +17,23 @@ document.addEventListener("DOMContentLoaded", e => {
   const closePopupButton = document.querySelector("#closePopup");
   const newHauntlistButton = document.querySelector("#newHauntlistButton");
 
+  const hauntlistInput = document.querySelector("#newHauntlistInput");
+  const errorList = document.querySelector("#errors");
+  const listOfHauntlists = document.querySelector("#listOfHauntlsits");
+
+  const clearInputErrors = () => {
+    //remove all error child elements
+    while (errorList.firstChild) {
+      errorList.removeChild(errorList.firstChild);
+    }
+  };
+
   openPopupButton.addEventListener("click", e => {
     e.stopPropagation();
+    clearInputErrors();
+    //clear input value
+    hauntlistInput.innerText = "";
+
     popup.classList.remove("hide");
   });
 
@@ -33,7 +48,10 @@ document.addEventListener("DOMContentLoaded", e => {
   //create a hauntlist
   newHauntlistButton.addEventListener("click", async e => {
     e.preventDefault();
-    const hauntlistInput = document.querySelector("#newHauntlistInput");
+    //const hauntlistInput = document.querySelector("#newHauntlistInput");
+
+    clearInputErrors();
+
 
     const res = await fetch("/hauntlists", {
       method: "POST",
@@ -43,17 +61,46 @@ document.addEventListener("DOMContentLoaded", e => {
 
     //if creation was successful
     if (res.status === 201) {
+
+      //add new hauntlist to page
+      const newHauntlistDiv = document.createElement("div");
+      const newHauntlist = document.createElement("li");
+
+      newHauntlistDiv.classList.add("checkBoxes-line");
+
+      //get new hauntlist id
+      const { newId: createdHauntlist } = await res.json();
+      const newHauntlistId = createdHauntlist.match(/\d+/)[0];
+
+      newHauntlist.setAttribute("id", newHauntlistId);
+      newHauntlistDiv.appendChild(newHauntlist);
+
+      const newHauntlistLink = document.createElement("a");
+      newHauntlistLink.setAttribute("href", "/hauntlists/" + newHauntlistId);
+      newHauntlistLink.innerText = hauntlistInput.value + " (0)";
+
+      newHauntlist.appendChild(newHauntlistLink);
+      listOfHauntlists.appendChild(newHauntlistDiv);
+
+      //clear input and hide popup
       hauntlistInput.value = "";
       popup.classList.add("hide");
     }
 
     //if creation was unsuccessful
     else {
-      console.log("res.body", res.body);
+
+      //get the error
+      let { errors } = await res.json();
+      errors = errors.substring(2, errors.length - 2);
+
+      //add an element from the error
+      const newError = document.createElement("li");
+      newError.innerText = errors;
+      errorList.appendChild(newError);
     }
   });
 
-  // createButton.addEventListener("click");
 
   //helper function to remove the checkboxes, revert delete button
   const removeDelete = () => {

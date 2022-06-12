@@ -14,7 +14,7 @@ block content
             if(user && user.id == currentUser.id)
                 button(id="create") Create a Hauntlist
                 button(id="delete") Delete a Hauntlist
-        ul
+        ul(id="listOfHauntlsits")
             if (hauntlists.length)
                 each hauntlist in hauntlists
                     div(class="checkBoxes-line")
