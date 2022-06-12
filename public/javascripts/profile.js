@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", e => {
   const newHauntlistButton = document.querySelector("#newHauntlistButton");
   const hauntlistInput = document.querySelector("#newHauntlistInput");
   const errorList = document.querySelector("#errors");
+  const listOfHauntlists = document.querySelector("#listOfHauntlsits");
 
   const clearInputErrors = () => {
     //remove all error child elements
@@ -55,6 +56,27 @@ document.addEventListener("DOMContentLoaded", e => {
 
     //if creation was successful
     if (res.status === 201) {
+      //add new hauntlist to page
+      const newHauntlistDiv = document.createElement("div");
+      const newHauntlist = document.createElement("li");
+
+      newHauntlistDiv.classList.add("checkBoxes-line");
+
+      //get new hauntlist id
+      const { newId: createdHauntlist } = await res.json();
+      const newHauntlistId = createdHauntlist.match(/\d+/)[0];
+
+      newHauntlist.setAttribute("id", newHauntlistId);
+      newHauntlistDiv.appendChild(newHauntlist);
+
+      const newHauntlistLink = document.createElement("a");
+      newHauntlistLink.setAttribute("href", "/hauntlists/" + newHauntlistId);
+      newHauntlistLink.innerText = hauntlistInput.value + " (0)";
+
+      newHauntlist.appendChild(newHauntlistLink);
+      listOfHauntlists.appendChild(newHauntlistDiv);
+
+      //clear input and hide popup
       hauntlistInput.value = "";
       popup.classList.add("hide");
     }
