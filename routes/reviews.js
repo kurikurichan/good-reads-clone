@@ -78,7 +78,6 @@ router.post('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) =
 
         if (newReview) {
             await newReview.save();
-            //TODO: update haunt's average score
             await averageScore(+hauntId);
             res.redirect(`/haunts/${hauntId}`);
         }
