@@ -11,6 +11,89 @@ document.addEventListener("DOMContentLoaded", e => {
 
   const ogText = document.getElementsByTagName("h2")[0].innerText;
 
+  //create popup
+  const popup = document.querySelector("#createHauntlistPopup");
+  const openPopupButton = document.querySelector("#create");
+  const closePopupButton = document.querySelector("#closePopup");
+  const newHauntlistButton = document.querySelector("#newHauntlistButton");
+  const hauntlistInput = document.querySelector("#newHauntlistInput");
+  const errorList = document.querySelector("#errors");
+  const listOfHauntlists = document.querySelector("#listOfHauntlsits");
+
+  const clearInputErrors = () => {
+    //remove all error child elements
+    while (errorList.firstChild) {
+      errorList.removeChild(errorList.firstChild);
+    }
+  };
+
+  openPopupButton.addEventListener("click", e => {
+    e.stopPropagation();
+    clearInputErrors();
+    //clear input value
+    hauntlistInput.innerText = "";
+    popup.classList.remove("hide");
+  });
+
+  closePopupButton.addEventListener("click", e => {
+    popup.classList.add("hide");
+  });
+
+  window.addEventListener("click", e => {
+    if (e.target == popup) popup.classList.add("hide");
+  });
+
+  //create a hauntlist
+  newHauntlistButton.addEventListener("click", async e => {
+    e.preventDefault();
+    clearInputErrors();
+
+    const res = await fetch("/hauntlists", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: hauntlistInput.value }),
+    });
+
+    //if creation was successful
+    if (res.status === 201) {
+      //add new hauntlist to page
+      const newHauntlistDiv = document.createElement("div");
+      const newHauntlist = document.createElement("li");
+
+      newHauntlistDiv.classList.add("checkBoxes-line");
+
+      //get new hauntlist id
+      const { newId: createdHauntlist } = await res.json();
+      const newHauntlistId = createdHauntlist.match(/\d+/)[0];
+
+      newHauntlist.setAttribute("id", newHauntlistId);
+      newHauntlistDiv.appendChild(newHauntlist);
+
+      const newHauntlistLink = document.createElement("a");
+      newHauntlistLink.setAttribute("href", "/hauntlists/" + newHauntlistId);
+      newHauntlistLink.innerText = hauntlistInput.value + " (0)";
+
+      newHauntlist.appendChild(newHauntlistLink);
+      listOfHauntlists.appendChild(newHauntlistDiv);
+
+      //clear input and hide popup
+      hauntlistInput.value = "";
+      popup.classList.add("hide");
+    }
+
+    //if creation was unsuccessful
+    else {
+      //get the error
+      let { errors } = await res.json();
+      errors = errors.substring(2, errors.length - 2);
+
+      //add an element from the error
+      const newError = document.createElement("li");
+      newError.innerText = errors;
+      errorList.appendChild(newError);
+    }
+  });
+
   //helper function to remove the checkboxes, revert delete button
   const removeDelete = () => {
     // console.log("I MADE ITTTTTTTTTTT :DDDDDDDD");
@@ -41,12 +124,15 @@ document.addEventListener("DOMContentLoaded", e => {
 
   //toggle delete mode
   deleteButton.addEventListener("click", event => {
+    e.stopPropagation();
     deleteMode ? (deleteMode = false) : (deleteMode = true);
 
     if (deleteMode) {
       //alert("Select lists to delete")
-      document.getElementsByTagName("h2")[0].innerText +=
-        "\n(Select lists to delete)";
+
+      //Not selecting correctly
+      // document.getElementsByTagName("h2")[0].innerText +=
+      //   "\n(Select lists to delete)";
 
       deleteButton.innerText = "Confirm"; //delete becomes save
 

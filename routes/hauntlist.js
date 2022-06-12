@@ -3,6 +3,7 @@ var router = express.Router();
 
 const db = require("../db/models");
 
+const { check, validationResult } = require("express-validator");
 const { csrfProtection, asyncHandler } = require("./utils");
 
 // grab a hauntlist???
@@ -21,6 +22,54 @@ router.get(
     //   include: [{ model: db.HauntList }],
     // });
     res.render("hauntlist", { haunts, hauntList });
+  })
+);
+
+// const newHauntlistValidator = [
+//   check("title")
+//     .exists({ checkFalsy: true })
+//     .withMessage("Must provide a title")
+//     .isLength({ max: 30 })
+//     .withMessage("Title can't be more than 30 characters"),
+// ];
+
+//create a hauntlist
+router.post(
+  "/",
+  asyncHandler(async (req, res, next) => {
+    const { title } = req.body;
+    let userId;
+    //check if is a logged in user
+    if (req.session.auth) {
+      userId = req.session.auth.userId;
+    } else res.status(401).end();
+    console.log("User is logged in to create a hauntlist");
+
+    // const validationErrors = validationResult(req);
+    console.log("title", title);
+    const errors = [];
+    if (!title) errors.push("Must provide a title!");
+    if (title.length > 30)
+      errors.push("Title can't be more than 30 characters!");
+
+    if (!errors.length) {
+      console.log("Creating hauntlist!!!!!!");
+      const newHauntlist = await db.HauntList.create({
+        title,
+        userId,
+      });
+      res.status(201);
+      res.json({ newId: JSON.stringify(newHauntlist) }).end();
+    } else {
+      // const errors = validationErrors.array().map(err => err.msg);
+      console.log("Sending errors for hauntlist creation", errors);
+      res.status(200);
+      res
+        .json({
+          errors: JSON.stringify(errors),
+        })
+        .end();
+    }
   })
 );
 
