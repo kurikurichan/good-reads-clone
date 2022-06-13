@@ -141,7 +141,7 @@ router.post(
   asyncHandler(async (req, res, next) => {
     const { email, fullName, password, confirmPassword } = req.body;
 
-    const user = db.User.build({
+    const user = await db.User.build({
       email,
       fullName,
     });
@@ -159,7 +159,7 @@ router.post(
         await user.save();
         loginUser(req, res, user);
         req.method = "GET";
-        res.status(200).redirect("/");
+        return res.status(200).redirect("/");
       }
       // } else {
       errors.push("Passwords must match");
