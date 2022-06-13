@@ -51,7 +51,7 @@ const logoutUser = (req, res) => {
 };
 
 ```
-A large, app-breaking issue we were struggling with involved 500 errors with our routes while editing or deleting reviews. The error received stated,  “Can't set headers after they are sent." This was a particularly nefarious issue, since it would go relatively unnoticed running locally. However, this would break the performance of the application when pushed to Heroku, and would stop all functioning.
+* A large, app-breaking issue we were struggling with involved 500 errors with our routes while editing or deleting reviews. The error received stated,  “Can't set headers after they are sent." This was a particularly nefarious issue, since it would go relatively unnoticed running locally. However, this would break the performance of the application when pushed to Heroku, and would stop all functioning.
 We learned that setting our request methods to GET would ensure that functions would not try to set a header after part of the body had already been written.
 
 
