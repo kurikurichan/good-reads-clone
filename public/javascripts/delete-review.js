@@ -6,6 +6,7 @@ const hauntId = document.getElementsByName("hauntId")[0].value;
 const deleteButton = document.getElementById("delete-review");
 
 deleteButton.addEventListener("click", (e) => {
+    e.preventDefault();
     (async function() {
         const fetchCall =  await fetch('/reviews/' + reviewId, {
             method: 'DELETE'
