@@ -150,6 +150,7 @@ router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
     if (review) {
 
         await review.destroy();
+        await averageScore(+hauntId);
         req.method = "GET";
         return res.redirect(`/haunts/${+hauntId}`);
 

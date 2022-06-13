@@ -93,3 +93,21 @@
 .hauntlistLink a:hover {
   color: var(--pumpkin);
 }
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--bistro);
+  box-shadow: 0px 0px 12px var(--bistro);
+  border-radius: 5px;
+
+  width: 20%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 10px;
+}
+
+#haunt-title {
+  font-size: 40px;
+}
