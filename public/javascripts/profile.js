@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", e => {
 
     clearInputErrors();
 
-
     const res = await fetch("/hauntlists", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -61,12 +60,12 @@ document.addEventListener("DOMContentLoaded", e => {
 
     //if creation was successful
     if (res.status === 201) {
-
       //add new hauntlist to page
       const newHauntlistDiv = document.createElement("div");
       const newHauntlist = document.createElement("li");
 
       newHauntlistDiv.classList.add("checkBoxes-line");
+      newHauntlist.classList.add("hauntlistLi");
 
       //get new hauntlist id
       const { newId: createdHauntlist } = await res.json();
@@ -76,6 +75,8 @@ document.addEventListener("DOMContentLoaded", e => {
       newHauntlistDiv.appendChild(newHauntlist);
 
       const newHauntlistLink = document.createElement("a");
+      newHauntlistLink.classList.add("hauntlistLink");
+
       newHauntlistLink.setAttribute("href", "/hauntlists/" + newHauntlistId);
       newHauntlistLink.innerText = hauntlistInput.value + " (0)";
 
@@ -85,11 +86,14 @@ document.addEventListener("DOMContentLoaded", e => {
       //clear input and hide popup
       hauntlistInput.value = "";
       popup.classList.add("hide");
+
+      const noLists = document.querySelector("#listOfHauntlsits > p");
+
+      if (noLists) noLists.remove();
     }
 
     //if creation was unsuccessful
     else {
-
       //get the error
       let { errors } = await res.json();
       errors = errors.substring(2, errors.length - 2);
@@ -101,29 +105,25 @@ document.addEventListener("DOMContentLoaded", e => {
     }
   });
 
-
   //helper function to remove the checkboxes, revert delete button
   const removeDelete = () => {
     cancelButton.remove();
 
+    const checked = document.querySelectorAll(":checked");
+    checked.forEach(checkbox => {
+      const id = checkbox.id.match(/\d+/);
+      const deleteMe = document.getElementById(`${id}`);
+      console.log("deleteMe", deleteMe);
+      deleteMe.remove();
+    });
+
     const deleteCheckBoxes = document.querySelectorAll(".preChecked");
     deleteCheckBoxes.forEach(checkBox => {
       checkBox.remove();
-
-      //revert the
-      document.getElementsByTagName("h2")[0].innerText = ogText;
-
-      //remove all lis with a checked check box
-
-      const list = document.querySelectorAll("li");
-      const checked = document.querySelectorAll(":checked");
-
-      list.forEach(li => {
-        checked.forEach(checked => {
-          if (li.contains(checked)) li.remove();
-        });
-      });
     });
+
+    document.getElementsByTagName("h2")[0].innerText = ogText;
+
     deleteButton.innerText = "Delete a Hauntlist";
   };
 
@@ -169,12 +169,8 @@ document.addEventListener("DOMContentLoaded", e => {
     if (!deleteMode) {
       const allCheckBoxes = document.querySelectorAll(".preChecked");
 
-
       allCheckBoxes.forEach(checkBox => {
-
-
         if (checkBox.checked) {
-
           const deleteHauntList = async () => {
             const userId = await getUserId();
             const hauntListId = checkBox.id.split("-")[0];

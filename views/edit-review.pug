@@ -2,7 +2,8 @@ extends layout.pug
 include utils.pug
 
 block content
-    h1= "Edit a review"
+    h1(class="center-title")= "Edit a review"
+    br
     +error
 
     if (!locals.authenticated)
@@ -12,24 +13,26 @@ block content
             input(type='hidden' name='_csrf' value=csrfToken)
             input(type='hidden' name='userId' value=user.id)
             input(type='hidden' name='hauntId' value=haunt.id)
-            div(id="rating-container")
-                input(type= "radio", name= "score", value="5", id="5")
-                label(for= "5") ☆
-                input(type= "radio", name= "score", value="4", id="4")
-                label(for= "4") ☆
-                input(type= "radio", name= "score", value="3", id="3")
-                label(for= "3") ☆
-                input(type= "radio", name= "score", value="2", id="2")
-                label(for= "2") ☆
-                input(type= "radio", name= "score", value="1", id="1")
-                label(for= "1") ☆
-            div(class= "form")
-                label(for= "review") Edit this review
-                textarea(class= "review", name="review")=review
-                button Submit
-                a(href='/haunts/' + haunt.id class='btn btn-cancel') Cancel
-            script.
-                const score="#{score}";
-                document.getElementById(score).checked = true;
-        button(class='button' id="delete-review" href="/haunts/" + haunt.id) Delete
-            script(src="/javascripts/delete-review.js")
+            div(class="form-box")
+                div(class= "form")
+                    div(id="rating-container")
+                        input(type= "radio", name= "score", value="5", id="5")
+                        label(for= "5") ☆
+                        input(type= "radio", name= "score", value="4", id="4")
+                        label(for= "4") ☆
+                        input(type= "radio", name= "score", value="3", id="3")
+                        label(for= "3") ☆
+                        input(type= "radio", name= "score", value="2", id="2")
+                        label(for= "2") ☆
+                        input(type= "radio", name= "score", value="1", id="1")
+                        label(for= "1") ☆
+                    block content
+                        label(for= "review") Edit this review
+                        textarea(class= "review", name="review")=review
+                        button Submit
+                        a(href='/haunts/' + haunt.id class='btn btn-cancel') Cancel
+                        script.
+                            const score="#{score}";
+                            document.getElementById(score).checked = true;
+                    button(class='button' id="delete-review" href="/haunts/" + haunt.id) Delete
+                        script(src="/javascripts/delete-review.js")
