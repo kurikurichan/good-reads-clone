@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", e => {
       const newHauntlist = document.createElement("li");
 
       newHauntlistDiv.classList.add("checkBoxes-line");
+      newHauntlist.classList.add("hauntlistLi");
+
 
       //get new hauntlist id
       const { newId: createdHauntlist } = await res.json();
@@ -76,6 +78,8 @@ document.addEventListener("DOMContentLoaded", e => {
       newHauntlistDiv.appendChild(newHauntlist);
 
       const newHauntlistLink = document.createElement("a");
+      newHauntlistLink.classList.add("hauntlistLink");
+
       newHauntlistLink.setAttribute("href", "/hauntlists/" + newHauntlistId);
       newHauntlistLink.innerText = hauntlistInput.value + " (0)";
 

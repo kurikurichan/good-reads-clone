@@ -18,8 +18,8 @@ block content
             if (hauntlists.length)
                 each hauntlist in hauntlists
                     div(class="checkBoxes-line")
-                        li(id=hauntlist.id)
-                            a(href="/hauntlists/" + hauntlist.id)= hauntlist.title + " (" + hauntlists.length + ")"
+                        li(id=hauntlist.id class="hauntlistLi")
+                            a(href="/hauntlists/" + hauntlist.id class="hauntlistLink")= hauntlist.title + " (" + hauntlists.length + ")"
             else
                 p= "No haunt lists to show yet!"
     div(id="createHauntlistPopup" class="hide")
