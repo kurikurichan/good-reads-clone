@@ -158,7 +158,7 @@ router.post(
         user.password = hashedPass;
         await user.save();
         loginUser(req, res, user);
-        res.redirect("/");
+        res.status(200).redirect("/");
       }
       // } else {
       errors.push("Passwords must match");
