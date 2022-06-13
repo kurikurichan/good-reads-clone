@@ -4,7 +4,9 @@ var router = express.Router();
 const db = require("../db/models");
 
 const { csrfProtection, asyncHandler } = require("./utils");
+const { averageScore } = require('../auth.js');
 
+console.log(averageScore);
 
 /* GET users listing. */
 router.get(
@@ -30,6 +32,7 @@ router.get(
         ]
       });
 
+      await averageScore(hauntWithGenreType[0].id);
       haunts.push(hauntWithGenreType);
     }
 

@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { loginUser, loginDemoUser } = require("../auth");
 const db = require("../db/models");
+const { averageScore } = require('../auth.js');
 
 /* GET home page. */
 router.get(
@@ -14,6 +15,11 @@ router.get(
       order: [["createdAt", "DESC"]],
       limit: 5,
     });
+
+    for (let obj in haunts) {
+      console.log(obj);
+      await averageScore(obj.id);
+    }
 
     res.render("index", { haunts });
   })
