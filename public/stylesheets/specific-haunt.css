@@ -53,15 +53,18 @@
   align-items: center;
 }
 
-.bottomDiv div {
-  width: 40vw;
+.bottomDiv > div {
+  width: 75vw;
   background-color: var(--xanadu);
+  border-radius: 5px;
 }
 
 .bottomDiv .scoreName {
   display: flex;
   position: relative;
   background-color: var(--bistro);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .scoreName > * {
@@ -114,4 +117,20 @@ img {
 
 .hide {
   visibility: hidden;
+}
+
+.scoreName > p > a {
+  font-size: 24px;
+  text-decoration: none;
+  text-shadow: 0 0 2px var(--pumpkin);
+  color: var(--periwinkle);
+}
+
+.reviewText {
+  color: var(--cadet);
+  font-weight: 900;
+}
+
+#footerSpace {
+  height: 50px;
 }
