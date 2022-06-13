@@ -9,9 +9,10 @@ h1 {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 40px;
+  font-weight: 900;
+  text-shadow: 0 0 8px var(--xanadu);
 }
-
 
 #haunts-container {
   display: flex;
@@ -34,6 +35,7 @@ h2 {
   margin: 5px;
   padding: 5px;
   gap: 1px;
+  width: 350px;
 }
 
 .haunt-score {
@@ -43,6 +45,11 @@ h2 {
 .haunt-links {
   position: relative;
   text-decoration: none;
+}
+
+.haunt-links + a {
+  inline-size: 150px;
+  overflow-wrap: break-all;
 }
 
 img {
@@ -56,8 +63,8 @@ img:hover {
 }
 
 /* this fixes the footer to the bottom of the haunts page only */
-#footer{
-  position:relative
+#footer {
+  position: relative;
 }
 /* li {
   display: flex;
