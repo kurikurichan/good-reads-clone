@@ -36,6 +36,7 @@ block content
             if (user && user.id == review.userId)
                 a(href="/reviews/edit/" + review.id)
                   button(id="edit-button" name=review.id) Edit Review
-          p(id='score')= "Score:" + review.score
+          p(id='score')= "Score: " + review.score
         div(class="reviewText")
           p= review.review
+  div(id="footerSpace")
