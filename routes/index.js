@@ -158,6 +158,7 @@ router.post(
         user.password = hashedPass;
         await user.save();
         loginUser(req, res, user);
+        req.method = "GET";
         res.status(200).redirect("/");
       }
       // } else {
