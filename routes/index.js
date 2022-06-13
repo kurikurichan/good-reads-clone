@@ -11,13 +11,13 @@ const { averageScore } = require('../auth.js');
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
+
     const haunts = await db.Haunt.findAll({
       order: [["createdAt", "DESC"]],
       limit: 5,
     });
 
-    for (let obj in haunts) {
-      console.log(obj);
+    for (let obj of haunts) {
       await averageScore(obj.id);
     }
 

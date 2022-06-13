@@ -6,7 +6,6 @@ const db = require("../db/models");
 const { csrfProtection, asyncHandler } = require("./utils");
 const { averageScore } = require('../auth.js');
 
-console.log(averageScore);
 
 /* GET users listing. */
 router.get(
@@ -32,6 +31,7 @@ router.get(
         ]
       });
 
+      console.log(hauntWithGenreType[0].id);
       await averageScore(hauntWithGenreType[0].id);
       haunts.push(hauntWithGenreType);
     }
@@ -49,6 +49,8 @@ router.get("/:id(\\d+)", async (req, res, next) => {
     where: { hauntId: haunt.id },
     include: [{ model: db.User }],
   });
+
+  await averageScore(hauntId);
 
   let hauntlists;
   if (req.session.auth) {

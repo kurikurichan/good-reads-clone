@@ -63,13 +63,17 @@ async function averageScore(hauntId) {
       return accl + rating;
   }, 0);
 
-  const reviewAvg = +parseFloat(reviewSum / numOfReviews).toFixed(2);
+  if (numOfReviews > 0) {
+    const reviewAvg = +parseFloat(reviewSum / numOfReviews).toFixed(2);
 
-  const updatedHaunt = await hauntToUpdate.update({
-      score: reviewAvg
-  });
 
-  await updatedHaunt.save();
+    const updatedHaunt = await hauntToUpdate.update({
+        score: reviewAvg
+    });
+
+    await updatedHaunt.save();
+  }
+
   return;
 }
 
