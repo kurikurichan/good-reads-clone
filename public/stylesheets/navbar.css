@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
-/* Nightmare */
-@font-face {
-  font-family: "Nightmare";
-  src: url("../public/fonts/NightmareRegular-vmOzA.ttf") format("ttf");
-}
+
 :root {
   --xanadu: #7e9181;
   --pumpkin: #fe7f2d;
@@ -15,7 +11,7 @@
 body {
   background-color: var(--cadet);
   color: var(--periwinkle);
-  font-family: "Nightmare", "EB Garamond", serif;
+  font-family: "EB Garamond", serif;
   margin: 50px;
 }
 
