@@ -9,11 +9,13 @@ Good Haunts is a clone of Good Reads. It allows users to collect, share, and com
 <h4> Link to Live Application: <a href="https://good-haunts.herokuapp.com//">Good Haunts</a></h4>
 <h4> Documentation: <a href="https://github.com/kurikurichan/good-reads-clone/wiki">Good Haunts Wiki</a></h4>
 
-<!-- Splash Page (while not signed in)
-![IMAGE DATE](IMAGE.PNGFILE)
+Haunts Page 
+<img width="1452" alt="Screen Shot 2022-06-13 at 1 10 45 AM" src="https://user-images.githubusercontent.com/97048214/173309731-ac7298d6-5559-4484-beda-d42bfee20de3.png">
 
-Splash Page (while not signed in)
-![IMAGE DATE](IMAGE.PNGFILE) -->
+Create Account Page!
+<img width="1433" alt="Screen Shot 2022-06-13 at 1 11 24 AM" src="https://user-images.githubusercontent.com/97048214/173309875-28c55630-32a8-41c6-931f-defc46411294.png">
+
+
 ### Features ###
 
 * Sign-up/login with credentials
