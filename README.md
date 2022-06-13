@@ -1,3 +1,7 @@
+
+
+![goodhaunts](https://user-images.githubusercontent.com/8907997/173309135-75528f4b-d5b2-43bd-af9a-4d7df91366c7.jpg)
+
 # Good Haunts
 
 Good Haunts is a clone of Good Reads. It allows users to collect, share, and comment on their favorite haunted locations throughout the world.
