@@ -37,9 +37,62 @@
   opacity: 0.4;
 }
 
-.errors {
+.error {
   list-style-type: circle !important;
+  text-align: center;
+  color: var(--pumpkin);
 }
+
+.center-title {
+  text-align: center;
+}
+
+textarea {
+  background-color: var(--xanadu);
+  color: var(--cadet);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-box {
+  display: flex;
+  justify-content: center;
+
+  background-color: var(--bistro);
+  box-shadow: 0px 0px 12px var(--bistro);
+  border-radius: 5px;
+
+  width: 20%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form > input {
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 7px;
+	border: none;
+	border-bottom: 1px solid var(--pumpkin);
+	background: transparent;
+	margin-bottom: 10px;
+	height: 45px;
+  color: var(--periwinkle);
+}
+
 
 .flame {
   /* set the size of the flame side */
