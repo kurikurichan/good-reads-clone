@@ -51,10 +51,64 @@ const logoutUser = (req, res) => {
 };
 
 ```
-*describe a third challenge here
-```
-Code that solves the third challenge here
+A large, app-breaking issue we were struggling with involved 500 errors with our routes while editing or deleting reviews. The error received stated,  “Can't set headers after they are sent." This was a particularly nefarious issue, since it would go relatively unnoticed running locally. However, this would break the performance of the application when pushed to Heroku, and would stop all functioning.
+We learned that setting our request methods to GET would ensure that functions would not try to set a header after part of the body had already been written.
 
+
+```
+// EDIT review data - /reviews/:reviewId
+router.post('/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
+    //TODO: deconstruct form data from review
+    const reviewId = req.params.id;
+    const { userId, hauntId, score, review } = req.body;
+    const reviewToUpdate = await Review.findByPk(+reviewId)
+    const haunt = await Haunt.findByPk(+hauntId);
+
+    const validationErrors = validationResult(req);
+    let errors = [];
+    // await creating a new review with deconstructed data
+    if (validationErrors.isEmpty()) {
+        await reviewToUpdate.update({
+            reviewId,
+            userId,
+            hauntId,
+            review,
+            score
+        });
+
+        if (reviewToUpdate) {
+            await reviewToUpdate.save();
+            await averageScore(+hauntId);
+            req.method = "GET";
+            return res.redirect(`/haunts/${+hauntId}`);
+        }
+        errors.push("Editing failed");
+    } else {
+        errors = validationErrors.array().map(err => err.msg);
+    }
+    res.render("edit-review", { review, score, haunt, csrfToken: req.csrfToken(), errors }); // might need to feed hauntId
+}));
+
+// DELETE review
+router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+
+    const reviewId = req.params.id;
+    const review = await Review.findByPk(+reviewId);
+    const hauntId = review.hauntId;
+
+    if (review) {
+
+        await review.destroy();
+        req.method = "GET";
+        return res.redirect(`/haunts/${+hauntId}`);
+
+    } else {
+        const err = Error(`Review with an id of ${reviewId} could not be found.`);
+        err.title = "Review not found.";
+        err.status = 404;
+        return err;
+    }
+}));
 ```
 
 <h3>Contributors</h3>
