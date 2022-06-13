@@ -27,7 +27,7 @@ Splash Page (while not signed in)
 
 ### Technical Details ###
 * Creating and deleting Hauntlists proved to be a particularly tricky issue for us, as our goal was to have a user edit and delete Hauntlists dynamically without the need to refresh the page. In reference to checkboxes, we struggled to find a way to change a parent list item in the presence of a child checked box. The CSS selector :has, which can target parent elements of children, is only supported by Safari. Thus we had to come up with a more creative solution: storing a querySelectorAll in a variable to iterate through all li elements, removing those links with a checked box using .contains() and .remove().
-```
+```javascript
     //remove all lis with a checked check box
 
     const list = document.querySelectorAll("li");
@@ -55,7 +55,7 @@ const logoutUser = (req, res) => {
 We learned that setting our request methods to GET would ensure that functions would not try to set a header after part of the body had already been written.
 
 
-```
+```javascript
 // EDIT review data - /reviews/:reviewId
 router.post('/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(req, res) => {
     //TODO: deconstruct form data from review
