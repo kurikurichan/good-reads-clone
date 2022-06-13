@@ -2,6 +2,14 @@
   font-size: 25px;
 }
 
+:root {
+    --xanadu: #7e9181;
+    --pumpkin: #fe7f2d;
+    --periwinkle: #c7cedb;
+    --bistro: #2b2118;
+    --cadet: #2a2e45;
+  }
+
 .hide {
   display: none;
 }
@@ -61,9 +69,15 @@
 
     list-style-type:none;
 }
+.hauntlistLink a {
+    color: var(--xanadu);
+    text-shadow: var(--periwinkle) 1px 1px 1px;
+    position: relative;
+    text-decoration: none;
 
+  }
 
-a::before {
+.hauntlistLink a::before {
     content: "";
     position: absolute;
     width: 0;
@@ -73,10 +87,10 @@ a::before {
     transition: width 250ms 0s;
   }
 
-a:hover::before {
+.hauntlistLink a:hover::before {
     width: 100%;
   }
 
-a:hover {
+.hauntlistLink a:hover {
     color: var(--pumpkin);
   }
