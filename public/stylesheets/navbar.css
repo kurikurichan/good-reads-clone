@@ -24,7 +24,6 @@ nav a {
   text-shadow: var(--periwinkle) 1px 1px 1px;
   position: relative;
   text-decoration: none;
-
 }
 
 nav a::before {
@@ -71,13 +70,11 @@ h2 {
 
 .nav-links:hover {
   color: var(--pumpkin);
-  /* background-color: var(--); */
 }
 
 #logo {
   width: 120px;
   height: auto;
-  margin-right: 40vw;
   margin-left: 5px;
 }
 

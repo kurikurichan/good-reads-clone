@@ -3,12 +3,12 @@
 }
 
 :root {
-    --xanadu: #7e9181;
-    --pumpkin: #fe7f2d;
-    --periwinkle: #c7cedb;
-    --bistro: #2b2118;
-    --cadet: #2a2e45;
-  }
+  --xanadu: #7e9181;
+  --pumpkin: #fe7f2d;
+  --periwinkle: #c7cedb;
+  --bistro: #2b2118;
+  --cadet: #2a2e45;
+}
 
 .hide {
   display: none;
@@ -54,43 +54,42 @@
 
 #newHauntlistInput {
   width: calc(100% - 20em);
+  font-size: 36px;
 }
 
-.hauntlistLink{
-    margin:3px;
-    padding: 3px;
-    font-size: 26px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-decoration: none;
-
+.hauntlistLink {
+  margin: 3px;
+  padding: 3px;
+  font-size: 26px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-decoration: none;
 }
 
-.hauntlistLi{
-
-    list-style-type:none;
+.hauntlistLi {
+  list-style-type: none;
 }
 .hauntlistLink a {
-    color: var(--xanadu);
-    text-shadow: var(--periwinkle) 1px 1px 1px;
-    position: relative;
-    text-decoration: none;
-
-  }
+  color: var(--xanadu);
+  text-shadow: var(--periwinkle) 1px 1px 1px;
+  position: relative;
+  text-decoration: none;
+}
 
 .hauntlistLink a::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: var(--pumpkin);
-    bottom: -2px;
-    transition: width 250ms 0s;
-  }
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: var(--pumpkin);
+  bottom: -2px;
+  transition: width 250ms 0s;
+}
 
 .hauntlistLink a:hover::before {
-    width: 100%;
-  }
+  width: 100%;
+}
 
 .hauntlistLink a:hover {
-    color: var(--pumpkin);
-  }
+  color: var(--pumpkin);
+}
