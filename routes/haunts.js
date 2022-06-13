@@ -31,7 +31,6 @@ router.get(
         ]
       });
 
-      console.log(hauntWithGenreType[0].id);
       await averageScore(hauntWithGenreType[0].id);
       haunts.push(hauntWithGenreType);
     }
