@@ -3,12 +3,13 @@
     justify-content: space-evenly;
 
     background-color: var(--cadet);
-    /* position: absolute; */
+    position: absolute;
     bottom:0;
     width:100%;
     height: 2.5rem; /* height of footer */
 
-    margin-top: 20px;
+    margin-top: 25px;
+    flex-grow:0;
 }
 
 .social-links {
