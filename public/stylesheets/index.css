@@ -39,7 +39,7 @@ img {
   width: 500px;
 }
 
-.button {
+/* .button {
   background-color: red;
   border: none;
   color: white;
@@ -48,7 +48,7 @@ img {
   margin: 5px;
   text-align: center;
   text-decoration: none;
-}
+} */
 
 body > div > button > a {
   font-size: 26px;

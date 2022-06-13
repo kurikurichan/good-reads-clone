@@ -47,3 +47,36 @@
 #newHauntlistInput {
   width: calc(100% - 20em);
 }
+
+.hauntlistLink{
+    margin:3px;
+    padding: 3px;
+    font-size: 26px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+
+}
+
+.hauntlistLi{
+
+    list-style-type:none;
+}
+
+
+a::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--pumpkin);
+    bottom: -2px;
+    transition: width 250ms 0s;
+  }
+
+a:hover::before {
+    width: 100%;
+  }
+
+a:hover {
+    color: var(--pumpkin);
+  }
