@@ -11,17 +11,14 @@ block content
       if(locals.authenticated)
         div(id="buttons")
           div(id="addToHauntlist")
-            //- button(type="button" id="hauntlistsButton" class="focusDropDown") Add To Hauntlist
-            //- list of user's hauntlists
-            //- select(id="hauntlists")
-            //-   each hauntlist in hauntlists
-            //-     option(type="button" class="hauntlist hide focusDropDown" value=hauntlist.id)= hauntlist.title
             div(id="dropdown")
               button(id="dropdownButton") Add To Hauntlist
               div(id="dropdown-hauntlists" class="dropdown hide")
-                each hauntlist in hauntlists
-                    button(type="button" class="dropdown" value= hauntlist.id)= hauntlist.title
-
+                if(hauntlists.length)
+                  each hauntlist in hauntlists
+                      button(type="button" class="dropdown" value= hauntlist.id)= hauntlist.title
+                else
+                  p No hauntlists yet!
 
 
           a(href="/reviews/new/" + haunt.id)

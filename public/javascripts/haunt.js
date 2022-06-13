@@ -10,21 +10,27 @@ document.addEventListener("DOMContentLoaded", e => {
   const hauntlistId = url[url.length - 1];
 
   dropdownButton.addEventListener("click", e => {
-    dropdownHauntlist.classList.toggle("hide");
+    dropdownHauntlist.classList.remove("hide");
+  });
+
+  window.addEventListener("click", e => {
+    if (
+      !e.target.classList.contains("dropdown") &&
+      e.target != dropdownButton
+    ) {
+      dropdownHauntlist.classList.add("hide");
+    }
   });
 
   dropdownHauntlistChildren.forEach(button => {
-    button.addEventListener("click", async e => {
-      const res = await fetch("/hauntlists/" + hauntlistId, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ hauntId: button.value }),
+    if (button.tagName == "BUTTON") {
+      button.addEventListener("click", async e => {
+        const res = await fetch("/hauntlists/" + hauntlistId, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ hauntId: button.value }),
+        });
       });
-      if (res.status === 409) {
-        console.log("Haunt already in hauntlist");
-      }
-    });
+    }
   });
 });
-
-// TODO: create action of clicking buttons add haunt to hauntlists

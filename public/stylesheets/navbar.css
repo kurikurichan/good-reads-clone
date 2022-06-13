@@ -16,6 +16,7 @@ body {
   background-color: var(--cadet);
   color: var(--periwinkle);
   font-family: "Nightmare", "EB Garamond", serif;
+  margin: 50px;
 }
 
 nav a {
