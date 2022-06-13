@@ -74,6 +74,9 @@
 #score {
   position: absolute;
   right: 0;
+  font-size: 24px;
+  color: var(--pumpkin);
+  text-shadow: 0 0 8px var(--periwinkle);
 }
 
 .reviewText {
@@ -124,6 +127,11 @@ img {
   text-decoration: none;
   text-shadow: 0 0 2px var(--pumpkin);
   color: var(--periwinkle);
+}
+.scoreName > p > a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 10px var(--pumpkin);
+  color: white;
 }
 
 .reviewText {
