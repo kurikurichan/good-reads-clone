@@ -43,7 +43,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          title: "Calcasieu Courthouse, Lake Charles, LA",
+          title: "Calcasieu Courthouse, LA",
           description: d2,
           score: 2.5,
           genreId: 1,
