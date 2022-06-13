@@ -1,15 +1,15 @@
-# Good Haunts#
+# Good Haunts
 
 Good Haunts is a clone of Good Reads. It allows users to collect, share, and comment on their favorite haunted locations throughout the world.
 
 <h4> Link to Live Application: <a href="https://good-haunts.herokuapp.com//">Good Haunts</a></h4>
 <h4> Documentation: <a href="https://github.com/kurikurichan/good-reads-clone/wiki">Good Haunts Wiki</a></h4>
 
-Splash Page (while not signed in)
+<!-- Splash Page (while not signed in)
 ![IMAGE DATE](IMAGE.PNGFILE)
 
 Splash Page (while not signed in)
-![IMAGE DATE](IMAGE.PNGFILE)
+![IMAGE DATE](IMAGE.PNGFILE) -->
 ### Features ###
 
 * Sign-up/login with credentials
@@ -51,7 +51,7 @@ const logoutUser = (req, res) => {
 };
 
 ```
-A large, app-breaking issue we were struggling with involved 500 errors with our routes while editing or deleting reviews. The error received stated,  “Can't set headers after they are sent." This was a particularly nefarious issue, since it would go relatively unnoticed running locally. However, this would break the performance of the application when pushed to Heroku, and would stop all functioning.
+* A large, app-breaking issue we were struggling with involved 500 errors with our routes while editing or deleting reviews. The error received stated,  “Can't set headers after they are sent." This was a particularly nefarious issue, since it would go relatively unnoticed running locally. However, this would break the performance of the application when pushed to Heroku, and would stop all functioning.
 We learned that setting our request methods to GET would ensure that functions would not try to set a header after part of the body had already been written.
 
 
@@ -125,35 +125,6 @@ router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
 
 ## Project-related Files ##
 
-* Project flowchart (Draw.io)
-
-```
-https://drive.google.com/file/d/1U5m4CTeV3asIi3y7YaD-92OkJexfRoED/view?usp=sharing
-```
-
-* Role distribution (Excel Spreadsheet)
-
-```
-https://docs.google.com/spreadsheets/d/16HnED6Xv7UGZWam32bMn7SqEXFdmZD4lMn_ATgJTEuw/edit?usp=sharing
-```
-
-* Scorecard (Google Doc)
-
-```
-spreadhseet google doc?
-```
-
-* Group project (Google Doc)
-
-```
-group project google doc?
-```
-
-* Route outline (Google Doc)
-
-```
-google doc?
-```
 
 * Database Schema
 
