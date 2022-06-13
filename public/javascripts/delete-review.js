@@ -8,7 +8,7 @@ const deleteButton = document.getElementById("delete-review");
 deleteButton.addEventListener("click", (e) => {
     (async function() {
         const fetchCall =  await fetch('/reviews/' + reviewId, {
-            method: 'DELETE',
+            method: 'DELETE'
         });
         window.location.href = `/haunts/` + hauntId;
         // console.log(fetchCall.url) // THIS CONSOLE.LOG MADE THE SITE WORK DON'T TOUCH IT GODDAMNIT

@@ -4,8 +4,6 @@ var router = express.Router();
 const { Haunt, Review } = require('../db/models');
 const { asyncHandler, csrfProtection } = require("./utils");
 const { check, validationResult } = require("express-validator");
-const { averageScore } = require('../auth.js');
-
 
 
 const reviewValidator = [
@@ -52,7 +50,6 @@ router.post('/', csrfProtection, reviewValidator, asyncHandler(async(req, res) =
 
         if (newReview) {
             await newReview.save();
-            await averageScore(+hauntId);
             req.method = "GET";
             return res.redirect(`/haunts/${+hauntId}`);
         }
@@ -103,7 +100,6 @@ router.post('/:id(\\d+)', csrfProtection, reviewValidator, asyncHandler(async(re
 
         if (reviewToUpdate) {
             await reviewToUpdate.save();
-            await averageScore(+hauntId);
             req.method = "GET";
             return res.redirect(`/haunts/${+hauntId}`);
         }
@@ -123,8 +119,7 @@ router.delete('/:id(\\d+)', asyncHandler(async(req, res, next) => {
 
     if (review) {
 
-        await review.destroy();
-        await averageScore(+hauntId);
+        review.destroy();
         req.method = "GET";
         return res.redirect(`/haunts/${+hauntId}`);
 
