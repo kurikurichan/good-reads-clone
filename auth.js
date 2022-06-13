@@ -44,9 +44,44 @@ const restoreUser = asyncHandler(async (req, res, next) => {
   }
 });
 
+// Put this here so we can call on splash page
+// Helper function to calculate and average review average scores
+async function averageScore(hauntId) {
+  // parameter is integer hauntId (Review.hauntId or Haunt.id)
+  // returns void - should just update the Haunt instance
+
+  const hauntToUpdate = await db.Haunt.findByPk(hauntId);
+
+  const hauntReviews = await db.Review.findAll({
+      where: { hauntId }
+  });
+
+  const numOfReviews = hauntReviews.length;
+
+  const reviewSum = hauntReviews.reduce((accl, rating, i) => {
+      rating = hauntReviews[i].score;
+      return accl + rating;
+  }, 0);
+
+  if (numOfReviews > 0) {
+    const reviewAvg = +parseFloat(reviewSum / numOfReviews).toFixed(2);
+
+
+    const updatedHaunt = await hauntToUpdate.update({
+        score: reviewAvg
+    });
+
+    await updatedHaunt.save();
+  }
+
+  return;
+}
+
+
 module.exports = {
   loginUser,
   loginDemoUser,
   restoreUser,
   logoutUser,
+  averageScore,
 };

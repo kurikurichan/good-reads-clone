@@ -113,7 +113,6 @@ document.addEventListener("DOMContentLoaded", e => {
     checked.forEach(checkbox => {
       const id = checkbox.id.match(/\d+/);
       const deleteMe = document.getElementById(`${id}`);
-      console.log("deleteMe", deleteMe);
       deleteMe.remove();
     });
 

@@ -5,15 +5,21 @@ const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const { loginUser, loginDemoUser } = require("../auth");
 const db = require("../db/models");
+const { averageScore } = require('../auth.js');
 
 /* GET home page. */
 router.get(
   "/",
   asyncHandler(async (req, res, next) => {
+
     const haunts = await db.Haunt.findAll({
       order: [["createdAt", "DESC"]],
       limit: 5,
     });
+
+    for (let obj of haunts) {
+      await averageScore(obj.id);
+    }
 
     res.render("index", { haunts });
   })
