@@ -16,6 +16,7 @@ body {
   background-color: var(--cadet);
   color: var(--periwinkle);
   font-family: "Nightmare", "EB Garamond", serif;
+  margin: 50px;
 }
 
 nav a {
@@ -23,6 +24,7 @@ nav a {
   text-shadow: var(--periwinkle) 1px 1px 1px;
   position: relative;
   text-decoration: none;
+
 }
 
 nav a::before {
@@ -62,14 +64,14 @@ h2 {
   justify-content: flex-end;
   text-decoration: none;
   font-weight: 800;
-  font-size: large;
+  font-size: 36px;
   color: var(--xanadu);
-  box-shadow: 0px 0px 5px var(--pumpkin);
+  text-shadow: 0px 0px 5px var(--pumpkin);
 }
 
 .nav-links:hover {
   color: var(--pumpkin);
-  background-color: var(--bistro);
+  /* background-color: var(--); */
 }
 
 #logo {
