@@ -6,7 +6,7 @@
 
 Good Haunts is a clone of Good Reads. It allows users to collect, share, and comment on their favorite haunted locations throughout the world.
 
-<h4> Link to Live Application: <a href="https://good-haunts.herokuapp.com//">Good Haunts</a></h4>
+<h4> Link to Live Application: <a href="https://good-haunts.herokuapp.com/">Good Haunts</a></h4>
 <h4> Documentation: <a href="https://github.com/kurikurichan/good-reads-clone/wiki">Good Haunts Wiki</a></h4>
 
 Haunts Page 
